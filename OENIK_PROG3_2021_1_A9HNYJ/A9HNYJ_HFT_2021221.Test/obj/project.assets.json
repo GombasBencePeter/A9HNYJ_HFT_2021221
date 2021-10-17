@@ -23,18 +23,6 @@
           "lib/netstandard1.5/Castle.Core.dll": {}
         }
       },
-      "ConsoleMenu-simple/2.4.0": {
-        "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.1"
-        },
-        "compile": {
-          "lib/netstandard1.3/ConsoleMenu.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/ConsoleMenu.dll": {}
-        }
-      },
       "Microsoft.CodeAnalysis.FxCopAnalyzers/2.9.12": {
         "type": "package",
         "dependencies": {
@@ -2118,22 +2106,6 @@
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
-      "A9HNYJ_HFT_2021221.Client/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "dependencies": {
-          "A9HNYJ_HFT_2021221.Data": "1.0.0",
-          "A9HNYJ_HFT_2021221.Logic": "1.0.0",
-          "A9HNYJ_HFT_2021221.Repository": "1.0.0",
-          "ConsoleMenu-simple": "2.4.0"
-        },
-        "compile": {
-          "bin/placeholder/A9HNYJ_HFT_2021221.Client.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/A9HNYJ_HFT_2021221.Client.dll": {}
-        }
-      },
       "A9HNYJ_HFT_2021221.Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -2147,6 +2119,16 @@
         },
         "runtime": {
           "bin/placeholder/A9HNYJ_HFT_2021221.Data.dll": {}
+        }
+      },
+      "A9HNYJ_HFT_2021221.Endpoint/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/A9HNYJ_HFT_2021221.Endpoint.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/A9HNYJ_HFT_2021221.Endpoint.dll": {}
         }
       },
       "A9HNYJ_HFT_2021221.Logic/1.0.0": {
@@ -2202,19 +2184,6 @@
         "lib/netstandard1.5/Castle.Core.dll",
         "lib/netstandard1.5/Castle.Core.xml",
         "readme.txt"
-      ]
-    },
-    "ConsoleMenu-simple/2.4.0": {
-      "sha512": "V5XbYal6UX3ulce2wlvJfgejLst+2BXbr8py/edNPv54o6NpUG7zutCQfY8ZpP4+SE41v1a3l8g+oJGn1YSXPA==",
-      "type": "package",
-      "path": "consolemenu-simple/2.4.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "consolemenu-simple.2.4.0.nupkg.sha512",
-        "consolemenu-simple.nuspec",
-        "lib/netstandard1.3/ConsoleMenu.dll"
       ]
     },
     "Microsoft.CodeAnalysis.FxCopAnalyzers/2.9.12": {
@@ -7838,15 +7807,15 @@
         "system.xml.xpath.xmldocument.nuspec"
       ]
     },
-    "A9HNYJ_HFT_2021221.Client/1.0.0": {
-      "type": "project",
-      "path": "../A9HNYJ_HFT_2021221.Endpoint/A9HNYJ_HFT_2021221.Endpoint.csproj",
-      "msbuildProject": "../A9HNYJ_HFT_2021221.Endpoint/A9HNYJ_HFT_2021221.Endpoint.csproj"
-    },
     "A9HNYJ_HFT_2021221.Data/1.0.0": {
       "type": "project",
       "path": "../A9HNYJ_HFT_2021221.Data/A9HNYJ_HFT_2021221.Data.csproj",
       "msbuildProject": "../A9HNYJ_HFT_2021221.Data/A9HNYJ_HFT_2021221.Data.csproj"
+    },
+    "A9HNYJ_HFT_2021221.Endpoint/1.0.0": {
+      "type": "project",
+      "path": "../A9HNYJ_HFT_2021221.Endpoint/A9HNYJ_HFT_2021221.Endpoint.csproj",
+      "msbuildProject": "../A9HNYJ_HFT_2021221.Endpoint/A9HNYJ_HFT_2021221.Endpoint.csproj"
     },
     "A9HNYJ_HFT_2021221.Logic/1.0.0": {
       "type": "project",
@@ -7861,8 +7830,8 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "A9HNYJ_HFT_2021221.Client >= 1.0.0",
       "A9HNYJ_HFT_2021221.Data >= 1.0.0",
+      "A9HNYJ_HFT_2021221.Endpoint >= 1.0.0",
       "A9HNYJ_HFT_2021221.Logic >= 1.0.0",
       "A9HNYJ_HFT_2021221.Repository >= 1.0.0",
       "Microsoft.CodeAnalysis.FxCopAnalyzers >= 2.9.12",

@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "+4ZoJfLzPIX7O1NcQo0BFLQoVsWaP5H0XfZivfJbEvg0gDJNKkSJMtfwXQxMGtpPJ2sY4eL1Ge0knY+OIo2OnA==",
+  "dgSpecHash": "kmcIWbYkkcrvZbU6i8tXjOlRbhYMOflknscYJ4NL/iqKtT56T4EdlBvWd9C8/ImzdQsoINPykiTVZb/lB3wW2g==",
   "success": true,
   "projectFilePath": "C:\\Users\\gomba\\Documents\\Projekt\\A9HNYJ_HFT_2021221\\OENIK_PROG3_2021_1_A9HNYJ\\A9HNYJ_HFT_2021221.Test\\A9HNYJ_HFT_2021221.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gomba\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
-    "C:\\Users\\gomba\\.nuget\\packages\\consolemenu-simple\\2.4.0\\consolemenu-simple.2.4.0.nupkg.sha512",
     "C:\\Users\\gomba\\.nuget\\packages\\microsoft.codeanalysis.fxcopanalyzers\\2.9.12\\microsoft.codeanalysis.fxcopanalyzers.2.9.12.nupkg.sha512",
     "C:\\Users\\gomba\\.nuget\\packages\\microsoft.codeanalysis.versioncheckanalyzer\\2.9.12\\microsoft.codeanalysis.versioncheckanalyzer.2.9.12.nupkg.sha512",
     "C:\\Users\\gomba\\.nuget\\packages\\microsoft.codecoverage\\16.5.0\\microsoft.codecoverage.16.5.0.nupkg.sha512",

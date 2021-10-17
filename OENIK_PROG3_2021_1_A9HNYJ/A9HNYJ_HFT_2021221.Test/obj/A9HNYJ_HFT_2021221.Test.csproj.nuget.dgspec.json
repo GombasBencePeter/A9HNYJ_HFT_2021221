@@ -94,7 +94,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\gomba\\Documents\\Projekt\\A9HNYJ_HFT_2021221\\OENIK_PROG3_2021_1_A9HNYJ\\A9HNYJ_HFT_2021221.Endpoint\\A9HNYJ_HFT_2021221.Endpoint.csproj",
-        "projectName": "A9HNYJ_HFT_2021221.Client",
+        "projectName": "A9HNYJ_HFT_2021221.Endpoint",
         "projectPath": "C:\\Users\\gomba\\Documents\\Projekt\\A9HNYJ_HFT_2021221\\OENIK_PROG3_2021_1_A9HNYJ\\A9HNYJ_HFT_2021221.Endpoint\\A9HNYJ_HFT_2021221.Endpoint.csproj",
         "packagesPath": "C:\\Users\\gomba\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\gomba\\Documents\\Projekt\\A9HNYJ_HFT_2021221\\OENIK_PROG3_2021_1_A9HNYJ\\A9HNYJ_HFT_2021221.Endpoint\\obj\\",
@@ -113,17 +113,7 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {
-              "C:\\Users\\gomba\\Documents\\Projekt\\A9HNYJ_HFT_2021221\\OENIK_PROG3_2021_1_A9HNYJ\\A9HNYJ_HFT_2021221.Data\\A9HNYJ_HFT_2021221.Data.csproj": {
-                "projectPath": "C:\\Users\\gomba\\Documents\\Projekt\\A9HNYJ_HFT_2021221\\OENIK_PROG3_2021_1_A9HNYJ\\A9HNYJ_HFT_2021221.Data\\A9HNYJ_HFT_2021221.Data.csproj"
-              },
-              "C:\\Users\\gomba\\Documents\\Projekt\\A9HNYJ_HFT_2021221\\OENIK_PROG3_2021_1_A9HNYJ\\A9HNYJ_HFT_2021221.Logic\\A9HNYJ_HFT_2021221.Logic.csproj": {
-                "projectPath": "C:\\Users\\gomba\\Documents\\Projekt\\A9HNYJ_HFT_2021221\\OENIK_PROG3_2021_1_A9HNYJ\\A9HNYJ_HFT_2021221.Logic\\A9HNYJ_HFT_2021221.Logic.csproj"
-              },
-              "C:\\Users\\gomba\\Documents\\Projekt\\A9HNYJ_HFT_2021221\\OENIK_PROG3_2021_1_A9HNYJ\\A9HNYJ_HFT_2021221.Repository\\A9HNYJ_HFT_2021221.Repository.csproj": {
-                "projectPath": "C:\\Users\\gomba\\Documents\\Projekt\\A9HNYJ_HFT_2021221\\OENIK_PROG3_2021_1_A9HNYJ\\A9HNYJ_HFT_2021221.Repository\\A9HNYJ_HFT_2021221.Repository.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
@@ -135,24 +125,6 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "dependencies": {
-            "ConsoleMenu-simple": {
-              "target": "Package",
-              "version": "[2.4.0, )"
-            },
-            "Microsoft.CodeAnalysis.FxCopAnalyzers": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.9.12, )"
-            },
-            "StyleCop.Analyzers": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[1.1.118, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
