@@ -7896,7 +7896,7 @@
     "version": "1.0.0",
     "restore": {
       "projectUniqueName": "C:\\Users\\gomba\\Documents\\Projekt\\A9HNYJ_HFT_2021221\\OENIK_PROG3_2021_1_A9HNYJ\\A9HNYJ_HFT_2021221.Endpoint\\A9HNYJ_HFT_2021221.Endpoint.csproj",
-      "projectName": "A9HNYJ_HFT_2021221.Endpoint",
+      "projectName": "A9HNYJ_HFT_2021221.Client",
       "projectPath": "C:\\Users\\gomba\\Documents\\Projekt\\A9HNYJ_HFT_2021221\\OENIK_PROG3_2021_1_A9HNYJ\\A9HNYJ_HFT_2021221.Endpoint\\A9HNYJ_HFT_2021221.Endpoint.csproj",
       "packagesPath": "C:\\Users\\gomba\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\gomba\\Documents\\Projekt\\A9HNYJ_HFT_2021221\\OENIK_PROG3_2021_1_A9HNYJ\\A9HNYJ_HFT_2021221.Endpoint\\obj\\",
