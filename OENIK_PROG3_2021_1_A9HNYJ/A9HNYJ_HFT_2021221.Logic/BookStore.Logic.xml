@@ -1,0 +1,563 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>A9HNYJ_HFT_2021221.Logic</name>
+    </assembly>
+    <members>
+        <member name="T:A9HNYJ_HFT_2021221.Logic.AdminLogic">
+            <summary>
+            Logic class for admin functions. Inherits user functions from UserLogic class.
+            </summary>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.AdminLogic.#ctor(A9HNYJ_HFT_2021221.Repository.IBookRepository,A9HNYJ_HFT_2021221.Repository.IPublisherRepository,A9HNYJ_HFT_2021221.Repository.IAuthorRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:A9HNYJ_HFT_2021221.Logic.AdminLogic"/> class.
+            Constructor for AdminLogic class.
+            </summary>
+            <param name="br"> IBookRepository implementing class. </param>
+            <param name="pr"> IPublisherRepository implementing class. </param>
+            <param name="ar"> IAuthorRepository implementing class. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.AdminLogic.AddAuthor(System.String,System.Int32,System.Boolean,System.String,System.Boolean)">
+            <summary>
+            Forwards values to repository to create new Author item.
+            </summary>
+            <param name="authorname"> authroname for new author. </param>
+            <param name="yearborn"> yearborn for new author. </param>
+            <param name="isactive"> isactive for new author. </param>
+            <param name="originallanguage"> originallanguage for new author. </param>
+            <param name="forkids"> forkids for new author. </param>
+            <returns> The Author item created. Null if not successful. </returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.AdminLogic.AddBook(System.String,System.String,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Checks if given names for Author and Publishers are ok. If not, returns null. If ok, forwards values for repository.
+            </summary>
+            <param name="authorname"> Name of Author. </param>
+            <param name="publishername"> Name of Publisher. </param>
+            <param name="bookname">Name of new book. </param>
+            <param name="price"> Proce of book. </param>
+            <param name="supply"> Supply of new book.</param>
+            <param name="year"> The year the book was published. </param>
+            <returns> The new Book if creation successful, null if not.</returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.AdminLogic.AddPublisher(System.String,System.String,System.String,System.Int32,System.Boolean)">
+            <summary>
+            Forwards values to repository, to create new publisher item.
+            </summary>
+            <param name="publishername"> Name for new Publisher. </param>
+            <param name="language"> Language for new publisher. </param>
+            <param name="webpage"> Webpage of new publisher. </param>
+            <param name="deliverydays">Delivery days number for new publisher. </param>
+            <param name="isactive"> Isactive for new publisher. </param>
+            <returns> New publisher item or null if not successful.</returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.AdminLogic.ChangeAuthorName(System.Int32,System.String)">
+            <summary>
+            Forwards call to repository to change author name.
+            </summary>
+            <param name="index"> Index of the item to modify.</param>
+            <param name="newName"> Name to change item name into.</param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.AdminLogic.ChangeBookName(System.Int32,System.String)">
+            <summary>
+            Forwards call to repository to change book name.
+            </summary>
+            <param name="index"> Index of the item to modify.</param>
+            <param name="newName">Name to change item name into.</param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.AdminLogic.ChangeDeliveryDays(System.Int32,System.Int32)">
+            <summary>
+            Forwards call to repository to change delivery days for publisher.
+            </summary>
+            <param name="index"> Index of the item to modify.</param>
+            <param name="days"> Number of days to change deliverydays into.</param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.AdminLogic.ChangeForKidsAuthor(System.Int32,System.Boolean)">
+            <summary>
+            Forwards call to repository to change if author is forkids.
+            </summary>
+            <param name="index"> Index of the item to modify.</param>
+            <param name="forKids"> Bool value to change author forKids value into.</param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.AdminLogic.ChangeIsActiveAuthor(System.Int32,System.Boolean)">
+            <summary>
+            Forwards call to repository to change if author is stil active.
+            </summary>
+            <param name="index"> Index of the item to modify.</param>
+            <param name="isActive"> Bool value to change author isActive into.</param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.AdminLogic.ChangePublisherIsActive(System.Int32,System.Boolean)">
+            <summary>
+            Forwards call to repository to change if publisher is still active.
+            </summary>
+            <param name="index"> Index of the item to modify.</param>
+            <param name="isactive"> Bool value to change publisher isActive into.</param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.AdminLogic.ChangePublisherLanguage(System.Int32,System.String)">
+            <summary>
+            Forwards call to repository to change language for publisher.
+            </summary>
+            <param name="index">Index of the item to modify.</param>
+            <param name="language"> New language value.</param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.AdminLogic.ChangePublisherName(System.Int32,System.String)">
+            <summary>
+            Forwards call to repository to change name for publisher.
+            </summary>
+            <param name="index">Index of the item to modify.</param>
+            <param name="name"> New name value.</param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.AdminLogic.ChangeWebsite(System.Int32,System.String)">
+            <summary>
+            Forwards call to repository to change website for publisher.
+            </summary>
+            <param name="index"> Index of the item to modify.</param>
+            <param name="website"> New website value.</param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.AdminLogic.DeleteAuthor(System.Int32)">
+            <summary>
+            Forwards call to repository to delete one author.
+            </summary>
+            <param name="index"> Index of the item to remove.</param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.AdminLogic.DeleteBook(System.Int32)">
+            <summary>
+            Forwards call to repository to delete one boook.
+            </summary>
+            <param name="index">Index of the item to remove.</param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.AdminLogic.DeletePublisher(System.Int32)">
+            <summary>
+            Forwards call to repository to delete one Publisher.
+            </summary>
+            <param name="index"> Index of the item to remove.</param>
+        </member>
+        <member name="T:A9HNYJ_HFT_2021221.Logic.IAdminLogic">
+            <summary>
+            Interface for admin class that includes admin funcionalities.
+            </summary>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.IAdminLogic.AddBook(System.String,System.String,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Checks if given names for Author and Publishers are ok. If not, returns null. If ok, forwards values for repository.
+            </summary>
+            <param name="authorname"> Name of Author. </param>
+            <param name="publishername"> Name of Publisher. </param>
+            <param name="bookname">Name of new book. </param>
+            <param name="price"> Proce of book. </param>
+            <param name="supply"> Supply of new book.</param>
+            <param name="year"> The year the book was published. </param>
+            <returns> The new Book if creation successful, null if not.</returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.IAdminLogic.AddPublisher(System.String,System.String,System.String,System.Int32,System.Boolean)">
+            <summary>
+            Forwards values to repository, to create new publisher item.
+            </summary>
+            <param name="publishername"> Name for new Publisher. </param>
+            <param name="language"> Language for new publisher. </param>
+            <param name="webpage"> Webpage of new publisher. </param>
+            <param name="deliverydays">Delivery days number for new publisher. </param>
+            <param name="isactive"> Isactive for new publisher. </param>
+            <returns> New publisher item or null if not successful.</returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.IAdminLogic.AddAuthor(System.String,System.Int32,System.Boolean,System.String,System.Boolean)">
+            <summary>
+            Forwards values to repository to create new Author item.
+            </summary>
+            <param name="authorname"> authroname for new author. </param>
+            <param name="yearborn"> yearborn for new author. </param>
+            <param name="isactive"> isactive for new author. </param>
+            <param name="originallanguage"> originallanguage for new author. </param>
+            <param name="forkids"> forkids for new author. </param>
+            <returns> The Author item created. Null if not successful. </returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.IAdminLogic.ChangeAuthorName(System.Int32,System.String)">
+            <summary>
+            Forwards call to repository to change author name.
+            </summary>
+            <param name="index"> Index of the item to modify.</param>
+            <param name="newName"> Name to change item name into.</param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.IAdminLogic.ChangeForKidsAuthor(System.Int32,System.Boolean)">
+            <summary>
+            Forwards call to repository to change if author is forkids.
+            </summary>
+            <param name="index"> Index of the item to modify.</param>
+            <param name="forKids"> Bool value to change author forKids value into.</param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.IAdminLogic.ChangeIsActiveAuthor(System.Int32,System.Boolean)">
+            <summary>
+            Forwards call to repository to change if author is stil active.
+            </summary>
+            <param name="index"> Index of the item to modify.</param>
+            <param name="isActive"> Bool value to change author isActive into.</param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.IAdminLogic.ChangePublisherName(System.Int32,System.String)">
+            <summary>
+            Forwards call to repository to change name for publisher.
+            </summary>
+            <param name="index">Index of the item to modify.</param>
+            <param name="name"> New name value.</param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.IAdminLogic.ChangeWebsite(System.Int32,System.String)">
+            <summary>
+            Forwards call to repository to change website for publisher.
+            </summary>
+            <param name="index"> Index of the item to modify.</param>
+            <param name="website"> New website value.</param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.IAdminLogic.ChangePublisherLanguage(System.Int32,System.String)">
+            <summary>
+            Forwards call to repository to change language for publisher.
+            </summary>
+            <param name="index">Index of the item to modify.</param>
+            <param name="language"> New language value.</param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.IAdminLogic.ChangePublisherIsActive(System.Int32,System.Boolean)">
+            <summary>
+            Forwards call to repository to change if publisher is still active.
+            </summary>
+            <param name="index"> Index of the item to modify.</param>
+            <param name="isactive"> Bool value to change publisher isActive into.</param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.IAdminLogic.ChangeDeliveryDays(System.Int32,System.Int32)">
+            <summary>
+            Forwards call to repository to change delivery days for publisher.
+            </summary>
+            <param name="index"> Index of the item to modify.</param>
+            <param name="days"> Number of days to change deliverydays into.</param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.IAdminLogic.ChangeBookName(System.Int32,System.String)">
+            <summary>
+            Forwards call to repository to change book name.
+            </summary>
+            <param name="index"> Index of the item to modify.</param>
+            <param name="newName">Name to change item name into.</param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.IAdminLogic.DeleteBook(System.Int32)">
+            <summary>
+            Forwards call to repository to delete one boook.
+            </summary>
+            <param name="index">Index of the item to remove.</param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.IAdminLogic.DeletePublisher(System.Int32)">
+            <summary>
+            Forwards call to repository to delete one Publisher.
+            </summary>
+            <param name="index"> Index of the item to remove.</param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.IAdminLogic.DeleteAuthor(System.Int32)">
+            <summary>
+            Forwards call to repository to delete one author.
+            </summary>
+            <param name="index"> Index of the item to remove.</param>
+        </member>
+        <member name="T:A9HNYJ_HFT_2021221.Logic.ISupplyManager">
+            <summary>
+            Interface for SupplyManager class that includes supply manager funcionalities.
+            </summary>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.ISupplyManager.AddBook(System.String,System.String,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Checks if given names for Author and Publishers are ok. If not, returns null. If ok, forwards values for repository.
+            </summary>
+            <param name="authorname"> Name of Author. </param>
+            <param name="publishername"> Name of Publisher. </param>
+            <param name="bookname">Name of new book. </param>
+            <param name="price"> Proce of book. </param>
+            <param name="supply"> Supply of new book.</param>
+            <param name="year"> The year the book was published. </param>
+            <returns> The new Book if creation successful, null if not.</returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.ISupplyManager.ChangePrice(System.Int32,System.Int32)">
+            <summary>
+            FOrwards call to repository to change the price of one book.
+            </summary>
+            <param name="index"> Index of the item to modify. </param>
+            <param name="newprice"> New price of the book (only positive number). </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.ISupplyManager.ChangeSupply(System.Int32,System.Int32)">
+            <summary>
+            Forwards call to repository to change the current supply of one book.
+            </summary>
+            <param name="index"> Index of the item to modify. </param>
+            <param name="newSupply"> New supply of that book (only positive number). </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.ISupplyManager.AddSupply(System.Int32,System.Int32)">
+            <summary>
+            Forwards call to repository to add to the current supply of one book. Checks if new amount is positive. If not nothing happens.
+            </summary>
+            <param name="index"> Index of the item to modify. </param>
+            <param name="valToAdd"> Amount to add. </param>
+        </member>
+        <member name="T:A9HNYJ_HFT_2021221.Logic.IUserLogic">
+            <summary>
+            Interface for user class that includes user funcionalities.
+            </summary>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.IUserLogic.ListAllBooks">
+            <summary>
+            Repository call to get all items form "Books" table form db.
+            </summary>
+            <returns> List with Book instances. List with all items in the table "Books".</returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.IUserLogic.ListAllPublishers">
+            <summary>
+            Repository call to get all items form "Publishers" table form db.
+            </summary>
+            <returns> List of Publisher instances. List with all items in the table "Publishers".</returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.IUserLogic.ListAllAuthors">
+            <summary>
+            Repository call to get all items form "Authors" table form db.
+            </summary>
+            <returns> List with Author instances. List with all items in the table "Authors".</returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.IUserLogic.OneBook(System.Int32)">
+            <summary>
+            Repository call to get one Book item with the given index.
+            </summary>
+            <param name="index"> The index of the item to be found.</param>
+            <returns> One Book instance with the corresponting index. </returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.IUserLogic.OnePublisher(System.Int32)">
+            <summary>
+            Repository call to get one Publisher item with the given index.
+            </summary>
+            <param name="index"> The index of the item to be found.</param>
+            <returns> One Publisher instance with the corresponting index. </returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.IUserLogic.OneAuthor(System.Int32)">
+            <summary>
+            Repository call to get one Author item with the given index.
+            </summary>
+            <param name="index"> The index of the item to be found.</param>
+            <returns> One Author instance with the corresponding index. </returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.IUserLogic.ListEnglishBookForKids">
+            <summary>
+            Query to get all books where the authors original language and the publishers language is "English", where the Author writes kid friendly books and was released after 1990.
+            </summary>
+            <returns> List with the Book resoults of the query. </returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.IUserLogic.ListNewBooksWithOldEditions">
+            <summary>
+            Query to get all new edition books wich has an old edition published. The new editions publisher is active, while the old editions publisher is not active.
+            </summary>
+            <returns> List with the Book resoults of the query.</returns>
+        </member>
+        <member name="T:A9HNYJ_HFT_2021221.Logic.ListAllAuthorsEditionsReturnValue">
+            <summary>
+            Query return class, contains the name of the author and the number of languages the have publications in.
+            </summary>
+        </member>
+        <member name="P:A9HNYJ_HFT_2021221.Logic.ListAllAuthorsEditionsReturnValue.Name">
+            <summary>
+            Gets or Sets name of author.
+            </summary>
+        </member>
+        <member name="P:A9HNYJ_HFT_2021221.Logic.ListAllAuthorsEditionsReturnValue.Editions">
+            <summary>
+            Gets or Sets number of languages they have publications.
+            </summary>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.ListAllAuthorsEditionsReturnValue.Equals(System.Object)">
+            <summary>
+            Override for comparison to other objects.
+            </summary>
+            <param name="obj"> The object to compare with.</param>
+            <returns> True if the object obj is the same with this instance.</returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.ListAllAuthorsEditionsReturnValue.GetHashCode">
+            <summary>
+            Override for hasjcode generation.
+            </summary>
+            <returns> Hashcode of the instance.</returns>
+        </member>
+        <member name="T:A9HNYJ_HFT_2021221.Logic.ListBooksWithLessThan10PcsReturnValue">
+            <summary>
+            Query return class, contains the title of the book, the name of the publisher, the supply currently present and the number of days it takes to deliver.
+            </summary>
+        </member>
+        <member name="P:A9HNYJ_HFT_2021221.Logic.ListBooksWithLessThan10PcsReturnValue.Title">
+            <summary>
+            Gets or Sets the title of the book.
+            </summary>
+        </member>
+        <member name="P:A9HNYJ_HFT_2021221.Logic.ListBooksWithLessThan10PcsReturnValue.Publisher">
+            <summary>
+            Gets or Sets the name of the publisher.
+            </summary>
+        </member>
+        <member name="P:A9HNYJ_HFT_2021221.Logic.ListBooksWithLessThan10PcsReturnValue.Supply">
+            <summary>
+            Gets or Sets the number of copies in supply.
+            </summary>
+        </member>
+        <member name="P:A9HNYJ_HFT_2021221.Logic.ListBooksWithLessThan10PcsReturnValue.Days">
+            <summary>
+            Gets or Sets the number of days new supply can be delivered from publisher.
+            </summary>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.ListBooksWithLessThan10PcsReturnValue.Equals(System.Object)">
+            <summary>
+            Override for comparison to other objects.
+            </summary>
+            <param name="obj"> The object to compare with.</param>
+            <returns> True if the object obj is the same with this instance.</returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.ListBooksWithLessThan10PcsReturnValue.GetHashCode">
+            <summary>
+            Override for hasjcode generation.
+            </summary>
+            <returns> Hashcode of the instance.</returns>
+        </member>
+        <member name="T:A9HNYJ_HFT_2021221.Logic.SupplyManager">
+            <summary>
+            Logic class for SupplyManager functions. Inherits user functions from UserLogic class.
+            </summary>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.SupplyManager.#ctor(A9HNYJ_HFT_2021221.Repository.IBookRepository,A9HNYJ_HFT_2021221.Repository.IPublisherRepository,A9HNYJ_HFT_2021221.Repository.IAuthorRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:A9HNYJ_HFT_2021221.Logic.SupplyManager"/> class.
+            </summary>
+            <param name="br"> IBookRepository implementing class. </param>
+            <param name="pr"> IPublisherRepository implementing class. </param>
+            <param name="ar"> IAuthorRepository implementing class. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.SupplyManager.AddBook(System.String,System.String,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Checks if given names for Author and Publishers are ok. If not, returns null. If ok, forwards values for repository.
+            </summary>
+            <param name="authorname"> Name of Author. </param>
+            <param name="publishername"> Name of Publisher. </param>
+            <param name="bookname">Name of new book. </param>
+            <param name="price"> Proce of book. </param>
+            <param name="supply"> Supply of new book.</param>
+            <param name="year"> The year the book was published. </param>
+            <returns> The new Book if creation successful, null if not.</returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.SupplyManager.AddSupply(System.Int32,System.Int32)">
+            <summary>
+            Forwards call to repository to add to the current supply of one book. Checks if new amount is positive. If not nothing happens.
+            </summary>
+            <param name="index"> Index of the item to modify. </param>
+            <param name="valToAdd"> Amount to add. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.SupplyManager.ChangePrice(System.Int32,System.Int32)">
+            <summary>
+            FOrwards call to repository to change the price of one book.
+            </summary>
+            <param name="index"> Index of the item to modify. </param>
+            <param name="newprice"> New price of the book (only positive number). </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.SupplyManager.ChangeSupply(System.Int32,System.Int32)">
+            <summary>
+            Forwards call to repository to change the current supply of one book.
+            </summary>
+            <param name="index"> Index of the item to modify. </param>
+            <param name="newSupply"> New supply of that book (only positive number). </param>
+        </member>
+        <member name="T:A9HNYJ_HFT_2021221.Logic.UserLogic">
+            <summary>
+            The class containg functions for the user access of the database.
+            </summary>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.UserLogic.#ctor(A9HNYJ_HFT_2021221.Repository.IBookRepository,A9HNYJ_HFT_2021221.Repository.IPublisherRepository,A9HNYJ_HFT_2021221.Repository.IAuthorRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:A9HNYJ_HFT_2021221.Logic.UserLogic"/> class.
+            </summary>
+            <param name="br"> BookRepository instance for connection to repo layer.</param>
+            <param name="pr"> PublisherRepository instance for connection to repo layer.</param>
+            <param name="ar"> AuthorRepository instance for connection to repo layer.</param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.UserLogic.ListAllAuthors">
+            <summary>
+            Repository call to get all items form "Authors" table form db.
+            </summary>
+            <returns> List with Author instances. List with all items in the table "Authors".</returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.UserLogic.ListAllBooks">
+            <summary>
+            Repository call to get all items form "Books" table form db.
+            </summary>
+            <returns> List with Book instances. List with all items in the table "Books".</returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.UserLogic.ListAllPublishers">
+            <summary>
+            Repository call to get all items form "Publishers" table form db.
+            </summary>
+            <returns> List of Publisher instances. List with all items in the table "Publishers".</returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.UserLogic.OneAuthor(System.Int32)">
+            <summary>
+            Repository call to get one Author item with the given index.
+            </summary>
+            <param name="index"> The index of the item to be found.</param>
+            <returns> One Author instance with the corresponding index. </returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.UserLogic.OneBook(System.Int32)">
+            <summary>
+            Repository call to get one Book item with the given index.
+            </summary>
+            <param name="index"> The index of the item to be found.</param>
+            <returns> One Book instance with the corresponting index. </returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.UserLogic.OnePublisher(System.Int32)">
+            <summary>
+            Repository call to get one Publisher item with the given index.
+            </summary>
+            <param name="index"> The index of the item to be found.</param>
+            <returns> One Publisher instance with the corresponting index. </returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.UserLogic.ListEnglishBookForKids">
+            <summary>
+            Query to get all books where the authors original language and the publishers language is "English", where the Author writes kid friendly books and was released after 1990.
+            </summary>
+            <returns> List with the Book resoults of the query. </returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.UserLogic.ListBooksWithLessThan10PcsWith10DayDelivery">
+            <summary>
+            Query to get all books with less than 10 pcs in inventory, can be delivered withing 10 days and the publisher is active.
+            </summary>
+            <returns> List with custom return object "ListBooksWithLessThan10PcsReturnValue", which contains the title of the book, the name of the publisher, the supply currently present and the number of days it takes to deliver.</returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.UserLogic.ListAllAuthorsHowManyEditions">
+            <summary>
+            Query to get for each author in the db how many languages do the have publications in.
+            </summary>
+            <returns> List with custom return object "ListAllAuthorsEditionsReturnValue", which contains the name of the author and the number of languages the have publications in.</returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.UserLogic.ListNewBooksWithOldEditions">
+            <summary>
+            Query to get all new edition books wich has an old edition published. The new editions publisher is active, while the old editions publisher is not active.
+            </summary>
+            <returns> List with the Book resoults of the query.</returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.UserLogic.ListNewBooksWithOldEditionsAsync">
+            <summary>
+            Calls ListNewBooksWithOldEditions() query function locally, creates Task.
+            </summary>
+            <returns> Task of the query function ListNewBooksWithOldEditions(). </returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.UserLogic.ListAllAuthorsHowManyEditionsAsync">
+            <summary>
+            Calls ListAllAuthorsHowManyEditions() query function locally, creates Task.
+            </summary>
+            <returns> Task of the query function ListAllAuthorsHowManyEditions(). </returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.UserLogic.ListBooksWithLessThan10PcsWith10DayDeliveryAsync">
+            <summary>
+            Calls ListBooksWithLessThan10PcsWith10DayDelivery() query function locally, creates Task.
+            </summary>
+            <returns> Task of the query function ListBooksWithLessThan10PcsWith10DayDelivery(). </returns>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.UserLogic.ListEnglishBookForKidsAsync">
+            <summary>
+            Calls ListEnglishBookForKids() query function locally, creates Task.
+            </summary>
+            <returns> Task of the query function ListEnglishBookForKids(). </returns>
+        </member>
+    </members>
+</doc>

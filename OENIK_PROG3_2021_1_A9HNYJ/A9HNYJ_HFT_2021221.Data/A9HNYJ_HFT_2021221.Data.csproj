@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <AssemblyName>A9HNYJ_HFT_2021221.Data</AssemblyName>
+    <RootNamespace>A9HNYJ_HFT_2021221.Data</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\gomba\Documents\OENIK_PROG3_2021_1_A9HNYJ\OENIK_PROG3_2021_1_A9HNYJ\A9HNYJ_HFT_2021221.Data\A9HNYJ_HFT_2021221.Dataxml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="BookData.mdf" />
+    <None Remove="BookData_log.ldf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="BookData.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BookData_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.12">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,40 @@
+﻿// This file is used by Code Analysis to maintain SuppressMessage
+// attributes that are applied to this project.
+// Project-level suppressions either have no target or are given
+// a specific target and scoped to a namespace, type, member, etc.
+
+using System.Diagnostics.CodeAnalysis;
+
+[assembly: SuppressMessage("Globalization", "CA1303:Do not pass literals as localized parameters", Justification = "Literals are OK", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.AddAuthor(A9HNYJ_HFT_2021221.Logic.AdminLogic)")]
+[assembly: SuppressMessage("Globalization", "CA1303:Do not pass literals as localized parameters", Justification = "<Literals are OK>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.AddBook(A9HNYJ_HFT_2021221.Logic.AdminLogic)")]
+[assembly: SuppressMessage("Globalization", "CA1303:Do not pass literals as localized parameters", Justification = "<Literals are OK>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.AddBookSupplyManager(A9HNYJ_HFT_2021221.Logic.SupplyManager)")]
+[assembly: SuppressMessage("Globalization", "CA1303:Do not pass literals as localized parameters", Justification = "<Literals are OK>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.AddPublisher(A9HNYJ_HFT_2021221.Logic.AdminLogic)")]
+[assembly: SuppressMessage("Globalization", "CA1303:Do not pass literals as localized parameters", Justification = "<Literals are OK>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.AddSupply(A9HNYJ_HFT_2021221.Logic.SupplyManager)")]
+[assembly: SuppressMessage("Globalization", "CA1303:Do not pass literals as localized parameters", Justification = "<Literals are OK>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.ChangePrice(A9HNYJ_HFT_2021221.Logic.SupplyManager)")]
+[assembly: SuppressMessage("Globalization", "CA1303:Do not pass literals as localized parameters", Justification = "<Literals are OK>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.ChangeSupply(A9HNYJ_HFT_2021221.Logic.SupplyManager)")]
+[assembly: SuppressMessage("Globalization", "CA1303:Do not pass literals as localized parameters", Justification = "<Literals are OK>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.DeleteAuthor(A9HNYJ_HFT_2021221.Logic.AdminLogic)")]
+[assembly: SuppressMessage("Globalization", "CA1303:Do not pass literals as localized parameters", Justification = "<Literals are OK>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.DeleteBook(A9HNYJ_HFT_2021221.Logic.AdminLogic)")]
+[assembly: SuppressMessage("Globalization", "CA1303:Do not pass literals as localized parameters", Justification = "<Literals are OK>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.DeletePublisher(A9HNYJ_HFT_2021221.Logic.AdminLogic)")]
+[assembly: SuppressMessage("Globalization", "CA1303:Do not pass literals as localized parameters", Justification = "<Literals are OK>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.UpdateAuthor(A9HNYJ_HFT_2021221.Logic.AdminLogic)")]
+[assembly: SuppressMessage("Globalization", "CA1303:Do not pass literals as localized parameters", Justification = "<Literals are OK>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.UpdateBook(A9HNYJ_HFT_2021221.Logic.AdminLogic)")]
+[assembly: SuppressMessage("Globalization", "CA1303:Do not pass literals as localized parameters", Justification = "<Literals are OK>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.UpdateItem(A9HNYJ_HFT_2021221.Logic.AdminLogic)")]
+[assembly: SuppressMessage("Globalization", "CA1303:Do not pass literals as localized parameters", Justification = "<Literals are OK>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.UpdatePublisher(A9HNYJ_HFT_2021221.Logic.AdminLogic)")]
+[assembly: SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "Not relevant", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.AddAuthor(A9HNYJ_HFT_2021221.Logic.AdminLogic)")]
+[assembly: SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Not relevant>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.AddBook(A9HNYJ_HFT_2021221.Logic.AdminLogic)")]
+[assembly: SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Not relevant>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.AddBookSupplyManager(A9HNYJ_HFT_2021221.Logic.SupplyManager)")]
+[assembly: SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Not relevant>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.AddPublisher(A9HNYJ_HFT_2021221.Logic.AdminLogic)")]
+[assembly: SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Not relevant>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.AddSupply(A9HNYJ_HFT_2021221.Logic.SupplyManager)")]
+[assembly: SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Not relevant>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.ChangePrice(A9HNYJ_HFT_2021221.Logic.SupplyManager)")]
+[assembly: SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Not relevant>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.ChangeSupply(A9HNYJ_HFT_2021221.Logic.SupplyManager)")]
+[assembly: SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Not relevant>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.DeleteAuthor(A9HNYJ_HFT_2021221.Logic.AdminLogic)")]
+[assembly: SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Not relevant>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.DeleteBook(A9HNYJ_HFT_2021221.Logic.AdminLogic)")]
+[assembly: SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Not relevant>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.DeletePublisher(A9HNYJ_HFT_2021221.Logic.AdminLogic)")]
+[assembly: SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Not relevant>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.UpdateAuthor(A9HNYJ_HFT_2021221.Logic.AdminLogic)")]
+[assembly: SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Not relevant>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.UpdateBook(A9HNYJ_HFT_2021221.Logic.AdminLogic)")]
+[assembly: SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Not relevant>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.UpdateItem(A9HNYJ_HFT_2021221.Logic.AdminLogic)")]
+[assembly: SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Not relevant>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.UpdatePublisher(A9HNYJ_HFT_2021221.Logic.AdminLogic)")]
+[assembly: SuppressMessage("StyleCop.CSharp.OrderingRules", "SA1200:Using directives should be placed correctly", Justification = "<Not relevant>")]
+[assembly: SuppressMessage("StyleCop.CSharp.OrderingRules", "SA1210:Using directives should be ordered alphabetically by namespace", Justification = "<Not relevant>")]
+[assembly: SuppressMessage("StyleCop.CSharp.OrderingRules", "SA1208:System using directives should be placed before other using directives", Justification = "<Not relevant>")]
+[assembly: SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1633:File should have header", Justification = "<Not relevant>")]
+[assembly: SuppressMessage("Reliability", "CA2000:Dispose objects before losing scope", Justification = "<Not relevant>", Scope = "member", Target = "~M:A9HNYJ_HFT_2021221.Endpoint.Program.Main")]

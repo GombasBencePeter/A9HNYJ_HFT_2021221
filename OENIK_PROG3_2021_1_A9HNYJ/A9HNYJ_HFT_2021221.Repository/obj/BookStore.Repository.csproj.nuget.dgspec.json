@@ -1,0 +1,166 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\gomba\\Documents\\Projekt\\A9HNYJ_HFT_2021221\\OENIK_PROG3_2021_1_A9HNYJ\\BookStore.Repository\\BookStore.Repository.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\gomba\\Documents\\Projekt\\A9HNYJ_HFT_2021221\\OENIK_PROG3_2021_1_A9HNYJ\\BookStore.Data\\A9HNYJ_HFT_2021221.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\gomba\\Documents\\Projekt\\A9HNYJ_HFT_2021221\\OENIK_PROG3_2021_1_A9HNYJ\\BookStore.Data\\A9HNYJ_HFT_2021221.Data.csproj",
+        "projectName": "A9HNYJ_HFT_2021221.Data",
+        "projectPath": "C:\\Users\\gomba\\Documents\\Projekt\\A9HNYJ_HFT_2021221\\OENIK_PROG3_2021_1_A9HNYJ\\BookStore.Data\\A9HNYJ_HFT_2021221.Data.csproj",
+        "packagesPath": "C:\\Users\\gomba\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gomba\\Documents\\Projekt\\A9HNYJ_HFT_2021221\\OENIK_PROG3_2021_1_A9HNYJ\\BookStore.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\gomba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.CodeAnalysis.FxCopAnalyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.9.12, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Proxies": {
+              "target": "Package",
+              "version": "[5.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.4, )"
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.1.118, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\gomba\\Documents\\Projekt\\A9HNYJ_HFT_2021221\\OENIK_PROG3_2021_1_A9HNYJ\\BookStore.Repository\\BookStore.Repository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\gomba\\Documents\\Projekt\\A9HNYJ_HFT_2021221\\OENIK_PROG3_2021_1_A9HNYJ\\BookStore.Repository\\BookStore.Repository.csproj",
+        "projectName": "BookStore.Repository",
+        "projectPath": "C:\\Users\\gomba\\Documents\\Projekt\\A9HNYJ_HFT_2021221\\OENIK_PROG3_2021_1_A9HNYJ\\BookStore.Repository\\BookStore.Repository.csproj",
+        "packagesPath": "C:\\Users\\gomba\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gomba\\Documents\\Projekt\\A9HNYJ_HFT_2021221\\OENIK_PROG3_2021_1_A9HNYJ\\BookStore.Repository\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\gomba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\gomba\\Documents\\Projekt\\A9HNYJ_HFT_2021221\\OENIK_PROG3_2021_1_A9HNYJ\\BookStore.Data\\A9HNYJ_HFT_2021221.Data.csproj": {
+                "projectPath": "C:\\Users\\gomba\\Documents\\Projekt\\A9HNYJ_HFT_2021221\\OENIK_PROG3_2021_1_A9HNYJ\\BookStore.Data\\A9HNYJ_HFT_2021221.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.CodeAnalysis.FxCopAnalyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.9.12, )"
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.1.118, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>A9HNYJ_HFT_2021221.Endpoint</name>
+    </assembly>
+    <members>
+        <member name="T:A9HNYJ_HFT_2021221.Endpoint.Program">
+            <summary>
+            Main program class, handles user interface, initialization.
+            </summary>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.Main">
+            <summary>
+            User interface and initialization.
+            </summary>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.ListNewBooksWithOldEditions(A9HNYJ_HFT_2021221.Logic.UserLogic)">
+            <summary>
+            Calls query "ListNewBooksWithOldEditions" and outputs results to console.
+            </summary>
+            <param name="user"> UserLogic object. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.ListAllAuthorsNumberOfEditions(A9HNYJ_HFT_2021221.Logic.UserLogic)">
+            <summary>
+            Calls query "ListAllAuthorsHowManyEditions" and outputs results to console.
+            </summary>
+            <param name="user"> UserLogic object. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.ListBooksWithLessThan10PcsWith10DayDelivery(A9HNYJ_HFT_2021221.Logic.UserLogic)">
+            <summary>
+            Calls query "ListBooksWithLessThan10PcsWith10DayDelivery" and outputs results to console.
+            </summary>
+            <param name="user"> UserLogic object. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.EnglishBooksByEnglishAuthorsForKids(A9HNYJ_HFT_2021221.Logic.UserLogic)">
+            <summary>
+            Calls query "ListEnglishBookForKids" and outputs results to console.
+            </summary>
+            <param name="user"> UserLogic object. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.ChangePrice(A9HNYJ_HFT_2021221.Logic.SupplyManager)">
+            <summary>
+            Writes all books to console, and asks user to chose which item's price they whish to modify. Calls ChangePrice function whith chosen index and new price.
+            </summary>
+            <param name="smen"> SupplyManager object. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.AddSupply(A9HNYJ_HFT_2021221.Logic.SupplyManager)">
+            <summary>
+            Writes all books to console, and asks user to chose which item's supply to add to. Calls AddSupply function to add value to current supply.
+            </summary>
+            <param name="smen"> SupplyManager object. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.ChangeSupply(A9HNYJ_HFT_2021221.Logic.SupplyManager)">
+            <summary>
+            Writes all books to console, and asks user to chose which item's supply change. Calls AddSupply function to change value of current supply.
+            </summary>
+            <param name="smen"> SupplyManager object. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.AddBookSupplyManager(A9HNYJ_HFT_2021221.Logic.SupplyManager)">
+            <summary>
+            Writes all authors and publishers and asks user values for a new book item. Calls AddBook function with the input values, and writes new item to console.
+            </summary>
+            <param name="smen"> SupplyManager object. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.UpdateItem(A9HNYJ_HFT_2021221.Logic.AdminLogic)">
+            <summary>
+            Asks user which table they wishes to modify items in. After calls UpdateBook, UpdateAuthor or UpdatePublisher function accordingly.
+            </summary>
+            <param name="admin"> AdminLogic object. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.UpdateBook(A9HNYJ_HFT_2021221.Logic.AdminLogic)">
+            <summary>
+            Writes all Book items to console, and asks which item to modify. Receaves input from user to what to modify book title and calls ChangeBookName function.
+            </summary>
+            <param name="admin"> AdminLogic object. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.UpdatePublisher(A9HNYJ_HFT_2021221.Logic.AdminLogic)">
+            <summary>
+            Writes all Publisher items to console. User can choose which item to modify and which value. Asks user input for new value, then calls corresponding function accordingly.
+            </summary>
+            <param name="admin"> AdminLogic object. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.UpdateAuthor(A9HNYJ_HFT_2021221.Logic.AdminLogic)">
+            <summary>
+            Writes all Author items to console. Asks user which item they wish to modify. Asks user which value they want to change. Then asks user the value to change to and then calls the corresponding logic function accortdingly.
+            </summary>
+            <param name="admin"> AdminLogic object. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.AddAuthor(A9HNYJ_HFT_2021221.Logic.AdminLogic)">
+            <summary>
+            Asks user input to which to create from new author item. Calls AddAuthor function with given input.
+            </summary>
+            <param name="admin"> AdminLogic object. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.DeletePublisher(A9HNYJ_HFT_2021221.Logic.AdminLogic)">
+            <summary>
+            Writes all publisher items to console, then asks user which item to delete. Calls DeletePublisher funcion with chosen index, if item exists.
+            </summary>
+            <param name="admin"> AdminLogic object. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.DeleteAuthor(A9HNYJ_HFT_2021221.Logic.AdminLogic)">
+            <summary>
+            Writes all author items to console, then asks user which item to delete. Calls DeleteAuthor funcion with chosen index, if item exists.
+            </summary>
+            <param name="admin"> AdminLogic object. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.DeleteBook(A9HNYJ_HFT_2021221.Logic.AdminLogic)">
+            <summary>
+            Writes all book items to console, then asks user which item to delete. Calls DeleteBook funcion with chosen index, if item exists.
+            </summary>
+            <param name="admin"> AdminLogic object. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.AddBook(A9HNYJ_HFT_2021221.Logic.AdminLogic)">
+            <summary>
+            Writes all authors and publishers to console and asks user input for new book item. Calls AddBook function with given values.
+            </summary>
+            <param name="admin"> AdminLogic object.</param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.AddPublisher(A9HNYJ_HFT_2021221.Logic.AdminLogic)">
+            <summary>
+            Asks user input for new publisher item. Calls AddPublisher function with given values.
+            </summary>
+            <param name="admin"> AdminLogic object. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.ListAllPublishers(A9HNYJ_HFT_2021221.Logic.UserLogic)">
+            <summary>
+            Writes all publisher items to console. Calls user.ListAllPublishers.
+            </summary>
+            <param name="user"> Userlogic object. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.ListAllAuthors(A9HNYJ_HFT_2021221.Logic.UserLogic)">
+            <summary>
+            Writes all author items to console. Calls user.ListAllAuthors.
+            </summary>
+            <param name="user"> Userlogic object. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.ListAllBooks(A9HNYJ_HFT_2021221.Logic.UserLogic)">
+            <summary>
+            Writes all book items to console. Calls user.ListAllBooks.
+            </summary>
+            <param name="user"> Userlogic object. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.ListEnglishBookForKidsAsync(A9HNYJ_HFT_2021221.Logic.UserLogic)">
+            <summary>
+            Runs Taks returned form Logic and outputs value.
+            </summary>
+            <param name="user"> UserLogic Object. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.ListBooksWithLessThan10PcsWith10DayDeliveryAsync(A9HNYJ_HFT_2021221.Logic.UserLogic)">
+            <summary>
+            Runs Taks returned form Logic and outputs value.
+            </summary>
+            <param name="user"> UserLogic Object. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.ListAllAuthorsHowManyEditionsAsync(A9HNYJ_HFT_2021221.Logic.UserLogic)">
+            <summary>
+            Runs Taks returned form Logic and outputs value.
+            </summary>
+            <param name="user"> UserLogic Object. </param>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Endpoint.Program.ListNewBooksWithOldEditionsAsync(A9HNYJ_HFT_2021221.Logic.UserLogic)">
+            <summary>
+            Runs Taks returned form Logic and outputs value.
+            </summary>
+            <param name="user"> UserLogic Object. </param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>A9HNYJ_HFT_2021221.Logic.Test</name>
+    </assembly>
+    <members>
+        <member name="T:A9HNYJ_HFT_2021221.Logic.Test.AdminLogicTests">
+            <summary>
+            Test class for AdminLogic class.
+            </summary>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.Test.AdminLogicTests.AddPublisherTest">
+            <summary>
+            Tests AddPublisher function. Uses verify only.
+            </summary>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.Test.AdminLogicTests.DeleteOneBookTest">
+            <summary>
+            Tests DeleteOneBook function. Uses verify only.
+            </summary>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.Test.AdminLogicTests.ModifyAuthorNameTest">
+            <summary>
+            Tests ModifyAuthorName function. Uses verify only.
+            </summary>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.Test.AdminLogicTests.ListAllBooksTest">
+            <summary>
+            Tests ListAlaBooks function. Uses Asser and verify.
+            </summary>
+        </member>
+        <member name="T:A9HNYJ_HFT_2021221.Logic.Test.SupplyManagerTests">
+            <summary>
+            Test class for SupplyManager class.
+            </summary>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.Test.SupplyManagerTests.ChangeSupplyTest">
+            <summary>
+            Tests ChangeSupply function. Uses verify only.
+            </summary>
+        </member>
+        <member name="T:A9HNYJ_HFT_2021221.Logic.Test.UserLogicTests">
+            <summary>
+            Test class for UserLogic class.
+            </summary>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.Test.UserLogicTests.ListAllAuthorsHowManyEditionsTest">
+            <summary>
+            Tests ListAllAuthorsHowManyEditions function. Uses Assert.
+            </summary>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.Test.UserLogicTests.ListBooksWithLessThan10PcsReturnTest">
+            <summary>
+            Tests ListBooksWithLessThan10PcsWith10DayDelivery function. Uses Assert.
+            </summary>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.Test.UserLogicTests.ListEnglishBookForKidsTest">
+            <summary>
+            Tests ListEnglishBookForKids function. Uses Assert.
+            </summary>
+        </member>
+        <member name="M:A9HNYJ_HFT_2021221.Logic.Test.UserLogicTests.ListNewBooksWithOldEditionsTest">
+            <summary>
+            Tests ListNewBooksWithOldEditions function. Uses Assert.
+            </summary>
+        </member>
+    </members>
+</doc>
