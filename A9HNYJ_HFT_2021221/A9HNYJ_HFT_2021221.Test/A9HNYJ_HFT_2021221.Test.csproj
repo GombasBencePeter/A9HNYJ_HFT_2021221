@@ -33,7 +33,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\A9HNYJ_HFT_2021221.Data\A9HNYJ_HFT_2021221.Data.csproj" />
-    <ProjectReference Include="..\A9HNYJ_HFT_2021221.Endpoint\A9HNYJ_HFT_2021221.Endpoint.csproj" />
     <ProjectReference Include="..\A9HNYJ_HFT_2021221.Logic\A9HNYJ_HFT_2021221.Logic.csproj" />
     <ProjectReference Include="..\A9HNYJ_HFT_2021221.Repository\A9HNYJ_HFT_2021221.Repository.csproj" />
 </ItemGroup>
