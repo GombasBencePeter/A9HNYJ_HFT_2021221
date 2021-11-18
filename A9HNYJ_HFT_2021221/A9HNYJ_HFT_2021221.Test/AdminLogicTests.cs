@@ -41,6 +41,17 @@ namespace A9HNYJ_HFT_2021221.Test
         }
 
         /// <summary>
+        /// Tests DeleteOneAuthor function. Uses verify only.
+        /// </summary>
+        [Test]
+        public void DeleteAuthorTest()
+        {
+            var logic = this.LogicMockGenerator();
+            logic.DeleteAuthor(1);
+            this.autrep.Verify(x => x.DeleteOne(1), Times.Once);
+        }
+
+        /// <summary>
         /// Tests ModifyAuthorName function. Uses verify only.
         /// </summary>
         [Test]
