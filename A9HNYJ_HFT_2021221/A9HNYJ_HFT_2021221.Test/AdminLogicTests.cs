@@ -1,5 +1,6 @@
 using A9HNYJ_HFT_2021221.Data;
 using A9HNYJ_HFT_2021221.Repository;
+using A9HNYJ_HFT_2021221.Logic;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
