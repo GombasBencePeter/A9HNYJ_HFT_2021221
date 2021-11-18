@@ -45,4 +45,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\A9HNYJ_HFT_2021221.Models\A9HNYJ_HFT_2021221.Models.csproj" />
+  </ItemGroup>
+
 </Project>

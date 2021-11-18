@@ -4,6 +4,7 @@ using A9HNYJ_HFT_2021221.Logic;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
+using A9HNYJ_HFT_2021221.Models;
 using System.Linq;
 
 namespace A9HNYJ_HFT_2021221.Test

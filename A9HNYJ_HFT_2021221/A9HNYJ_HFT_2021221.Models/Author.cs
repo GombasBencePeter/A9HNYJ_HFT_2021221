@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace A9HNYJ_HFT_2021221.Data
+namespace A9HNYJ_HFT_2021221.Models
 {
     /// <summary>
     /// Entity class Author.
