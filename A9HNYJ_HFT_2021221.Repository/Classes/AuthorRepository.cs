@@ -32,7 +32,7 @@ namespace A9HNYJ_HFT_2021221.Repository
         public void ChangeAuthorName(int index, string newName)
         {
             this.GetOne(index).AuthorName = newName;
-            this.context.SaveChanges();
+            this.Context.SaveChanges();
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace A9HNYJ_HFT_2021221.Repository
         public void ChangeForKids(int index, bool forKids)
         {
             this.GetOne(index).ForKids = forKids;
-            this.context.SaveChanges();
+            this.Context.SaveChanges();
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace A9HNYJ_HFT_2021221.Repository
         public void ChangeIsActive(int index, bool isActive)
         {
             this.GetOne(index).IsActive = isActive;
-            this.context.SaveChanges();
+            this.Context.SaveChanges();
         }
 
         /// <summary>
@@ -69,8 +69,8 @@ namespace A9HNYJ_HFT_2021221.Repository
         public Author AddAuthor(string name, int yearborn, bool isActive, string originallanguage, bool forkids)
         {
             Author newAuthor = new Author() { AuthorName = name, YearBorn = yearborn, IsActive = isActive, OriginalLanguage = originallanguage, ForKids = forkids };
-            this.context.Add(newAuthor);
-            this.context.SaveChanges();
+            this.Context.Add(newAuthor);
+            this.Context.SaveChanges();
             return newAuthor;
         }
     }

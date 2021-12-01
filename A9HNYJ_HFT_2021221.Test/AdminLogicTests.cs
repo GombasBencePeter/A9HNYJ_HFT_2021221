@@ -80,7 +80,7 @@ namespace A9HNYJ_HFT_2021221.Test
             };
 
             var logic = this.LogicMockGenerator();
-            var listofBooks = logic.ListAllBooks();
+            var listofBooks = logic.GetAllBooks();
             this.bookrep.Verify(x => x.GetAll(), Times.Once);
             Assert.That(listofBooks, Is.EquivalentTo(books));
         }

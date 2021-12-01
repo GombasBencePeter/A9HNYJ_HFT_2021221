@@ -32,7 +32,7 @@ namespace A9HNYJ_HFT_2021221.Repository
         public void ChangeDeliveryDays(int index, int days)
         {
             this.GetOne(index).DelivareDays = days;
-            this.context.SaveChanges();
+            this.Context.SaveChanges();
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace A9HNYJ_HFT_2021221.Repository
         public void ChangeIsActive(int index, bool newIsActive)
         {
             this.GetOne(index).IsActive = newIsActive;
-            this.context.SaveChanges();
+            this.Context.SaveChanges();
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace A9HNYJ_HFT_2021221.Repository
         public void ChangeLanguage(int index, string newLanguage)
         {
             this.GetOne(index).Language = newLanguage;
-            this.context.SaveChanges();
+            this.Context.SaveChanges();
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace A9HNYJ_HFT_2021221.Repository
         public void ChangePublisherName(int index, string newName)
         {
             this.GetOne(index).PublisherName = newName;
-            this.context.SaveChanges();
+            this.Context.SaveChanges();
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace A9HNYJ_HFT_2021221.Repository
         public void ChangeWebpage(int index, string newWebpage)
         {
             this.GetOne(index).Webpage = newWebpage;
-            this.context.SaveChanges();
+            this.Context.SaveChanges();
         }
 
         /// <summary>
@@ -91,8 +91,8 @@ namespace A9HNYJ_HFT_2021221.Repository
         public Publisher AddPublisher(string name, string language, string webpage, int deliverydays, bool isactive)
         {
             Publisher newPublisher = new Publisher() { PublisherName = name, Language = language, Webpage = webpage, DelivareDays = deliverydays, IsActive = isactive };
-            this.context.Add(newPublisher);
-            this.context.SaveChanges();
+            this.Context.Add(newPublisher);
+            this.Context.SaveChanges();
             return newPublisher;
         }
     }

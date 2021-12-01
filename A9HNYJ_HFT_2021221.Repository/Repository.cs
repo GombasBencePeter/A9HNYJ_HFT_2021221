@@ -19,7 +19,7 @@ namespace A9HNYJ_HFT_2021221.Repository
         /// <summary>
         /// Common db context.
         /// </summary>
-        protected DbContext context;
+        protected DbContext Context { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Repository{T}"/> class.
@@ -27,8 +27,8 @@ namespace A9HNYJ_HFT_2021221.Repository
         /// <param name="context"> Common Db context.</param>
         public Repository(DbContext context)
         {
-            this.context = context;
-            this.context?.SaveChanges();
+            this.Context = context;
+            this.Context?.SaveChanges();
         }
 
         /// <summary>
@@ -40,8 +40,8 @@ namespace A9HNYJ_HFT_2021221.Repository
             object item = this.GetOne(index);
             if (item != null)
             {
-                this.context.Remove(item);
-                this.context.SaveChanges();
+                this.Context.Remove(item);
+                this.Context.SaveChanges();
             }
         }
 
@@ -51,7 +51,7 @@ namespace A9HNYJ_HFT_2021221.Repository
         /// <returns> Collection of T items. Full table. </returns>
         public IQueryable<T> GetAll()
         {
-            return this.context.Set<T>();
+            return this.Context.Set<T>();
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace A9HNYJ_HFT_2021221.Repository
         /// <returns>T item with index specified from table containitn T items. </returns>
         public T GetOne(int index)
         {
-            return this.context.Find<T>(index);
+            return this.Context.Find<T>(index);
         }
     }
 }

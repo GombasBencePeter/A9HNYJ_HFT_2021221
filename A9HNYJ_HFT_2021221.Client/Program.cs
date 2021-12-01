@@ -603,12 +603,12 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         }
 
         /// <summary>
-        /// Writes all publisher items to console. Calls user.ListAllPublishers.
+        /// Writes all publisher items to console. Calls user.GetAllPublishers.
         /// </summary>
         /// <param name="user"> Userlogic object. </param>
         public static void ListAllPublishers(UserLogic user)
         {
-            var p = user.ListAllPublishers();
+            var p = user.GetAllPublishers();
             foreach (var item in p)
             {
                 Console.WriteLine(item.ToString());
@@ -618,12 +618,12 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         }
 
         /// <summary>
-        /// Writes all author items to console. Calls user.ListAllAuthors.
+        /// Writes all author items to console. Calls user.GetAllAuthors.
         /// </summary>
         /// <param name="user"> Userlogic object. </param>
         public static void ListAllAuthors(UserLogic user)
         {
-            var a = user.ListAllAuthors();
+            var a = user.GetAllAuthors();
             foreach (var item in a)
             {
                 Console.WriteLine(item.ToString());
@@ -633,12 +633,12 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         }
 
         /// <summary>
-        /// Writes all book items to console. Calls user.ListAllBooks.
+        /// Writes all book items to console. Calls user.GetAllBooks.
         /// </summary>
         /// <param name="user"> Userlogic object. </param>
         public static void ListAllBooks(UserLogic user)
         {
-            var q = user.ListAllBooks();
+            var q = user.GetAllBooks();
             int aut;
             int pub;
             string[] book;

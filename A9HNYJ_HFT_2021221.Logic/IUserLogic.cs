@@ -19,19 +19,19 @@ namespace A9HNYJ_HFT_2021221.Logic
         /// Repository call to get all items form "Books" table form db.
         /// </summary>
         /// <returns> List with Book instances. List with all items in the table "Books".</returns>
-        List<Book> ListAllBooks();
+        IEnumerable<Book> GetAllBooks();
 
         /// <summary>
         /// Repository call to get all items form "Publishers" table form db.
         /// </summary>
         /// <returns> List of Publisher instances. List with all items in the table "Publishers".</returns>
-        List<Publisher> ListAllPublishers();
+        IEnumerable<Publisher> GetAllPublishers();
 
         /// <summary>
         /// Repository call to get all items form "Authors" table form db.
         /// </summary>
         /// <returns> List with Author instances. List with all items in the table "Authors".</returns>
-        List<Author> ListAllAuthors();
+        IEnumerable<Author> GetAllAuthors();
 
         /// <summary>
         /// Repository call to get one Book item with the given index.
@@ -58,12 +58,12 @@ namespace A9HNYJ_HFT_2021221.Logic
         /// Query to get all books where the authors original language and the publishers language is "English", where the Author writes kid friendly books and was released after 1990.
         /// </summary>
         /// <returns> List with the Book resoults of the query. </returns>
-        List<Book> ListEnglishBookForKids();
+        IEnumerable<Book> ListEnglishBookForKids();
 
         /// <summary>
         /// Query to get all new edition books wich has an old edition published. The new editions publisher is active, while the old editions publisher is not active.
         /// </summary>
         /// <returns> List with the Book resoults of the query.</returns>
-        List<Book> ListNewBooksWithOldEditions();
+        IEnumerable<Book> ListNewBooksWithOldEditions();
     }
 }

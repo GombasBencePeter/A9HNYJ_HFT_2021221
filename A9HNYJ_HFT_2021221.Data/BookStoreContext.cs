@@ -21,14 +21,14 @@ namespace A9HNYJ_HFT_2021221.Data
             this.Database.EnsureCreated();
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BookStoreContext"/> class.
-        /// </summary>
-        /// <param name="options"> Custom otions for the constructor.</param>
-        public BookStoreContext(DbContextOptions<BookStoreContext> options)
-            : base(options)
-        {
-        }
+        ///// <summary>
+        ///// Initializes a new instance of the <see cref="BookStoreContext"/> class.
+        ///// </summary>
+        ///// <param name="options"> Custom otions for the constructor.</param>
+        //public BookStoreContext(DbContextOptions<BookStoreContext> options)
+        //    : base(options)
+        //{
+        //}
 
         /// <summary>
         /// Gets or sets db Set with Book entites.
@@ -63,6 +63,19 @@ namespace A9HNYJ_HFT_2021221.Data
         /// <param name="modelBuilder"> Modelbuilder.</param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Book>(entity =>
+            {
+                entity
+                .HasOne(book => book.Publisher)
+                .WithMany(Publisher => Publisher.Books)
+                .HasForeignKey(book => book.PublisherID);
+
+                entity
+                .HasOne(book => book.Author)
+                .WithMany(author => author.Books)
+                .HasForeignKey(book => book.AuthorID);
+            });
+
             Author a1 = new Author() { AuthorKey = 1, AuthorName = "Andrzej Sapkowski", YearBorn = 1948, IsActive = true, OriginalLanguage = "Polish", ForKids = false };
             Author a2 = new Author() { AuthorKey = 2, AuthorName = "Neil Gaiman", YearBorn = 1960, IsActive = true, OriginalLanguage = "English", ForKids = true };
             Author a3 = new Author() { AuthorKey = 3, AuthorName = "Fjodor Mihajlovics Dosztojevszkij", YearBorn = 1821, IsActive = false, OriginalLanguage = "Russian", ForKids = false };

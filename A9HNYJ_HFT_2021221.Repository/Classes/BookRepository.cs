@@ -32,7 +32,7 @@ namespace A9HNYJ_HFT_2021221.Repository
         public void ChangeBookName(int index, string newName)
         {
             this.GetOne(index).Bookname = newName;
-            this.context.SaveChanges();
+            this.Context.SaveChanges();
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace A9HNYJ_HFT_2021221.Repository
         public void ChangePrice(int index, int newPrice)
         {
             this.GetOne(index).Price = newPrice;
-            this.context.SaveChanges();
+            this.Context.SaveChanges();
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace A9HNYJ_HFT_2021221.Repository
         public void ChangeSupply(int index, int changeVal)
         {
             this.GetOne(index).Supply = changeVal;
-            this.context.SaveChanges();
+            this.Context.SaveChanges();
         }
 
         /// <summary>
@@ -70,8 +70,8 @@ namespace A9HNYJ_HFT_2021221.Repository
         public Book AddBook(int author, int publisher, string bookname, int price, int supply, int year)
         {
             Book newBook = new Book() { AuthorID = author, PublisherID = publisher, Bookname = bookname, Price = price, Supply = supply, Year = year };
-            this.context.Add(newBook);
-            this.context.SaveChanges();
+            this.Context.Add(newBook);
+            this.Context.SaveChanges();
             return newBook;
         }
     }

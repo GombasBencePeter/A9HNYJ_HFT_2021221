@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace A9HNYJ_HFT_2021221.Models
@@ -26,11 +27,19 @@ namespace A9HNYJ_HFT_2021221.Models
         [ForeignKey("Author")]
         public int AuthorID { get; set; }
 
+        [NotMapped]
+        [JsonIgnore]
+        public virtual Author Author { get; set; }
+
         /// <summary>
         /// Gets or sets foreign key for an Publisher entity.
         /// </summary>
         [ForeignKey("Publisher")]
         public int PublisherID { get; set; }
+
+        [NotMapped]
+        [JsonIgnore]
+        public virtual Publisher Publisher { get; set; }
 
         /// <summary>
         /// Gets or sets title of the book.

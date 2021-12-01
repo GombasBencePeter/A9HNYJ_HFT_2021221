@@ -25,6 +25,9 @@ namespace A9HNYJ_HFT_2021221.Models
         /// </summary>
         public string PublisherName { get; set; }
 
+        [NotMapped]
+        public virtual ICollection<Book> Books { get; set; }
+
         /// <summary>
         /// Gets or sets publisher language.
         /// </summary>

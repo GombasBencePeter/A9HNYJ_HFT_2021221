@@ -13,7 +13,7 @@ namespace A9HNYJ_HFT_2021221.Logic
     /// <summary>
     /// Interface for admin class that includes admin funcionalities.
     /// </summary>
-    public interface IAdminLogic
+    public interface IAdminLogic : IUserLogic
     {
         /// <summary>
         /// Checks if given names for Author and Publishers are ok. If not, returns null. If ok, forwards values for repository.
