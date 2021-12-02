@@ -54,6 +54,12 @@ namespace A9HNYJ_HFT_2021221.Logic
         /// <returns> One Author instance with the corresponding index. </returns>
         Author OneAuthor(int index);
 
+
+        public IEnumerable<ListBooksWithLessThan10PcsReturnValue> ListBooksWithLessThan10PcsWith10DayDelivery();
+       
+
+        public IEnumerable<ListAllAuthorsEditionsReturnValue> ListAllAuthorsHowManyEditions();
+
         /// <summary>
         /// Query to get all books where the authors original language and the publishers language is "English", where the Author writes kid friendly books and was released after 1990.
         /// </summary>

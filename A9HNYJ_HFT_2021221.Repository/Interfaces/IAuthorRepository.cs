@@ -34,6 +34,8 @@ namespace A9HNYJ_HFT_2021221.Repository
         /// <param name="forKids"> New value. </param>
         void ChangeForKids(int index, bool forKids);
 
+        void Update(Author aut);
+
         /// <summary>
         /// Adds new author item and saves changes.
         /// </summary>

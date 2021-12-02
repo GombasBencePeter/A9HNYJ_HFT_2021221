@@ -23,6 +23,8 @@ namespace A9HNYJ_HFT_2021221.Repository
         /// <returns> T item.</returns>
         T GetOne(int index);
 
+        T AddItem(object o);
+
         /// <summary>
         /// Gets all items from the corresponding table.
         /// </summary>

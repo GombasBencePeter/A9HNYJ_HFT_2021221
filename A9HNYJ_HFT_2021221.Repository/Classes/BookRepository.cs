@@ -24,6 +24,18 @@ namespace A9HNYJ_HFT_2021221.Repository
         {
         }
 
+        public void Update(Book book)
+        {
+            Book b = this.GetOne(book.BookID);
+            b.Bookname = book.Bookname;
+            b.AuthorID = book.AuthorID;
+            b.Price = book.Price;
+            b.PublisherID = book.PublisherID;
+            b.Supply = book.Supply;
+            b.Year = book.Year;
+            this.Context.SaveChanges();
+        }
+
         /// <summary>
         /// Changes Book name and saves changes.
         /// </summary>

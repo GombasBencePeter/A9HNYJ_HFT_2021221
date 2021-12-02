@@ -32,6 +32,23 @@ namespace A9HNYJ_HFT_2021221.Repository
         }
 
         /// <summary>
+        /// Adds item to context. <see cref="Repository{T}"/> class.
+        /// </summary>
+        /// <param name="o"> Object to add.</param>
+        public T AddItem(object o)
+        {
+            if (o is T)
+            {
+                var p = o as T;
+                this.Context.Add(p);
+                this.Context.SaveChanges();
+                return p;
+            }
+
+            return null;
+        }
+
+        /// <summary>
         /// Deletes one item and saves changes.
         /// </summary>
         /// <param name="index"> Index of item to delete. </param>

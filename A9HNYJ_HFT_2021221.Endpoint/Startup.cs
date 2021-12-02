@@ -22,11 +22,7 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            //services.AddTransient<Book, Book>();
-            //services.AddTransient<Author, Author>();
-            //services.AddTransient<Publisher, Publisher>();
-
-            services.AddTransient<DbContext,BookStoreContext>();
+            services.AddTransient<DbContext,BookStoreContext>().AddSingleton<DbContext, BookStoreContext>();
             services.AddTransient<IBookRepository, BookRepository>();
             services.AddTransient<IPublisherRepository, PublisherRepository>();
             services.AddTransient<IAuthorRepository, AuthorRepository>();

@@ -24,6 +24,17 @@ namespace A9HNYJ_HFT_2021221.Repository
         {
         }
 
+        public void Update(Author author)
+        {
+            Author a = this.GetOne(author.AuthorKey);
+            a.AuthorName = author.AuthorName;
+            a.OriginalLanguage = author.OriginalLanguage;
+            a.ForKids = author.ForKids;
+            a.IsActive = author.IsActive;
+            a.YearBorn = author.YearBorn;
+            this.Context.SaveChanges();
+        }
+
         /// <summary>
         /// Changes author name and saves changes.
         /// </summary>

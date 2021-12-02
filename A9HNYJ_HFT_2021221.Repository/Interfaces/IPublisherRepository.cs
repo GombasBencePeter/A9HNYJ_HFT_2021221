@@ -21,6 +21,8 @@ namespace A9HNYJ_HFT_2021221.Repository
         /// <param name="newName"> New name.</param>
         void ChangePublisherName(int index, string newName);
 
+        void Update(Publisher pub);
+
         /// <summary>
         /// Changes publishing language and saves changes.
         /// </summary>

@@ -21,6 +21,8 @@ namespace A9HNYJ_HFT_2021221.Repository
         /// <param name="newName"> New name. </param>
         void ChangeBookName(int index, string newName);
 
+        void Update(Book book);
+
         /// <summary>
         /// Changes Book price and saves changes.
         /// </summary>

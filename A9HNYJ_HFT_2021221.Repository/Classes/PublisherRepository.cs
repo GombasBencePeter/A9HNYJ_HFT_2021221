@@ -24,6 +24,17 @@ namespace A9HNYJ_HFT_2021221.Repository
         {
         }
 
+        public void Update(Publisher pub)
+        {
+            Publisher p = this.GetOne(pub.PublisherID);
+            p.Language = pub.Language;
+            p.PublisherName = pub.PublisherName;
+            p.Webpage = pub.Webpage;
+            p.DelivareDays = pub.DelivareDays;
+            p.IsActive = pub.IsActive;
+            this.Context.SaveChanges();
+        }
+
         /// <summary>
         /// Changes delivery days and saves changes.
         /// </summary>

@@ -47,6 +47,16 @@ namespace A9HNYJ_HFT_2021221.Logic
             return this.autRepo.AddAuthor(authorname, yearborn, isactive, originallanguage, forkids);
         }
 
+        public Author AddAuthor(Author aut)
+        {
+            return autRepo.AddItem(aut);
+        }
+
+        public Book AddBook(Book item)
+        {
+            return bookRepo.AddItem(item);
+        }
+
         /// <summary>
         /// Checks if given names for Author and Publishers are ok. If not, returns null. If ok, forwards values for repository.
         /// </summary>
@@ -90,6 +100,24 @@ namespace A9HNYJ_HFT_2021221.Logic
         public Publisher AddPublisher(string publishername, string language, string webpage, int deliverydays, bool isactive)
         {
             return this.pubRepo.AddPublisher(publishername, language, webpage, deliverydays, isactive);
+        }
+
+        public void UpdateBook(Book book)
+        {
+            this.bookRepo.Update(book);
+        }
+        public void UpdatePublisher(Publisher pub)
+        {
+            this.pubRepo.Update(pub);
+        }
+        public void UpdateAuthor(Author au)
+        {
+            this.autRepo.Update(au);
+        }
+
+        public Publisher AddPublisher(Publisher pub)
+        {
+            return pubRepo.AddItem(pub);
         }
 
         /// <summary>
