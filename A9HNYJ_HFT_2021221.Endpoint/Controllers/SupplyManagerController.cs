@@ -14,60 +14,32 @@ namespace A9HNYJ_HFT_2021221.Endpoint.Controllers
     public class SupplyManagerController : Controller
     {
         ISupplyManager sm;
-        //public SupplyManagerController(ISupplyManager sm)
-        //{
-        //    this.sm = sm;
-        //}
+        public SupplyManagerController(ISupplyManager sm)
+        {
+            this.sm = sm;
+        }
 
-        //// GET: /book/all
-        //[HttpGet("book/all")]
-        //public IEnumerable<ListBooksWithLessThan10PcsReturnValue> Get()
-        //{
-        //    return sm.();
-        //}
 
-        
-        //// PUT /book/
-        //[HttpPut("book")]
-        //public void Put([FromBody] Book value)
-        //{
 
-        //    try
-        //    {
-        //        al.UpdateBook(value);
-        //    }
-        //    catch (Exception e)
-        //    {
+        // PUT /publisher/
+        [HttpPut("book/addsupply/{id}-{value}")]
+        public void AddSupply( int id, int value)
+        {
+            sm.AddSupply(id, value);
+        }
 
-        //    }
+        // PUT /publisher/
+        [HttpPut("book/changeprice/{id}-{value}")]
+        public void ChangePrice(int id, int value)
+        {
+            sm.ChangePrice(id, value);
+        }
 
-        //}
-
-        //// PUT /author/
-        //[HttpPut("author")]
-        //public void Put([FromBody] Author value)
-        //{
-        //    if (value.AuthorKey is int)
-        //    {
-        //        al.UpdateAuthor(value);
-        //    }
-        //}
-
-        //// PUT /publisher/
-        //[HttpPut("publisher")]
-        //public void Put([FromBody] Publisher value)
-        //{
-        //    if (value.PublisherID is int)
-        //    {
-        //        al.UpdatePublisher(value);
-        //    }
-        //}
-
-        //// DELETE /book/5
-        //[HttpDelete("book/{id}")]
-        //public void Delete(int id)
-        //{
-        //    al.DeleteBook(id);
-        //}
+        // PUT /publisher/
+        [HttpPut("book/changesupply/{id}-{value}")]
+        public void ChangeSupply(int id, int value)
+        {
+            sm.ChangeSupply(id, value);
+        }
     }
 }
