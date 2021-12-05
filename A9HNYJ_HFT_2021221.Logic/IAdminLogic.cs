@@ -27,11 +27,15 @@ namespace A9HNYJ_HFT_2021221.Logic
         /// <returns> The new Book if creation successful, null if not.</returns>
         public Book AddBook(string authorname, string publishername, string bookname, int price, int supply, int year);
 
-        public Book AddBook(Book book);
+        Book AddBook(Book book);
 
-        public void UpdateBook(Book book);
-        public void UpdateAuthor(Author au);
-        public void UpdatePublisher(Publisher pub);
+        Author AddAuthor(Author aut);
+
+        Publisher AddPublisher(Publisher pub);
+
+        void UpdateBook(Book book);
+        void UpdateAuthor(Author au);
+        void UpdatePublisher(Publisher pub);
 
         /// <summary>
         /// Forwards values to repository, to create new publisher item.

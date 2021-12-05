@@ -5,6 +5,8 @@ using A9HNYJ_HFT_2021221.Logic;
 using ConsoleTools;
 using System.Collections.Generic;
 using System.Reflection;
+using A9HNYJ_HFT_2021221.Client;
+using A9HNYJ_HFT_2021221.Models;
 
 namespace A9HNYJ_HFT_2021221.Endpoint
 {
@@ -64,39 +66,48 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         /// <param name="user"> UserLogic object. </param>
         public static void ListNewBooksWithOldEditions(UserLogic user)
         {
-            var q = user.ListNewBooksWithOldEditions();
-            int aut;
-            int pub;
-            string[] book;
-            string resoult = string.Empty;
-            foreach (var a in q)
+            //var q = user.ListNewBooksWithOldEditions();
+            //int aut;
+            //int pub;
+            //string[] book;
+            //string resoult = string.Empty;
+            //foreach (var a in q)
+            //{
+            //    aut = 0;
+            //    pub = 0;
+            //    book = a.ToString();
+            //    if (int.TryParse(book[1], out aut))
+            //    {
+            //        if (user.OneAuthor(aut) != null)
+            //        {
+            //            book[1] = user.OneAuthor(aut).AuthorName;
+            //        }
+            //    }
+
+            //    if (int.TryParse(book[2], out pub))
+            //    {
+            //        if (user.OnePublisher(pub) != null)
+            //        {
+            //            book[2] = user.OnePublisher(pub).PublisherName;
+            //        }
+            //    }
+
+            //    foreach (var item in book)
+            //    {
+            //        resoult += item + " || ";
+            //    }
+
+            //    Console.WriteLine(resoult);
+            //    resoult = string.Empty;
+            //}
+
+            //Console.ReadLine();
+
+            RestService rest = new RestService("http://localhost:37921");
+            var q = rest.Get<Book>("user/book/withneweditions");
+            foreach (var item in q)
             {
-                aut = 0;
-                pub = 0;
-                book = a.ToString();
-                if (int.TryParse(book[1], out aut))
-                {
-                    if (user.OneAuthor(aut) != null)
-                    {
-                        book[1] = user.OneAuthor(aut).AuthorName;
-                    }
-                }
-
-                if (int.TryParse(book[2], out pub))
-                {
-                    if (user.OnePublisher(pub) != null)
-                    {
-                        book[2] = user.OnePublisher(pub).PublisherName;
-                    }
-                }
-
-                foreach (var item in book)
-                {
-                    resoult += item + " || ";
-                }
-
-                Console.WriteLine(resoult);
-                resoult = string.Empty;
+                Console.WriteLine(item.Bookname);
             }
 
             Console.ReadLine();

@@ -21,9 +21,23 @@ namespace A9HNYJ_HFT_2021221.Endpoint.Controllers
 
         // GET: /book/all
         [HttpGet("book/all")]
-        public IEnumerable<Book> Get()
+        public IEnumerable<Book> GetAllBook()
         {
             return al.GetAllBooks();
+        }
+
+        // GET: /publisher/all
+        [HttpGet("publisher/all")]
+        public IEnumerable<Publisher> GetAlPub()
+        {
+            return al.GetAllPublishers();
+        }
+
+        // GET: /author/all
+        [HttpGet("author/all")]
+        public IEnumerable<Author> GetAllAut()
+        {
+            return al.GetAllAuthors();
         }
 
         // GET /book/{id}
@@ -35,33 +49,37 @@ namespace A9HNYJ_HFT_2021221.Endpoint.Controllers
 
         // POST /book/
         [HttpPost("book")]
-        public void Post([FromBody] Book value)
+        public void PostBook([FromBody] Book value)
         {
             al.AddBook(value);
+        }
+
+        // POST /publisher/
+        [HttpPost("publisher")]
+        public void PostPub([FromBody] Publisher value)
+        {
+            al.AddPublisher(value);
+        }
+
+        // POST /author/
+        [HttpPost("author")]
+        public void PostAut([FromBody] Author value)
+        {
+            al.AddAuthor(value);
         }
 
         // PUT /book/
         [HttpPut("book")]
         public void Put([FromBody] Book value)
         {
-
-            try{
-                al.UpdateBook(value);
-            }catch(Exception e)
-            {
-                
-            }
-            
+             al.UpdateBook(value);
         }
 
         // PUT /author/
         [HttpPut("author")]
         public void Put([FromBody] Author value)
         {
-            if (value.AuthorKey is int)
-            {
-                al.UpdateAuthor(value);
-            }
+            al.UpdateAuthor(value);
         }
 
         // GET: /book/all
@@ -75,17 +93,28 @@ namespace A9HNYJ_HFT_2021221.Endpoint.Controllers
             [HttpPut("publisher")]
         public void Put([FromBody] Publisher value)
         {
-            if (value.PublisherID is int)
-            {
-                al.UpdatePublisher(value);
-            }
+            al.UpdatePublisher(value);
         }
 
         // DELETE /book/5
         [HttpDelete("book/{id}")]
-        public void Delete(int id)
+        public void DeleteBook(int id)
         {
             al.DeleteBook(id);
+        }
+
+        // DELETE /book/5
+        [HttpDelete("publisher/{id}")]
+        public void DeletePublisher(int id)
+        {
+            al.DeletePublisher(id);
+        }
+        
+        // DELETE /book/5
+        [HttpDelete("author/{id}")]
+        public void DeleteAuthor(int id)
+        {
+            al.DeleteAuthor(id);
         }
     }
 }
