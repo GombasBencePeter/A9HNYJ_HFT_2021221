@@ -1,14 +1,11 @@
 ﻿using System;
-using A9HNYJ_HFT_2021221.Data;
-using A9HNYJ_HFT_2021221.Repository;
-using A9HNYJ_HFT_2021221.Logic;
 using ConsoleTools;
 using System.Collections.Generic;
 using System.Reflection;
-using A9HNYJ_HFT_2021221.Client;
 using A9HNYJ_HFT_2021221.Models;
+using System.Linq;
 
-namespace A9HNYJ_HFT_2021221.Endpoint
+namespace A9HNYJ_HFT_2021221.Client
 {
     /// <summary>
     /// Main program class, handles user interface, initialization.
@@ -20,40 +17,41 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         /// </summary>
         public static void Main()
         {
-            BookStoreContext context = new BookStoreContext();
-            BookRepository bookRepo = new (context);
-            PublisherRepository pubRepo = new (context);
-            AuthorRepository autRepo = new (context);
-            UserLogic user = new (bookRepo, pubRepo, autRepo);
-            AdminLogic admin = new (bookRepo, pubRepo, autRepo);
-            SupplyManager supplyManager = new (bookRepo, pubRepo, autRepo);
+            RestService rest = new RestService("http://localhost:37921");
+            //BookStoreContext context = new BookStoreContext();
+            //BookRepository bookRepo = new (context);
+            //PublisherRepository pubRepo = new (context);
+            //AuthorRepository autRepo = new (context);
+            //UserLogic user = new (bookRepo, pubRepo, autRepo);
+            //AdminLogic admin = new (bookRepo, pubRepo, autRepo);
+            //SupplyManager supplyManager = new (bookRepo, pubRepo, autRepo);
             var supplymanagermenu = new ConsoleMenu()
-                .Add("Könyv Hozzáadása", () => AddBookSupplyManager(supplyManager))
-                .Add("Áru felvétele", () => AddSupply(supplyManager))
-                .Add("Darabszám módosítása", () => ChangeSupply(supplyManager))
-                .Add("Ár módosítása", () => ChangePrice(supplyManager))
+                .Add("Könyv Hozzáadása", () => AddBookSupplyManager(rest))
+                .Add("Áru felvétele", () => AddSupply(rest))
+                .Add("Darabszám módosítása", () => ChangeSupply(rest))
+                .Add("Ár módosítása", () => ChangePrice(rest))
                 .Add("Vissza", ConsoleMenu.Close);
             var adminmenu = new ConsoleMenu()
-                .Add("Elem módosítása", () => UpdateItem(admin))
-                .Add("Könyv hozzáadása", () => AddBook(admin))
-                .Add("Kiadó hozzáadása", () => AddPublisher(admin))
-                .Add("Író hozzáadása", () => AddAuthor(admin))
-                .Add("Kiadó törlése", () => DeletePublisher(admin))
-                .Add("Író törlése", () => DeleteAuthor(admin))
-                .Add("Könyv törlése", () => DeleteBook(admin))
+                .Add("Elem módosítása", () => UpdateItem(rest))
+                .Add("Könyv hozzáadása", () => AddBook(rest))
+                .Add("Kiadó hozzáadása", () => AddPublisher(rest))
+                .Add("Író hozzáadása", () => AddAuthor(rest))
+                .Add("Kiadó törlése", () => DeletePublisher(rest))
+                .Add("Író törlése", () => DeleteAuthor(rest))
+                .Add("Könyv törlése", () => DeleteBook(rest))
                 .Add("Vissza", ConsoleMenu.Close);
             var menu = new ConsoleMenu()
-                .Add("Listázza az összes angol nyelvű könyvet angol szerzőktől ami 1990 után íródott és gyerekeknek való", () => EnglishBooksByEnglishAuthorsForKids(user))
-                .Add("Listázza ki azokat a tételeket, amelyekből kevesebb mint 10 db áll rendelkezésre, és beszerezheőek 10 nap alatt", () => ListBooksWithLessThan10PcsWith10DayDelivery(user))
-                .Add("Listázza, hogy az egyes íróknak hány kiadása érhető el", () => ListAllAuthorsNumberOfEditions(user))
-                .Add("Listázza ki azokat a könyveket, amelyek új és antikvár kiadásban is elérhetőek", () => ListNewBooksWithOldEditions(user))
-                .Add("Listázza ki azokat a könyveket, amelyek új és antikvár kiadásban is elérhetőek -- Async", () => ListNewBooksWithOldEditionsAsync(user))
-                .Add("Listázza az összes angol nyelvű könyvet angol szerzőktől ami 1990 után íródott és gyerekeknek való -- Async", () => ListEnglishBookForKidsAsync(user))
-                .Add("Listázza ki azokat a tételeket, amelyekből kevesebb mint 10 db áll rendelkezésre, és beszerezheőek 10 nap alatt -- Async", () => ListBooksWithLessThan10PcsWith10DayDeliveryAsync(user))
-                .Add("Listázza, hogy az egyes íróknak hány kiadása érhető el -- Async", () => ListAllAuthorsHowManyEditionsAsync(user))
-                .Add("Összes kiadó listázása", () => ListAllPublishers(user))
-                .Add("Összes Író listárása", () => ListAllAuthors(user))
-                .Add("Összes Könyv listázása", () => ListAllBooks(user))
+                .Add("Listázza az összes angol nyelvű könyvet angol szerzőktől ami 1990 után íródott és gyerekeknek való", () => EnglishBooksByEnglishAuthorsForKids(rest))
+                .Add("Listázza ki azokat a tételeket, amelyekből kevesebb mint 10 db áll rendelkezésre, és beszerezheőek 10 nap alatt", () => ListBooksWithLessThan10PcsWith10DayDelivery(rest))
+                .Add("Listázza, hogy az egyes íróknak hány kiadása érhető el", () => ListAllAuthorsNumberOfEditions(rest))
+                .Add("Listázza ki azokat a könyveket, amelyek új és antikvár kiadásban is elérhetőek", () => ListNewBooksWithOldEditions(rest))
+                //.Add("Listázza ki azokat a könyveket, amelyek új és antikvár kiadásban is elérhetőek -- Async", () => ListNewBooksWithOldEditionsAsync(rest))
+                //.Add("Listázza az összes angol nyelvű könyvet angol szerzőktől ami 1990 után íródott és gyerekeknek való -- Async", () => ListEnglishBookForKidsAsync(rest))
+                //.Add("Listázza ki azokat a tételeket, amelyekből kevesebb mint 10 db áll rendelkezésre, és beszerezheőek 10 nap alatt -- Async", () => ListBooksWithLessThan10PcsWith10DayDeliveryAsync(rest))
+                //.Add("Listázza, hogy az egyes íróknak hány kiadása érhető el -- Async", () => ListAllAuthorsHowManyEditionsAsync(rest))
+                .Add("Összes kiadó listázása", () => ListAllPublishers(rest))
+                .Add("Összes Író listárása", () => ListAllAuthors(rest))
+                .Add("Összes Könyv listázása", () => ListAllBooks(rest))
                 .Add("Admin funkciók", () => adminmenu.Show())
                 .Add("Supply manager funkciók", () => supplymanagermenu.Show())
                 .Add("Kilépés", ConsoleMenu.Close);
@@ -64,7 +62,7 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         /// Calls query "ListNewBooksWithOldEditions" and outputs results to console.
         /// </summary>
         /// <param name="user"> UserLogic object. </param>
-        public static void ListNewBooksWithOldEditions(UserLogic user)
+        public static void ListNewBooksWithOldEditions(RestService rest)
         {
             //var q = user.ListNewBooksWithOldEditions();
             //int aut;
@@ -75,7 +73,7 @@ namespace A9HNYJ_HFT_2021221.Endpoint
             //{
             //    aut = 0;
             //    pub = 0;
-            //    book = a.ToString();
+            //    book = a.ToStringArray();
             //    if (int.TryParse(book[1], out aut))
             //    {
             //        if (user.OneAuthor(aut) != null)
@@ -103,11 +101,11 @@ namespace A9HNYJ_HFT_2021221.Endpoint
 
             //Console.ReadLine();
 
-            RestService rest = new RestService("http://localhost:37921");
+            
             var q = rest.Get<Book>("user/book/withneweditions");
             foreach (var item in q)
             {
-                Console.WriteLine(item.Bookname);
+                Console.WriteLine(item.ToString()) ;
             }
 
             Console.ReadLine();
@@ -117,9 +115,9 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         /// Calls query "ListAllAuthorsHowManyEditions" and outputs results to console.
         /// </summary>
         /// <param name="user"> UserLogic object. </param>
-        public static void ListAllAuthorsNumberOfEditions(UserLogic user)
+        public static void ListAllAuthorsNumberOfEditions(RestService rest)
         {
-            var q = user.ListAllAuthorsHowManyEditions();
+            var q = rest.Get<ListAllAuthorsEditionsReturnValue>("user/listauthorseditions");
             foreach (var item in q)
             {
                 Console.WriteLine(item.Name + "  ||  " + item.Editions);
@@ -132,9 +130,9 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         /// Calls query "ListBooksWithLessThan10PcsWith10DayDelivery" and outputs results to console.
         /// </summary>
         /// <param name="user"> UserLogic object. </param>
-        public static void ListBooksWithLessThan10PcsWith10DayDelivery(UserLogic user)
+        public static void ListBooksWithLessThan10PcsWith10DayDelivery(RestService rest)
         {
-            var q = user.ListBooksWithLessThan10PcsWith10DayDelivery();
+            var q = rest.Get<ListBooksWithLessThan10PcsReturnValue>("admin/book/booksWithLessThanTen");
             foreach (var item in q)
             {
                 Console.WriteLine(item.Title + "  ||  " + item.Publisher + "  ||  " + item.Supply + "  ||  " + item.Days);
@@ -147,41 +145,13 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         /// Calls query "ListEnglishBookForKids" and outputs results to console.
         /// </summary>
         /// <param name="user"> UserLogic object. </param>
-        public static void EnglishBooksByEnglishAuthorsForKids(UserLogic user)
+        public static void EnglishBooksByEnglishAuthorsForKids(RestService rest)
         {
-            var q = user.ListEnglishBookForKids();
-            int aut;
-            int pub;
-            string[] book;
-            string resoult = string.Empty;
+            var q = rest.Get<Book>("user/book/forkids");
+            
             foreach (var a in q)
             {
-                aut = 0;
-                pub = 0;
-                book = a.ToString();
-                if (int.TryParse(book[1], out aut))
-                {
-                    if (user.OneAuthor(aut) != null)
-                    {
-                        book[1] = user.OneAuthor(aut).AuthorName;
-                    }
-                }
-
-                if (int.TryParse(book[2], out pub))
-                {
-                    if (user.OnePublisher(pub) != null)
-                    {
-                        book[2] = user.OnePublisher(pub).PublisherName;
-                    }
-                }
-
-                foreach (var item in book)
-                {
-                    resoult += item + " || ";
-                }
-
-                Console.WriteLine(resoult);
-                resoult = string.Empty;
+                Console.WriteLine(a.ToString());
             }
 
             Console.ReadLine();
@@ -191,57 +161,65 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         /// Writes all books to console, and asks user to chose which item's price they whish to modify. Calls ChangePrice function whith chosen index and new price.
         /// </summary>
         /// <param name="smen"> SupplyManager object. </param>
-        public static void ChangePrice(SupplyManager smen)
+        public static void ChangePrice(RestService rest)
         {
-            ListAllBooks(smen);
+            ListAllBooks(rest);
             Console.WriteLine("Kérem válasszon melyik termék árát szeretné módosítani");
             int index = int.Parse(Console.ReadLine());
             Console.WriteLine("Kérem adja meg az új árat");
             int price = int.Parse(Console.ReadLine());
-            smen.ChangePrice(index, price);
+            Book q = rest.Get<Book>("user/book/{index}").FirstOrDefault();
+            q.Price = price;
+            rest.Put<Book>(q, "admin/book");
         }
 
         /// <summary>
         /// Writes all books to console, and asks user to chose which item's supply to add to. Calls AddSupply function to add value to current supply.
         /// </summary>
         /// <param name="smen"> SupplyManager object. </param>
-        public static void AddSupply(SupplyManager smen)
+        public static void AddSupply(RestService rest)
         {
-            ListAllBooks(smen);
+            ListAllBooks(rest);
             Console.WriteLine("Kérem válasszon melyik termék raktári darabszámát szeretné módosítani");
             int index = int.Parse(Console.ReadLine());
             Console.WriteLine("Kérem adja meg mennyi darabbal szerené módosítani");
             int pcs = int.Parse(Console.ReadLine());
-            smen.AddSupply(index, pcs);
+            Book q = rest.Get<Book>("user/book/{index}").FirstOrDefault();
+            q.Supply = q.Supply+pcs;
+            rest.Put<Book>(q, "admin/book");
         }
 
         /// <summary>
         /// Writes all books to console, and asks user to chose which item's supply change. Calls AddSupply function to change value of current supply.
         /// </summary>
         /// <param name="smen"> SupplyManager object. </param>
-        public static void ChangeSupply(SupplyManager smen)
+        public static void ChangeSupply(RestService rest)
         {
-            ListAllBooks(smen);
+            ListAllBooks(rest);
             Console.WriteLine("Kérem válasszon melyik termék raktári darabszámát szeretné módosítani");
             int index = int.Parse(Console.ReadLine());
             Console.WriteLine("Kérem adja meg milyen értékre szeretné módosítani");
             int pcs = int.Parse(Console.ReadLine());
-            smen.ChangeSupply(index, pcs);
+            Book q = rest.Get<Book>($"user/book/{index}").FirstOrDefault();
+            q.Supply = pcs;
+            rest.Put<Book>(q, "admin/book");
         }
 
         /// <summary>
         /// Writes all authors and publishers and asks user values for a new book item. Calls AddBook function with the input values, and writes new item to console.
         /// </summary>
         /// <param name="smen"> SupplyManager object. </param>
-        public static void AddBookSupplyManager(SupplyManager smen)
+        public static void AddBookSupplyManager(RestService rest)
         {
-            ListAllAuthors(smen);
+            ListAllAuthors(rest);
             Console.WriteLine("Kérem adja meg az író nevét!");
-            string author = Console.ReadLine();
+            int author = int.Parse(Console.ReadLine());
+            author = rest.Get<Author>("user/author/{author}").FirstOrDefault().AuthorKey;
             Console.Clear();
-            ListAllPublishers(smen);
+            ListAllPublishers(rest);
             Console.WriteLine("Kérem adja meg a kiadó nevét");
-            string publisher = Console.ReadLine();
+            int publisher = int.Parse(Console.ReadLine());
+            publisher = rest.Get<Publisher>("user/publisher/{publisher}").FirstOrDefault().PublisherID;
             Console.Clear();
             Console.WriteLine("Kérem adja meg a könyv nevét");
             string bookname = Console.ReadLine();
@@ -254,7 +232,14 @@ namespace A9HNYJ_HFT_2021221.Endpoint
             Console.Clear();
             Console.WriteLine("Kérem adja meg a kiadás évét");
             int year = int.Parse(Console.ReadLine());
-            Console.WriteLine(smen.AddBook(author, publisher, bookname, price, supply, year).ToString());
+            rest.Post<Book>(new Book {
+                AuthorID = author, 
+                PublisherID = publisher, 
+                Bookname = bookname, 
+                Price = price, 
+                Supply = supply, 
+                Year = year 
+            },"admin/book");
             Console.ReadLine();
         }
 
@@ -262,7 +247,7 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         /// Asks user which table they wishes to modify items in. After calls UpdateBook, UpdateAuthor or UpdatePublisher function accordingly.
         /// </summary>
         /// <param name="admin"> AdminLogic object. </param>
-        public static void UpdateItem(AdminLogic admin)
+        public static void UpdateItem(RestService rest)
         {
             Console.WriteLine("Kérem adja meg melyik táblán szeretne módosítást végezni");
             Console.WriteLine("1: Books  ||  2: Authors  ||  3: Publishers");
@@ -270,13 +255,13 @@ namespace A9HNYJ_HFT_2021221.Endpoint
             switch (input)
             {
                 case 1:
-                    UpdateBook(admin);
+                    UpdateBook(rest);
                     break;
                 case 2:
-                    UpdateAuthor(admin);
+                    UpdateAuthor(rest);
                     break;
                 case 3:
-                    UpdatePublisher(admin);
+                    UpdatePublisher(rest);
                     break;
             }
         }
@@ -285,20 +270,50 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         /// Writes all Book items to console, and asks which item to modify. Receaves input from user to what to modify book title and calls ChangeBookName function.
         /// </summary>
         /// <param name="admin"> AdminLogic object. </param>
-        public static void UpdateBook(AdminLogic admin)
+        public static void UpdateBook(RestService rest)
         {
-            ListAllBooks(admin);
-            Console.WriteLine("Kerem valaszzon melyik könyv címén szeretne módosítani");
+            ListAllBooks(rest);
+            Console.WriteLine("Please chose which book you want to modify");
             int index = int.Parse(Console.ReadLine());
-            if (admin.OneBook(index) != null)
+            var q = rest.Get<Book>("user/book/{index}").FirstOrDefault();
+            if (q != null)
             {
-                Console.WriteLine("Kéram adja meg az új címet");
-                admin.ChangeBookName(index, Console.ReadLine());
-                Console.WriteLine("A kiválasztott elem:  " + admin.OneBook(index).ToString());
+                Console.WriteLine("Please chose which value to change");
+                Console.WriteLine("1: Author || 2: Publisher || 3: Title || 4: Year");
+                int inp = int.Parse(Console.ReadLine());
+                switch (inp)
+                {
+                    case 1: 
+                        ListAllAuthors(rest);
+                        Console.WriteLine("Input number for new author");
+                        int na = int.Parse(Console.ReadLine());
+                        q.AuthorID = na;
+                        rest.Put<Book>(q, "admin/book");
+                        break;
+                    case 2:
+                        ListAllPublishers(rest);
+                        Console.WriteLine("Input number for new publisher");
+                        int np = int.Parse(Console.ReadLine());
+                        q.PublisherID = np;
+                        rest.Put<Book>(q, "admin/book");
+                        break;
+                    case 3:
+                        Console.WriteLine("Input ne title");
+                        string nt = Console.ReadLine();
+                        q.Bookname = nt;
+                        rest.Put<Book>(q, "admin/book");
+                        break;
+                    case 4:
+                        Console.WriteLine("Input new release year");
+                        int ny = int.Parse(Console.ReadLine());
+                        q.Year = ny;
+                        rest.Put<Book>(q, "admin/book");
+                        break;
+                }
             }
             else
             {
-                Console.WriteLine("Az elem nem létezik");
+                Console.WriteLine("No book with such id");
                 Console.ReadLine();
             }
         }
@@ -307,59 +322,62 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         /// Writes all Publisher items to console. User can choose which item to modify and which value. Asks user input for new value, then calls corresponding function accordingly.
         /// </summary>
         /// <param name="admin"> AdminLogic object. </param>
-        public static void UpdatePublisher(AdminLogic admin)
+        public static void UpdatePublisher(RestService rest)
         {
-            ListAllPublishers(admin);
-            Console.WriteLine("Kerem valaszzon melyik elemet szeretne modositani!");
+            ListAllPublishers(rest);
+            Console.WriteLine("Chose which item you want to modify!");
             int index = int.Parse(Console.ReadLine());
-            if (admin.OnePublisher(index) != null)
+            var q = rest.Get<Publisher>("user/publisher/{index}").FirstOrDefault();
+            if (q!= null)
             {
-                Console.WriteLine("Melyik értéken szeretne módosítani?");
-                Console.WriteLine("1: Név  ||  2: Kiadási nyelv  ||  3: Webcím  ||  4: Kiszállítási idő napokban  ||  5: Aktív-e még a kiadó");
+                Console.WriteLine("CHose wich value you want to modify");
+                Console.WriteLine("1: Name  ||  2: Language  ||  3: Webpage  ||  4: Delivery days  ||  5: Aktive status");
                 int choice = int.Parse(Console.ReadLine());
                 switch (choice)
                 {
                     case 1:
-                        Console.WriteLine("Kérem adja meg az új nevet");
-                        admin.ChangePublisherName(index, Console.ReadLine());
+                        Console.WriteLine("Please give new name");
+                        q.PublisherName = Console.ReadLine();
+                        rest.Put<Publisher>(q, "admin/publisher");
                         break;
                     case 2:
-                        Console.WriteLine("Kérem adja meg az új kiadási nyelvet");
-                        admin.ChangePublisherLanguage(index, Console.ReadLine());
+                        Console.WriteLine("Please give new language");
+                        q.Language = Console.ReadLine();
+                        rest.Put<Publisher>(q, "admin/publisher");
                         break;
                     case 3:
-                        Console.WriteLine("Kérem adja meg az új webcímet");
-                        admin.ChangeWebsite(index, Console.ReadLine());
+                        Console.WriteLine("Please give new Web address");
+                        q.Webpage = Console.ReadLine();
+                        rest.Put<Publisher>(q, "admin/publisher");
                         break;
                     case 4:
-                        Console.WriteLine("Kérem adja meg a kiszállítási időt napokban");
-                        admin.ChangeDeliveryDays(index, int.Parse(Console.ReadLine()));
+                        Console.WriteLine("Please give new delivery days value");
+                        q.DelivareDays = int.Parse(Console.ReadLine());
+                        rest.Put<Publisher>(q, "admin/publisher");
                         break;
                     case 5:
-                        Console.WriteLine("Kérem adja meg az új értéket [igen-nem]");
+                        Console.WriteLine("PLease give new active status [true-false]");
                         string input2 = Console.ReadLine();
-                        if (input2 == "igen")
+                        if (input2 == "true")
                         {
-                            admin.ChangePublisherIsActive(index, true);
+                            q.IsActive = true;
                         }
-                        else if (input2 == "nem")
+                        else if (input2 == "false")
                         {
-                            admin.ChangePublisherIsActive(index, false);
+                            q.IsActive = false;
                         }
                         else
                         {
-                            Console.WriteLine("Hibás input");
+                            Console.WriteLine("wring input");
                         }
-
+                        rest.Put<Publisher>(q, "admin/publisher");
                         break;
                 }
-
-                Console.WriteLine("Érték:  " + admin.OnePublisher(index).ToString());
                 Console.ReadLine();
             }
             else
             {
-                Console.WriteLine("A kiválasztott elem nem létezik");
+                Console.WriteLine("Chosen item doesn't exist");
                 Console.ReadLine();
             }
         }
@@ -368,64 +386,68 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         /// Writes all Author items to console. Asks user which item they wish to modify. Asks user which value they want to change. Then asks user the value to change to and then calls the corresponding logic function accortdingly.
         /// </summary>
         /// <param name="admin"> AdminLogic object. </param>
-        public static void UpdateAuthor(AdminLogic admin)
+        public static void UpdateAuthor(RestService rest)
         {
-            ListAllAuthors(admin);
-            Console.WriteLine("Kérem válaszzon melyik elemte szeretné módosítani!");
+            ListAllAuthors(rest);
+            Console.WriteLine("Chose which item you want to modify!");
             int index = int.Parse(Console.ReadLine());
-            if (admin.OneAuthor(index) != null)
+            var q = rest.Get<Author>("user/author/{index}").FirstOrDefault();
+            if (q != null)
             {
-                Console.WriteLine("Melyik értéken szeretne módosítani?");
-                Console.WriteLine("1: Név  ||  2: Gyermekbarát tartalom  ||  3: Aktív-e még az író?");
+                Console.WriteLine("Chose wich value you want to modify?");
+                Console.WriteLine("1: Name  ||  2: KidFriendly  ||  3: Aktive status");
                 int choice = int.Parse(Console.ReadLine());
                 switch (choice)
                 {
                     case 1:
-                        Console.WriteLine("Kérem adja meg a nevet, amire módosítani szeretne.");
-                        admin.ChangeAuthorName(index, Console.ReadLine());
+                        Console.WriteLine("Please give new name");
+                        q.AuthorName = Console.ReadLine();
+                        rest.Put<Author>(q, "admin/author");
                         break;
                     case 2:
-                        Console.WriteLine("Kérem adja meg az új értéket [igen-nem]");
+                        Console.WriteLine("Please give new value [true-false]");
                         string input = Console.ReadLine();
-                        if (input == "igen")
+                        if (input == "true")
                         {
-                            admin.ChangeForKidsAuthor(index, true);
+                            q.ForKids = true;
+                            rest.Put<Author>(q, "admin/author");
                         }
-                        else if (input == "nem")
+                        else if (input == "false")
                         {
-                            admin.ChangeForKidsAuthor(index, false);
+                            q.ForKids = false;
+                            rest.Put<Author>(q, "admin/author");
                         }
                         else
                         {
-                            Console.WriteLine("Hibás input");
+                            Console.WriteLine("Wrong input");
                         }
 
                         break;
                     case 3:
-                        Console.WriteLine("Kérem adja meg az új értéket [igen-nem]");
+                        Console.WriteLine("Please give new value [true-false]");
                         string input2 = Console.ReadLine();
-                        if (input2 == "igen")
+                        if (input2 == "false")
                         {
-                            admin.ChangeIsActiveAuthor(index, true);
+                            q.IsActive = true;
+                            rest.Put<Author>(q, "admin/author");
                         }
-                        else if (input2 == "nem")
+                        else if (input2 == "true")
                         {
-                            admin.ChangeIsActiveAuthor(index, false);
+                            q.IsActive = false;
+                            rest.Put<Author>(q, "admin/author");
                         }
                         else
                         {
-                            Console.WriteLine("Hibás input");
+                            Console.WriteLine("Wrong input");
                         }
 
                         break;
                 }
-
-                Console.WriteLine("Érték:  " + admin.OneAuthor(index).ToString());
                 Console.ReadLine();
             }
             else
             {
-                Console.WriteLine("A kiválasztott elem nem létezik");
+                Console.WriteLine("Chosen item doesn't exist");
                 Console.ReadLine();
             }
         }
@@ -434,46 +456,63 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         /// Asks user input to which to create from new author item. Calls AddAuthor function with given input.
         /// </summary>
         /// <param name="admin"> AdminLogic object. </param>
-        public static void AddAuthor(AdminLogic admin)
+        public static void AddAuthor(RestService rest)
         {
-            Console.WriteLine("Kérem adja meg az író nevét!");
+            Console.WriteLine("Please give name of author!");
             string name = Console.ReadLine();
-            Console.WriteLine("Kérem adja meg a születési évét");
+            Console.WriteLine("Please give the year he/she was born");
             int year = int.Parse(Console.ReadLine());
-            Console.WriteLine("Kérem adja meg, az író anyanyelvét");
+            Console.WriteLine("Please give authors language");
             string language = Console.ReadLine();
-            Console.WriteLine("Kérem adja meg, hogy aktív-e az író [igen-nem]");
+            Console.WriteLine("PLease give authors active status [true-false]");
             string input = Console.ReadLine();
             bool isActive = false;
-            if (input == "igen" || input == "nem")
+            if (input == "true" || input == "false")
             {
-                if (input == "igen")
+                if (input == "true")
                 {
                     isActive = true;
                 }
-                else if (input == "nem")
+                else if (input == "false")
                 {
                     isActive = false;
                 }
 
-                Console.WriteLine("Kérem adja meg, hogy gyermekbarát műveket ír-e az író [igen-nem]");
+                Console.WriteLine("Please give wether author wrote kid friendly books");
                 input = Console.ReadLine();
                 bool kidFriendly = false;
-                if (input == "igen" || input == "nem")
+                if (input == "true" || input == "false")
                 {
-                    if (input == "igen")
+                    if (input == "true")
                     {
-                        isActive = true;
+                        kidFriendly = true;
                     }
-                    else if (input == "nem")
+                    else if (input == "false")
                     {
-                        isActive = false;
+                        kidFriendly = false;
                     }
 
-                    admin.AddAuthor(name, year, isActive, language, kidFriendly);
-                    Console.WriteLine("Író hozzáadva!");
+                    rest.Post<Author>(
+                        new Author
+                        {
+                            AuthorName = name,
+                            YearBorn = year,
+                            OriginalLanguage = language,
+                            IsActive = isActive,
+                            ForKids = kidFriendly
+                        }, "admin/author"
+                        );
+                    Console.WriteLine("Success!");
                     Console.ReadLine();
                 }
+                else
+                {
+                    Console.WriteLine("Wrong input format");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Wring input format");
             }
         }
 
@@ -481,21 +520,21 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         /// Writes all publisher items to console, then asks user which item to delete. Calls DeletePublisher funcion with chosen index, if item exists.
         /// </summary>
         /// <param name="admin"> AdminLogic object. </param>
-        public static void DeletePublisher(AdminLogic admin)
+        public static void DeletePublisher(RestService rest)
         {
-            Console.WriteLine("Kérem válasszon hányadik indexű elemet szeretné törölni");
-            ListAllPublishers(admin);
+            Console.WriteLine("PLease input index of item to delete");
+            ListAllPublishers(rest);
             int index = int.Parse(Console.ReadLine());
-            var p = admin.OnePublisher(index);
+            var p = rest.Get<Publisher>("user/publisher/{index}").FirstOrDefault();
             if (p != null)
             {
-                admin.DeletePublisher(index);
-                Console.WriteLine(p.ToString() + "  " + "<---- elem törölve");
+                rest.Delete(index, "admin/publisher");
+                Console.WriteLine(p.ToString() + "  " + "<---- item deleted");
                 Console.ReadLine();
             }
             else
             {
-                Console.WriteLine("Elem nem létezik");
+                Console.WriteLine("Item doesn't exist");
                 Console.ReadLine();
             }
         }
@@ -504,21 +543,21 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         /// Writes all author items to console, then asks user which item to delete. Calls DeleteAuthor funcion with chosen index, if item exists.
         /// </summary>
         /// <param name="admin"> AdminLogic object. </param>
-        public static void DeleteAuthor(AdminLogic admin)
+        public static void DeleteAuthor(RestService rest)
         {
-            Console.WriteLine("Kérem válasszon hányadik indexű elemet szeretné törölni");
-            ListAllAuthors(admin);
+            Console.WriteLine("PLease input index of item to delete");
+            ListAllAuthors(rest);
             int index = int.Parse(Console.ReadLine());
-            var p = admin.OneAuthor(index);
+            var p = rest.Get<Author>("user/author/{index}").FirstOrDefault();
             if (p != null)
             {
-                admin.DeleteAuthor(index);
-                Console.WriteLine(p.ToString() + "  " + "<---- elem törölve");
+                rest.Delete(index, "admin/author");
+                Console.WriteLine(p.ToString() + "  " + "<---- item deleted");
                 Console.ReadLine();
             }
             else
             {
-                Console.WriteLine("Elem nem létezik");
+                Console.WriteLine("Item doesn't exist");
                 Console.ReadLine();
             }
         }
@@ -527,21 +566,21 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         /// Writes all book items to console, then asks user which item to delete. Calls DeleteBook funcion with chosen index, if item exists.
         /// </summary>
         /// <param name="admin"> AdminLogic object. </param>
-        public static void DeleteBook(AdminLogic admin)
+        public static void DeleteBook(RestService rest)
         {
-            Console.WriteLine("Kérem válasszon hányadik indexű elemet szeretné törölni");
-            ListAllBooks(admin);
+            Console.WriteLine("PLease input index of item to delete");
+            ListAllBooks(rest);
             int index = int.Parse(Console.ReadLine());
-            var p = admin.OneBook(index);
+            var p = rest.Get<Book>("user/book/{index}").FirstOrDefault();
             if (p != null)
             {
-                admin.DeleteBook(index);
-                Console.WriteLine(p.ToString() + "  " + "<---- elem törölve");
+                rest.Delete(index, "admin/book");
+                Console.WriteLine(p.ToStringArray() + "  " + "<---- item deleted");
                 Console.ReadLine();
             }
             else
             {
-                Console.WriteLine("Elem nem létezik");
+                Console.WriteLine("Item doesn't exist");
                 Console.ReadLine();
             }
         }
@@ -550,28 +589,38 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         /// Writes all authors and publishers to console and asks user input for new book item. Calls AddBook function with given values.
         /// </summary>
         /// <param name="admin"> AdminLogic object.</param>
-        public static void AddBook(AdminLogic admin)
+        public static void AddBook(RestService rest)
         {
-            ListAllAuthors(admin);
-            Console.WriteLine("Kérem adja meg az író nevét!");
-            string author = Console.ReadLine();
+            ListAllAuthors(rest);
+            Console.WriteLine("Please give index of author");
+            int author = int.Parse(Console.ReadLine());
             Console.Clear();
-            ListAllPublishers(admin);
-            Console.WriteLine("Kérem adja meg a kiadó nevét");
-            string publisher = Console.ReadLine();
+            ListAllPublishers(rest);
+            Console.WriteLine("PLease give index of publisher");
+            int publisher = int.Parse(Console.ReadLine());
             Console.Clear();
-            Console.WriteLine("Kérem adja meg a könyv nevét");
+            Console.WriteLine("Please give title of book");
             string bookname = Console.ReadLine();
             Console.Clear();
-            Console.WriteLine("Kérem adja meg a könyv árát");
+            Console.WriteLine("Please give price of book");
             int price = int.Parse(Console.ReadLine());
             Console.Clear();
-            Console.WriteLine("Kérem adja meg a raktáron lévő darabszámot");
+            Console.WriteLine("Please give amount on stock");
             int supply = int.Parse(Console.ReadLine());
             Console.Clear();
-            Console.WriteLine("Kérem adja meg a kiadás évét");
+            Console.WriteLine("PLease give release year");
             int year = int.Parse(Console.ReadLine());
-            Console.WriteLine(admin.AddBook(author, publisher, bookname, price, supply, year).ToString());
+            rest.Post<Book>(
+                new Book
+                {
+                    Bookname = bookname,
+                    AuthorID = author,
+                    PublisherID = publisher,
+                    Year = year,
+                    Price = price,
+                    Supply = supply
+                }, "admin/book");
+            Console.WriteLine("Item added");
             Console.ReadLine();
         }
 
@@ -579,35 +628,43 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         /// Asks user input for new publisher item. Calls AddPublisher function with given values.
         /// </summary>
         /// <param name="admin"> AdminLogic object. </param>
-        public static void AddPublisher(AdminLogic admin)
+        public static void AddPublisher(RestService rest)
         {
-            Console.WriteLine("Kérem adja meg a kiadó nevét!");
+            Console.WriteLine("Please give name of publisher");
             string name = Console.ReadLine();
-            Console.WriteLine("Kérem adja meg a kiadó nyelvét");
+            Console.WriteLine("Please give language of publisher");
             string language = Console.ReadLine();
-            Console.WriteLine("Kérem adja meg a kiadó webcímét");
+            Console.WriteLine("Please give webaddress of publisher");
             string web = Console.ReadLine();
-            Console.WriteLine("Kérem adja meg hány nap alatt szállít ki a kiadó");
+            Console.WriteLine("PLease give number of delivery days");
             int days = int.Parse(Console.ReadLine());
-            Console.WriteLine("Kérem ajda meg, hogy aktív-e a kiadó [igen-nem]");
+            Console.WriteLine("PLease give publisher active status [true-false]");
             string input = Console.ReadLine();
             bool isActive = false;
-            if (input == "igen" || input == "nem")
+            if (input == "true" || input == "false")
             {
-                if (input == "igen")
+                if (input == "true")
                 {
                     isActive = true;
                 }
-                else if (input == "nem")
+                else if (input == "false")
                 {
                     isActive = false;
                 }
 
-                Console.WriteLine(admin.AddPublisher(name, language, web, days, isActive).ToString());
+                rest.Post<Publisher>(
+                    new Publisher
+                    {
+                        PublisherName = name,
+                        Language = language,
+                        Webpage = web,
+                        DelivareDays = days,
+                        IsActive = isActive
+                    }, "admin/publisher");
             }
             else
             {
-                Console.WriteLine("Input rossz");
+                Console.WriteLine("Wrong input");
             }
 
             Console.ReadLine();
@@ -617,9 +674,9 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         /// Writes all publisher items to console. Calls user.GetAllPublishers.
         /// </summary>
         /// <param name="user"> Userlogic object. </param>
-        public static void ListAllPublishers(UserLogic user)
+        public static void ListAllPublishers(RestService rest)
         {
-            var p = user.GetAllPublishers();
+            var p = rest.Get<Publisher>("user/publisher/all");
             foreach (var item in p)
             {
                 Console.WriteLine(item.ToString());
@@ -632,9 +689,9 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         /// Writes all author items to console. Calls user.GetAllAuthors.
         /// </summary>
         /// <param name="user"> Userlogic object. </param>
-        public static void ListAllAuthors(UserLogic user)
+        public static void ListAllAuthors(RestService rest)
         {
-            var a = user.GetAllAuthors();
+            var a = rest.Get<Author>("user/author/all");
             foreach (var item in a)
             {
                 Console.WriteLine(item.ToString());
@@ -647,41 +704,12 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         /// Writes all book items to console. Calls user.GetAllBooks.
         /// </summary>
         /// <param name="user"> Userlogic object. </param>
-        public static void ListAllBooks(UserLogic user)
+        public static void ListAllBooks(RestService rest)
         {
-            var q = user.GetAllBooks();
-            int aut;
-            int pub;
-            string[] book;
-            string resoult = string.Empty;
+            var q = rest.Get<Book>("user/book/all");
             foreach (var a in q)
             {
-                aut = 0;
-                pub = 0;
-                book = a.ToString();
-                if (int.TryParse(book[1], out aut))
-                {
-                    if (user.OneAuthor(aut) != null)
-                    {
-                        book[1] = user.OneAuthor(aut).AuthorName;
-                    }
-                }
-
-                if (int.TryParse(book[2], out pub))
-                {
-                    if (user.OnePublisher(pub) != null)
-                    {
-                        book[2] = user.OnePublisher(pub).PublisherName;
-                    }
-                }
-
-                foreach (var item in book)
-                {
-                    resoult += item + " || ";
-                }
-
-                Console.WriteLine(resoult);
-                resoult = string.Empty;
+                Console.WriteLine(a.ToString());
             }
 
             Console.ReadLine();
@@ -691,119 +719,119 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         /// Runs Taks returned form Logic and outputs value.
         /// </summary>
         /// <param name="user"> UserLogic Object. </param>
-        public static void ListEnglishBookForKidsAsync(UserLogic user)
-        {
-            var q = user.ListEnglishBookForKidsAsync().Result;
-            int aut;
-            int pub;
-            string[] book;
-            string resoult = string.Empty;
-            foreach (var a in q)
-            {
-                aut = 0;
-                pub = 0;
-                book = a.ToString();
-                if (int.TryParse(book[1], out aut))
-                {
-                    if (user.OneAuthor(aut) != null)
-                    {
-                        book[1] = user.OneAuthor(aut).AuthorName;
-                    }
-                }
+        //public static void ListEnglishBookForKidsAsync(UserLogic user)
+        //{
+        //    var q = user.ListEnglishBookForKidsAsync().Result;
+        //    int aut;
+        //    int pub;
+        //    string[] book;
+        //    string resoult = string.Empty;
+        //    foreach (var a in q)
+        //    {
+        //        aut = 0;
+        //        pub = 0;
+        //        book = a.ToStringArray();
+        //        if (int.TryParse(book[1], out aut))
+        //        {
+        //            if (user.OneAuthor(aut) != null)
+        //            {
+        //                book[1] = user.OneAuthor(aut).AuthorName;
+        //            }
+        //        }
 
-                if (int.TryParse(book[2], out pub))
-                {
-                    if (user.OnePublisher(pub) != null)
-                    {
-                        book[2] = user.OnePublisher(pub).PublisherName;
-                    }
-                }
+        //        if (int.TryParse(book[2], out pub))
+        //        {
+        //            if (user.OnePublisher(pub) != null)
+        //            {
+        //                book[2] = user.OnePublisher(pub).PublisherName;
+        //            }
+        //        }
 
-                foreach (var item in book)
-                {
-                    resoult += item + " || ";
-                }
+        //        foreach (var item in book)
+        //        {
+        //            resoult += item + " || ";
+        //        }
 
-                Console.WriteLine(resoult);
-                resoult = string.Empty;
-            }
+        //        Console.WriteLine(resoult);
+        //        resoult = string.Empty;
+        //    }
 
-            Console.ReadLine();
-        }
+        //    Console.ReadLine();
+        //}
 
-        /// <summary>
-        /// Runs Taks returned form Logic and outputs value.
-        /// </summary>
-        /// <param name="user"> UserLogic Object. </param>
-        public static void ListBooksWithLessThan10PcsWith10DayDeliveryAsync(UserLogic user)
-        {
-            var q = user.ListBooksWithLessThan10PcsWith10DayDeliveryAsync().Result;
-            foreach (var item in q)
-            {
-                Console.WriteLine(item.Title + "  ||  " + item.Publisher + "  ||  " + item.Supply + "  ||  " + item.Days);
-            }
+        ///// <summary>
+        ///// Runs Taks returned form Logic and outputs value.
+        ///// </summary>
+        ///// <param name="user"> UserLogic Object. </param>
+        //public static void ListBooksWithLessThan10PcsWith10DayDeliveryAsync(UserLogic user)
+        //{
+        //    var q = user.ListBooksWithLessThan10PcsWith10DayDeliveryAsync().Result;
+        //    foreach (var item in q)
+        //    {
+        //        Console.WriteLine(item.Title + "  ||  " + item.Publisher + "  ||  " + item.Supply + "  ||  " + item.Days);
+        //    }
 
-            Console.ReadLine();
-        }
+        //    Console.ReadLine();
+        //}
 
-        /// <summary>
-        /// Runs Taks returned form Logic and outputs value.
-        /// </summary>
-        /// <param name="user"> UserLogic Object. </param>
-        public static void ListAllAuthorsHowManyEditionsAsync(UserLogic user)
-        {
-            var q = user.ListAllAuthorsHowManyEditionsAsync().Result;
-            foreach (var item in q)
-            {
-                Console.WriteLine(item.Name + "  ||  " + item.Editions);
-            }
+        ///// <summary>
+        ///// Runs Taks returned form Logic and outputs value.
+        ///// </summary>
+        ///// <param name="user"> UserLogic Object. </param>
+        //public static void ListAllAuthorsHowManyEditionsAsync(UserLogic user)
+        //{
+        //    var q = user.ListAllAuthorsHowManyEditionsAsync().Result;
+        //    foreach (var item in q)
+        //    {
+        //        Console.WriteLine(item.Name + "  ||  " + item.Editions);
+        //    }
 
-            Console.ReadLine();
-        }
+        //    Console.ReadLine();
+        //}
 
-        /// <summary>
-        /// Runs Taks returned form Logic and outputs value.
-        /// </summary>
-        /// <param name="user"> UserLogic Object. </param>
-        public static void ListNewBooksWithOldEditionsAsync(UserLogic user)
-        {
-            var p = user.ListNewBooksWithOldEditionsAsync();
-            var q = p.Result;
-            int aut;
-            int pub;
-            string[] book;
-            string resoult = string.Empty;
-            foreach (var a in q)
-            {
-                aut = 0;
-                pub = 0;
-                book = a.ToString();
-                if (int.TryParse(book[1], out aut))
-                {
-                    if (user.OneAuthor(aut) != null)
-                    {
-                        book[1] = user.OneAuthor(aut).AuthorName;
-                    }
-                }
+        ///// <summary>
+        ///// Runs Taks returned form Logic and outputs value.
+        ///// </summary>
+        ///// <param name="user"> UserLogic Object. </param>
+        //public static void ListNewBooksWithOldEditionsAsync(UserLogic user)
+        //{
+        //    var p = user.ListNewBooksWithOldEditionsAsync();
+        //    var q = p.Result;
+        //    int aut;
+        //    int pub;
+        //    string[] book;
+        //    string resoult = string.Empty;
+        //    foreach (var a in q)
+        //    {
+        //        aut = 0;
+        //        pub = 0;
+        //        book = a.ToStringArray();
+        //        if (int.TryParse(book[1], out aut))
+        //        {
+        //            if (user.OneAuthor(aut) != null)
+        //            {
+        //                book[1] = user.OneAuthor(aut).AuthorName;
+        //            }
+        //        }
 
-                if (int.TryParse(book[2], out pub))
-                {
-                    if (user.OnePublisher(pub) != null)
-                    {
-                        book[2] = user.OnePublisher(pub).PublisherName;
-                    }
-                }
+        //        if (int.TryParse(book[2], out pub))
+        //        {
+        //            if (user.OnePublisher(pub) != null)
+        //            {
+        //                book[2] = user.OnePublisher(pub).PublisherName;
+        //            }
+        //        }
 
-                foreach (var item in book)
-                {
-                    resoult += item + " || ";
-                }
+        //        foreach (var item in book)
+        //        {
+        //            resoult += item + " || ";
+        //        }
 
-                Console.WriteLine(resoult);
-                resoult = string.Empty;
-            }
+        //        Console.WriteLine(resoult);
+        //        resoult = string.Empty;
+        //    }
 
-            Console.ReadLine();
-        }
+        //    Console.ReadLine();
+        //}
     }
 }

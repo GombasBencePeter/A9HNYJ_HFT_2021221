@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <PackageReference Include="ConsoleMenu-simple" Version="2.4.0" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.12">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -25,12 +26,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\A9HNYJ_HFT_2021221.Data\A9HNYJ_HFT_2021221.Data.csproj" />
-    <ProjectReference Include="..\A9HNYJ_HFT_2021221.Logic\A9HNYJ_HFT_2021221.Logic.csproj" />
-    <ProjectReference Include="..\A9HNYJ_HFT_2021221.Repository\A9HNYJ_HFT_2021221.Repository.csproj" />
- </ItemGroup>
+    <ProjectReference Include="..\A9HNYJ_HFT_2021221.Models\A9HNYJ_HFT_2021221.Models.csproj" />
+  </ItemGroup>
 
 </Project>

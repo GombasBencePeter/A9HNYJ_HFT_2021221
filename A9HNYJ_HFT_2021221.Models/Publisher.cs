@@ -49,7 +49,7 @@ namespace A9HNYJ_HFT_2021221.Models
         public bool IsActive { get; set; }
 
         /// <summary>
-        /// Override of ToString.
+        /// Override of ToStringArray.
         /// </summary>
         /// <returns> String patched together from the values. </returns>
         public override string ToString()

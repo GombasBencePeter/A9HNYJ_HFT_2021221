@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using A9HNYJ_HFT_2021221.Models;
 
 
-namespace A9HNYJ_HFT_2021221.Logic
+
+namespace A9HNYJ_HFT_2021221.Models
 {
     /// <summary>
     /// Query return class, contains the title of the book, the name of the publisher, the supply currently present and the number of days it takes to deliver.

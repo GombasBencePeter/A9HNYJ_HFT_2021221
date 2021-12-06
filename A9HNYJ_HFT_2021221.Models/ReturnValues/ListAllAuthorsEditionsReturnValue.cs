@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using A9HNYJ_HFT_2021221.Models;
+using Newtonsoft.Json;
 
-
-namespace A9HNYJ_HFT_2021221.Logic
+namespace A9HNYJ_HFT_2021221.Models
 {
     /// <summary>
     /// Query return class, contains the name of the author and the number of languages the have publications in.
     /// </summary>
+    [JsonObject]
     public class ListAllAuthorsEditionsReturnValue
     {
         /// <summary>

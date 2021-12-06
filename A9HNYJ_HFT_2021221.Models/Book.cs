@@ -62,12 +62,17 @@ namespace A9HNYJ_HFT_2021221.Models
         public int Year { get; set; }
 
         /// <summary>
-        /// ToString with array return.
+        /// ToStringArray with array return.
         /// </summary>
         /// <returns> Returns String array containg all values. Not the best implementation, might change it later. </returns>
-        public new string[] ToString()
+        public new string[] ToStringArray()
         {
             return new string[7] { this.BookID.ToString(), this.AuthorID.ToString(), this.PublisherID.ToString(), this.Bookname, this.Price.ToString(), this.Supply.ToString(), this.Year.ToString() };
+        }
+
+        public override string ToString()
+        {
+            return this.BookID.ToString() + "  "+ this.AuthorID.ToString() + "  "+ this.PublisherID.ToString() + "  " + this.Bookname + "  " + this.Price.ToString() + "  " + this.Supply.ToString() + "  " + this.Year.ToString();
         }
 
         /// <summary>
