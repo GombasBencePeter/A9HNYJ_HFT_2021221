@@ -168,7 +168,7 @@ namespace A9HNYJ_HFT_2021221.Client
             int index = int.Parse(Console.ReadLine());
             Console.WriteLine("Kérem adja meg az új árat");
             int price = int.Parse(Console.ReadLine());
-            Book q = rest.Get<Book>("user/book/{index}").FirstOrDefault();
+            Book q = rest.GetOne<Book>($"user/book/{index}");
             q.Price = price;
             rest.Put<Book>(q, "admin/book");
         }
@@ -184,7 +184,7 @@ namespace A9HNYJ_HFT_2021221.Client
             int index = int.Parse(Console.ReadLine());
             Console.WriteLine("Kérem adja meg mennyi darabbal szerené módosítani");
             int pcs = int.Parse(Console.ReadLine());
-            Book q = rest.Get<Book>("user/book/{index}").FirstOrDefault();
+            Book q = rest.GetOne<Book>($"user/book/{index}");
             q.Supply = q.Supply+pcs;
             rest.Put<Book>(q, "admin/book");
         }
@@ -200,7 +200,7 @@ namespace A9HNYJ_HFT_2021221.Client
             int index = int.Parse(Console.ReadLine());
             Console.WriteLine("Kérem adja meg milyen értékre szeretné módosítani");
             int pcs = int.Parse(Console.ReadLine());
-            Book q = rest.Get<Book>($"user/book/{index}").FirstOrDefault();
+            Book q = rest.GetOne<Book>($"user/book/{index}");
             q.Supply = pcs;
             rest.Put<Book>(q, "admin/book");
         }
@@ -275,7 +275,7 @@ namespace A9HNYJ_HFT_2021221.Client
             ListAllBooks(rest);
             Console.WriteLine("Please chose which book you want to modify");
             int index = int.Parse(Console.ReadLine());
-            var q = rest.Get<Book>("user/book/{index}").FirstOrDefault();
+            var q = rest.GetOne<Book>($"user/book/{index}");
             if (q != null)
             {
                 Console.WriteLine("Please chose which value to change");
@@ -327,7 +327,7 @@ namespace A9HNYJ_HFT_2021221.Client
             ListAllPublishers(rest);
             Console.WriteLine("Chose which item you want to modify!");
             int index = int.Parse(Console.ReadLine());
-            var q = rest.Get<Publisher>("user/publisher/{index}").FirstOrDefault();
+            var q = rest.Get<Publisher>($"user/publisher/{index}").FirstOrDefault();
             if (q!= null)
             {
                 Console.WriteLine("CHose wich value you want to modify");
@@ -391,7 +391,7 @@ namespace A9HNYJ_HFT_2021221.Client
             ListAllAuthors(rest);
             Console.WriteLine("Chose which item you want to modify!");
             int index = int.Parse(Console.ReadLine());
-            var q = rest.Get<Author>("user/author/{index}").FirstOrDefault();
+            var q = rest.GetOne<Author>($"user/author/{index}");
             if (q != null)
             {
                 Console.WriteLine("Chose wich value you want to modify?");
@@ -525,7 +525,7 @@ namespace A9HNYJ_HFT_2021221.Client
             Console.WriteLine("PLease input index of item to delete");
             ListAllPublishers(rest);
             int index = int.Parse(Console.ReadLine());
-            var p = rest.Get<Publisher>("user/publisher/{index}").FirstOrDefault();
+            var p = rest.GetOne<Publisher>($"user/publisher/{index}");
             if (p != null)
             {
                 rest.Delete(index, "admin/publisher");
@@ -548,7 +548,7 @@ namespace A9HNYJ_HFT_2021221.Client
             Console.WriteLine("PLease input index of item to delete");
             ListAllAuthors(rest);
             int index = int.Parse(Console.ReadLine());
-            var p = rest.Get<Author>("user/author/{index}").FirstOrDefault();
+            var p = rest.GetOne<Author>($"user/author/{index}");
             if (p != null)
             {
                 rest.Delete(index, "admin/author");
@@ -571,7 +571,7 @@ namespace A9HNYJ_HFT_2021221.Client
             Console.WriteLine("PLease input index of item to delete");
             ListAllBooks(rest);
             int index = int.Parse(Console.ReadLine());
-            var p = rest.Get<Book>("user/book/{index}").FirstOrDefault();
+            var p = rest.GetOne<Book>($"user/book/{index}");
             if (p != null)
             {
                 rest.Delete(index, "admin/book");

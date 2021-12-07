@@ -45,6 +45,18 @@ namespace A9HNYJ_HFT_2021221.Client
             return resoult;
         }
 
+        public T GetOne<T>(string endpoint)
+        {
+            T resoult = Activator.CreateInstance<T>();
+            HttpResponseMessage response = client.GetAsync(endpoint).GetAwaiter().GetResult();
+            if (response.IsSuccessStatusCode)
+            {
+                resoult = response.Content.ReadAsAsync<T>().GetAwaiter().GetResult();
+            }
+
+            return resoult;
+        }
+
         public void Post<T>(T item, string endpoint)
         {
             HttpResponseMessage response =
