@@ -33,20 +33,6 @@ namespace A9HNYJ_HFT_2021221.Logic
             this.autRepo = ar;
         }
 
-        /// <summary>
-        /// Forwards values to repository to create new Author item.
-        /// </summary>
-        /// <param name="authorname"> authroname for new author. </param>
-        /// <param name="yearborn"> yearborn for new author. </param>
-        /// <param name="isactive"> isactive for new author. </param>
-        /// <param name="originallanguage"> originallanguage for new author. </param>
-        /// <param name="forkids"> forkids for new author. </param>
-        /// <returns> The Author item created. Null if not successful. </returns>
-        public Author AddAuthor(string authorname, int yearborn, bool isactive, string originallanguage, bool forkids)
-        {
-            return this.autRepo.AddAuthor(authorname, yearborn, isactive, originallanguage, forkids);
-        }
-
         public Author AddAuthor(Author aut)
         {
             return autRepo.AddItem(aut);
@@ -55,51 +41,6 @@ namespace A9HNYJ_HFT_2021221.Logic
         public Book AddBook(Book item)
         {
             return bookRepo.AddItem(item);
-        }
-
-        /// <summary>
-        /// Checks if given names for Author and Publishers are ok. If not, returns null. If ok, forwards values for repository.
-        /// </summary>
-        /// <param name="authorname"> Name of Author. </param>
-        /// <param name="publishername"> Name of Publisher. </param>
-        /// <param name="bookname">Name of new book. </param>
-        /// <param name="price"> Proce of book. </param>
-        /// <param name="supply"> Supply of new book.</param>
-        /// <param name="year"> The year the book was published. </param>
-        /// <returns> The new Book if creation successful, null if not.</returns>
-        public Book AddBook(string authorname, string publishername, string bookname, int price, int supply, int year)
-        {
-            var p = this.pubRepo.GetAll().FirstOrDefault(x => x.PublisherName.ToUpper() == publishername.ToUpper());
-            if (p == null)
-            {
-                return null;
-            }
-            else
-            {
-                var a = this.autRepo.GetAll().FirstOrDefault(x => x.AuthorName.ToUpper() == authorname.ToUpper());
-                if (a == null)
-                {
-                    return null;
-                }
-                else
-                {
-                    return this.bookRepo.AddBook(a.AuthorKey, p.PublisherID, bookname, price, supply, year);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Forwards values to repository, to create new publisher item.
-        /// </summary>
-        /// <param name="publishername"> Name for new Publisher. </param>
-        /// <param name="language"> Language for new publisher. </param>
-        /// <param name="webpage"> Webpage of new publisher. </param>
-        /// <param name="deliverydays">Delivery days number for new publisher. </param>
-        /// <param name="isactive"> Isactive for new publisher. </param>
-        /// <returns> New publisher item or null if not successful.</returns>
-        public Publisher AddPublisher(string publishername, string language, string webpage, int deliverydays, bool isactive)
-        {
-            return this.pubRepo.AddPublisher(publishername, language, webpage, deliverydays, isactive);
         }
 
         public void UpdateBook(Book book)

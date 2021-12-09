@@ -54,7 +54,7 @@ namespace A9HNYJ_HFT_2021221.Models
         /// <returns> String patched together from the values.</returns>
         public override string ToString()
         {
-            return this.AuthorKey.ToString() + "  " + this.AuthorName + "  " + this.YearBorn.ToString() + "  " + this.IsActive.ToString() + "  " + this.OriginalLanguage + "  " + this.ForKids.ToString();
+            return "Id: "+this.AuthorKey.ToString() + " || Name: " + this.AuthorName + " || Year of birth: " + this.YearBorn.ToString() + " || IsActive: " + this.IsActive.ToString() + " || Language: " + this.OriginalLanguage + " || ForKids: " + this.ForKids.ToString();
         }
     }
 }

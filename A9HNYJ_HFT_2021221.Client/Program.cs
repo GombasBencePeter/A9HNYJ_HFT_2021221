@@ -477,8 +477,8 @@ namespace A9HNYJ_HFT_2021221.Client
         /// <param name="admin"> AdminLogic object. </param>
         public static void DeletePublisher(RestService rest)
         {
-            Console.WriteLine("PLease input index of item to delete");
             ListAllPublishers(rest);
+            Console.WriteLine("PLease input index of item to delete");
             int index = int.Parse(Console.ReadLine());
             var p = rest.GetOne<Publisher>($"user/publisher/{index}");
             if (p != null)
@@ -500,8 +500,8 @@ namespace A9HNYJ_HFT_2021221.Client
         /// <param name="admin"> AdminLogic object. </param>
         public static void DeleteAuthor(RestService rest)
         {
-            Console.WriteLine("PLease input index of item to delete");
             ListAllAuthors(rest);
+            Console.WriteLine("PLease input index of item to delete");
             int index = int.Parse(Console.ReadLine());
             var p = rest.GetOne<Author>($"user/author/{index}");
             if (p != null)
@@ -523,14 +523,14 @@ namespace A9HNYJ_HFT_2021221.Client
         /// <param name="admin"> AdminLogic object. </param>
         public static void DeleteBook(RestService rest)
         {
-            Console.WriteLine("PLease input index of item to delete");
             ListAllBooks(rest);
+            Console.WriteLine("Please input index of item to delete");
             int index = int.Parse(Console.ReadLine());
             var p = rest.GetOne<Book>($"user/book/{index}");
             if (p != null)
             {
                 rest.Delete(index, "admin/book");
-                Console.WriteLine(p.ToStringArray() + "  " + "<---- item deleted");
+                Console.WriteLine(p.ToString() + "  " + "<---- item deleted");
                 Console.ReadLine();
             }
             else
@@ -669,124 +669,5 @@ namespace A9HNYJ_HFT_2021221.Client
 
             Console.ReadLine();
         }
-
-        /// <summary>
-        /// Runs Taks returned form Logic and outputs value.
-        /// </summary>
-        /// <param name="user"> UserLogic Object. </param>
-        //public static void ListEnglishBookForKidsAsync(UserLogic user)
-        //{
-        //    var q = user.ListEnglishBookForKidsAsync().Result;
-        //    int aut;
-        //    int pub;
-        //    string[] book;
-        //    string resoult = string.Empty;
-        //    foreach (var a in q)
-        //    {
-        //        aut = 0;
-        //        pub = 0;
-        //        book = a.ToStringArray();
-        //        if (int.TryParse(book[1], out aut))
-        //        {
-        //            if (user.OneAuthor(aut) != null)
-        //            {
-        //                book[1] = user.OneAuthor(aut).AuthorName;
-        //            }
-        //        }
-
-        //        if (int.TryParse(book[2], out pub))
-        //        {
-        //            if (user.OnePublisher(pub) != null)
-        //            {
-        //                book[2] = user.OnePublisher(pub).PublisherName;
-        //            }
-        //        }
-
-        //        foreach (var item in book)
-        //        {
-        //            resoult += item + " || ";
-        //        }
-
-        //        Console.WriteLine(resoult);
-        //        resoult = string.Empty;
-        //    }
-
-        //    Console.ReadLine();
-        //}
-
-        ///// <summary>
-        ///// Runs Taks returned form Logic and outputs value.
-        ///// </summary>
-        ///// <param name="user"> UserLogic Object. </param>
-        //public static void ListBooksWithLessThan10PcsWith10DayDeliveryAsync(UserLogic user)
-        //{
-        //    var q = user.ListBooksWithLessThan10PcsWith10DayDeliveryAsync().Result;
-        //    foreach (var item in q)
-        //    {
-        //        Console.WriteLine(item.Title + "  ||  " + item.Publisher + "  ||  " + item.Supply + "  ||  " + item.Days);
-        //    }
-
-        //    Console.ReadLine();
-        //}
-
-        ///// <summary>
-        ///// Runs Taks returned form Logic and outputs value.
-        ///// </summary>
-        ///// <param name="user"> UserLogic Object. </param>
-        //public static void ListAllAuthorsHowManyEditionsAsync(UserLogic user)
-        //{
-        //    var q = user.ListAllAuthorsHowManyEditionsAsync().Result;
-        //    foreach (var item in q)
-        //    {
-        //        Console.WriteLine(item.Name + "  ||  " + item.Editions);
-        //    }
-
-        //    Console.ReadLine();
-        //}
-
-        ///// <summary>
-        ///// Runs Taks returned form Logic and outputs value.
-        ///// </summary>
-        ///// <param name="user"> UserLogic Object. </param>
-        //public static void ListNewBooksWithOldEditionsAsync(UserLogic user)
-        //{
-        //    var p = user.ListNewBooksWithOldEditionsAsync();
-        //    var q = p.Result;
-        //    int aut;
-        //    int pub;
-        //    string[] book;
-        //    string resoult = string.Empty;
-        //    foreach (var a in q)
-        //    {
-        //        aut = 0;
-        //        pub = 0;
-        //        book = a.ToStringArray();
-        //        if (int.TryParse(book[1], out aut))
-        //        {
-        //            if (user.OneAuthor(aut) != null)
-        //            {
-        //                book[1] = user.OneAuthor(aut).AuthorName;
-        //            }
-        //        }
-
-        //        if (int.TryParse(book[2], out pub))
-        //        {
-        //            if (user.OnePublisher(pub) != null)
-        //            {
-        //                book[2] = user.OnePublisher(pub).PublisherName;
-        //            }
-        //        }
-
-        //        foreach (var item in book)
-        //        {
-        //            resoult += item + " || ";
-        //        }
-
-        //        Console.WriteLine(resoult);
-        //        resoult = string.Empty;
-        //    }
-
-        //    Console.ReadLine();
-        //}
     }
 }

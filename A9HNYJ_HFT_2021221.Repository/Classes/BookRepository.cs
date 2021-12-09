@@ -68,23 +68,5 @@ namespace A9HNYJ_HFT_2021221.Repository
             this.GetOne(index).Supply = changeVal;
             this.Context.SaveChanges();
         }
-
-        /// <summary>
-        /// Adds new book item to the table.
-        /// </summary>
-        /// <param name="author"> Author id.</param>
-        /// <param name="publisher"> Publisher id.</param>
-        /// <param name="bookname"> Book title.</param>
-        /// <param name="price"> Book price. </param>
-        /// <param name="supply"> Book supply. </param>
-        /// <param name="year"> Year of release. </param>
-        /// <returns> New book item or null. </returns>
-        public Book AddBook(int author, int publisher, string bookname, int price, int supply, int year)
-        {
-            Book newBook = new Book() { AuthorID = author, PublisherID = publisher, Bookname = bookname, Price = price, Supply = supply, Year = year };
-            this.Context.Add(newBook);
-            this.Context.SaveChanges();
-            return newBook;
-        }
     }
 }

@@ -67,22 +67,5 @@ namespace A9HNYJ_HFT_2021221.Repository
             this.GetOne(index).IsActive = isActive;
             this.Context.SaveChanges();
         }
-
-        /// <summary>
-        /// Adds new author item and saves changes.
-        /// </summary>
-        /// <param name="name"> Name of author. </param>
-        /// <param name="yearborn"> The year the author vas born. </param>
-        /// <param name="isActive"> The author isActive value.</param>
-        /// <param name="originallanguage"> Original language of the author.</param>
-        /// <param name="forkids"> Author forKids value. </param>
-        /// <returns> New value or null.</returns>
-        public Author AddAuthor(string name, int yearborn, bool isActive, string originallanguage, bool forkids)
-        {
-            Author newAuthor = new Author() { AuthorName = name, YearBorn = yearborn, IsActive = isActive, OriginalLanguage = originallanguage, ForKids = forkids };
-            this.Context.Add(newAuthor);
-            this.Context.SaveChanges();
-            return newAuthor;
-        }
     }
 }

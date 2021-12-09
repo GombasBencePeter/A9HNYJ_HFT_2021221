@@ -51,15 +51,5 @@ namespace A9HNYJ_HFT_2021221.Repository
         /// <param name="newIsActive"> New isActive. </param>
         void ChangeIsActive(int index, bool newIsActive);
 
-        /// <summary>
-        /// Adds new publisher item to the table.
-        /// </summary>
-        /// <param name="name"> Name of publisher.</param>
-        /// <param name="language"> Publishing language.</param>
-        /// <param name="webpage"> Webpage link.</param>
-        /// <param name="deliverydays"> Delivery days.</param>
-        /// <param name="isactive"> Is the publisher active?. </param>
-        /// <returns> New publisher item or null.</returns>
-        public Publisher AddPublisher(string name, string language, string webpage, int deliverydays, bool isactive);
     }
 }

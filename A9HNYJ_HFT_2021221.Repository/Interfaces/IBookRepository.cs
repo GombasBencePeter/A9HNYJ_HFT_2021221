@@ -37,16 +37,5 @@ namespace A9HNYJ_HFT_2021221.Repository
         /// <param name="changeVal"> New Supply. </param>
         void ChangeSupply(int index, int changeVal);
 
-        /// <summary>
-        /// Adds new book item to the table.
-        /// </summary>
-        /// <param name="author"> Author id.</param>
-        /// <param name="publisher"> Publisher id.</param>
-        /// <param name="bookname"> Book title.</param>
-        /// <param name="price"> Book price. </param>
-        /// <param name="supply"> Book supply. </param>
-        /// <param name="year"> Year of release. </param>
-        /// <returns> New book item or null. </returns>
-        public Book AddBook(int author, int publisher, string bookname, int price, int supply, int year);
     }
 }

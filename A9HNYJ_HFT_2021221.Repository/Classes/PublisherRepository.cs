@@ -89,22 +89,5 @@ namespace A9HNYJ_HFT_2021221.Repository
             this.GetOne(index).Webpage = newWebpage;
             this.Context.SaveChanges();
         }
-
-        /// <summary>
-        /// Adds new publisher item to the table.
-        /// </summary>
-        /// <param name="name"> Name of publisher.</param>
-        /// <param name="language"> Publishing language.</param>
-        /// <param name="webpage"> Webpage link.</param>
-        /// <param name="deliverydays"> Delivery days.</param>
-        /// <param name="isactive"> Is the publisher active?. </param>
-        /// <returns> New publisher item or null.</returns>
-        public Publisher AddPublisher(string name, string language, string webpage, int deliverydays, bool isactive)
-        {
-            Publisher newPublisher = new Publisher() { PublisherName = name, Language = language, Webpage = webpage, DelivareDays = deliverydays, IsActive = isactive };
-            this.Context.Add(newPublisher);
-            this.Context.SaveChanges();
-            return newPublisher;
-        }
     }
 }

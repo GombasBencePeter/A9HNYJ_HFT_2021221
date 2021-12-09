@@ -54,7 +54,7 @@ namespace A9HNYJ_HFT_2021221.Models
         /// <returns> String patched together from the values. </returns>
         public override string ToString()
         {
-            return this.PublisherID.ToString() + "  " + this.PublisherName + "  " + this.Language + "  " + this.Webpage + "  " + this.DelivareDays.ToString() + "  " + this.IsActive.ToString();
+            return "ID: "+this.PublisherID.ToString() + " || Name: " + this.PublisherName + " || Language: " + this.Language + " || WebPage: " + this.Webpage + " || Days of delivery " + this.DelivareDays.ToString() + " || IsActive: " + this.IsActive.ToString();
         }
     }
 }

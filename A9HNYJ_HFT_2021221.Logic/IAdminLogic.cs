@@ -15,18 +15,6 @@ namespace A9HNYJ_HFT_2021221.Logic
     /// </summary>
     public interface IAdminLogic : IUserLogic
     {
-        /// <summary>
-        /// Checks if given names for Author and Publishers are ok. If not, returns null. If ok, forwards values for repository.
-        /// </summary>
-        /// <param name="authorname"> Name of Author. </param>
-        /// <param name="publishername"> Name of Publisher. </param>
-        /// <param name="bookname">Name of new book. </param>
-        /// <param name="price"> Proce of book. </param>
-        /// <param name="supply"> Supply of new book.</param>
-        /// <param name="year"> The year the book was published. </param>
-        /// <returns> The new Book if creation successful, null if not.</returns>
-        public Book AddBook(string authorname, string publishername, string bookname, int price, int supply, int year);
-
         Book AddBook(Book book);
 
         Author AddAuthor(Author aut);
@@ -36,28 +24,6 @@ namespace A9HNYJ_HFT_2021221.Logic
         void UpdateBook(Book book);
         void UpdateAuthor(Author au);
         void UpdatePublisher(Publisher pub);
-
-        /// <summary>
-        /// Forwards values to repository, to create new publisher item.
-        /// </summary>
-        /// <param name="publishername"> Name for new Publisher. </param>
-        /// <param name="language"> Language for new publisher. </param>
-        /// <param name="webpage"> Webpage of new publisher. </param>
-        /// <param name="deliverydays">Delivery days number for new publisher. </param>
-        /// <param name="isactive"> Isactive for new publisher. </param>
-        /// <returns> New publisher item or null if not successful.</returns>
-        public Publisher AddPublisher(string publishername, string language, string webpage, int deliverydays, bool isactive);
-
-        /// <summary>
-        /// Forwards values to repository to create new Author item.
-        /// </summary>
-        /// <param name="authorname"> authroname for new author. </param>
-        /// <param name="yearborn"> yearborn for new author. </param>
-        /// <param name="isactive"> isactive for new author. </param>
-        /// <param name="originallanguage"> originallanguage for new author. </param>
-        /// <param name="forkids"> forkids for new author. </param>
-        /// <returns> The Author item created. Null if not successful. </returns>
-        public Author AddAuthor(string authorname, int yearborn, bool isactive, string originallanguage, bool forkids);
 
         /// <summary>
         /// Forwards call to repository to change author name.

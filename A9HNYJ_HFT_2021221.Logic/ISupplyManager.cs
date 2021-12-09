@@ -16,18 +16,6 @@ namespace A9HNYJ_HFT_2021221.Logic
     public interface ISupplyManager
     {
         /// <summary>
-        /// Checks if given names for Author and Publishers are ok. If not, returns null. If ok, forwards values for repository.
-        /// </summary>
-        /// <param name="authorname"> Name of Author. </param>
-        /// <param name="publishername"> Name of Publisher. </param>
-        /// <param name="bookname">Name of new book. </param>
-        /// <param name="price"> Proce of book. </param>
-        /// <param name="supply"> Supply of new book.</param>
-        /// <param name="year"> The year the book was published. </param>
-        /// <returns> The new Book if creation successful, null if not.</returns>
-        public Book AddBook(string authorname, string publishername, string bookname, int price, int supply, int year);
-
-        /// <summary>
         /// FOrwards call to repository to change the price of one book.
         /// </summary>
         /// <param name="index"> Index of the item to modify. </param>

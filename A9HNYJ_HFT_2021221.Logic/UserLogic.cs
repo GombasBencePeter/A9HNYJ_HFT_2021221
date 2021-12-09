@@ -156,41 +156,5 @@ namespace A9HNYJ_HFT_2021221.Logic
 
             return query2;
         }
-
-        /// <summary>
-        /// Calls ListNewBooksWithOldEditions() query function locally, creates Task.
-        /// </summary>
-        /// <returns> Task of the query function ListNewBooksWithOldEditions(). </returns>
-        public Task<List<Book>> ListNewBooksWithOldEditionsAsync()
-        {
-            return Task<List<Book>>.Factory.StartNew(this.ListNewBooksWithOldEditions().ToList);
-        }
-
-        /// <summary>
-        /// Calls ListAllAuthorsHowManyEditions() query function locally, creates Task.
-        /// </summary>
-        /// <returns> Task of the query function ListAllAuthorsHowManyEditions(). </returns>
-        public Task<List<ListAllAuthorsEditionsReturnValue>> ListAllAuthorsHowManyEditionsAsync()
-        {
-            return Task<List<ListAllAuthorsEditionsReturnValue>>.Factory.StartNew(this.ListAllAuthorsHowManyEditions().ToList);
-        }
-
-        /// <summary>
-        /// Calls ListBooksWithLessThan10PcsWith10DayDelivery() query function locally, creates Task.
-        /// </summary>
-        /// <returns> Task of the query function ListBooksWithLessThan10PcsWith10DayDelivery(). </returns>
-        public Task<List<ListBooksWithLessThan10PcsReturnValue>> ListBooksWithLessThan10PcsWith10DayDeliveryAsync()
-        {
-            return Task<List<ListBooksWithLessThan10PcsReturnValue>>.Factory.StartNew(this.ListBooksWithLessThan10PcsWith10DayDelivery().ToList);
-        }
-
-        /// <summary>
-        /// Calls ListEnglishBookForKids() query function locally, creates Task.
-        /// </summary>
-        /// <returns> Task of the query function ListEnglishBookForKids(). </returns>
-        public Task<List<Book>> ListEnglishBookForKidsAsync()
-        {
-            return Task<List<Book>>.Factory.StartNew(this.ListEnglishBookForKids().ToList);
-        }
     }
 }
