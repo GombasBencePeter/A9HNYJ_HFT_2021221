@@ -1,4 +1,3 @@
-using A9HNYJ_HFT_2021221.Data;
 using A9HNYJ_HFT_2021221.Repository;
 using A9HNYJ_HFT_2021221.Logic;
 using Moq;
@@ -18,16 +17,6 @@ namespace A9HNYJ_HFT_2021221.Test
         private Mock<IBookRepository> bookrep;
         private Mock<IPublisherRepository> pubrep;
 
-        /// <summary>
-        /// Tests AddPublisher function. Uses verify only.
-        /// </summary>
-        [Test]
-        public void AddPublisherTest()
-        {
-            var logic = this.LogicMockGenerator();
-            logic.AddPublisher("p1", "English", "www.p1.com", 5, true);
-            this.pubrep.Verify(x => x.AddPublisher("p1", "English", "www.p1.com", 5, true), Times.Once);
-        }
 
         [Test]
         public void AddBookWithObjectTest()
