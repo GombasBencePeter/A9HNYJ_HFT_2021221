@@ -18,43 +18,36 @@ namespace A9HNYJ_HFT_2021221.Client
         public static void Main()
         {
             RestService rest = new RestService("http://localhost:37921");
-            //BookStoreContext context = new BookStoreContext();
-            //BookRepository bookRepo = new (context);
-            //PublisherRepository pubRepo = new (context);
-            //AuthorRepository autRepo = new (context);
-            //UserLogic user = new (bookRepo, pubRepo, autRepo);
-            //AdminLogic admin = new (bookRepo, pubRepo, autRepo);
-            //SupplyManager supplyManager = new (bookRepo, pubRepo, autRepo);
             var supplymanagermenu = new ConsoleMenu()
-                .Add("Könyv Hozzáadása", () => AddBookSupplyManager(rest))
-                .Add("Áru felvétele", () => AddSupply(rest))
-                .Add("Darabszám módosítása", () => ChangeSupply(rest))
-                .Add("Ár módosítása", () => ChangePrice(rest))
-                .Add("Vissza", ConsoleMenu.Close);
+                .Add("Add Book", () => AddBookSupplyManager(rest))
+                .Add("Add Supply", () => AddSupply(rest))
+                .Add("Change Supply", () => ChangeSupply(rest))
+                .Add("Change Price", () => ChangePrice(rest))
+                .Add("Back", ConsoleMenu.Close);
             var adminmenu = new ConsoleMenu()
-                .Add("Elem módosítása", () => UpdateItem(rest))
-                .Add("Könyv hozzáadása", () => AddBook(rest))
-                .Add("Kiadó hozzáadása", () => AddPublisher(rest))
-                .Add("Író hozzáadása", () => AddAuthor(rest))
-                .Add("Kiadó törlése", () => DeletePublisher(rest))
-                .Add("Író törlése", () => DeleteAuthor(rest))
-                .Add("Könyv törlése", () => DeleteBook(rest))
-                .Add("Vissza", ConsoleMenu.Close);
+                .Add("Modify item", () => UpdateItem(rest))
+                .Add("Add Book", () => AddBook(rest))
+                .Add("Add Publisher", () => AddPublisher(rest))
+                .Add("Add Author", () => AddAuthor(rest))
+                .Add("Delete Publisher", () => DeletePublisher(rest))
+                .Add("Delete Author", () => DeleteAuthor(rest))
+                .Add("Delete Book", () => DeleteBook(rest))
+                .Add("Back", ConsoleMenu.Close);
             var menu = new ConsoleMenu()
-                .Add("Listázza az összes angol nyelvű könyvet angol szerzőktől ami 1990 után íródott és gyerekeknek való", () => EnglishBooksByEnglishAuthorsForKids(rest))
-                .Add("Listázza ki azokat a tételeket, amelyekből kevesebb mint 10 db áll rendelkezésre, és beszerezheőek 10 nap alatt", () => ListBooksWithLessThan10PcsWith10DayDelivery(rest))
-                .Add("Listázza, hogy az egyes íróknak hány kiadása érhető el", () => ListAllAuthorsNumberOfEditions(rest))
-                .Add("Listázza ki azokat a könyveket, amelyek új és antikvár kiadásban is elérhetőek", () => ListNewBooksWithOldEditions(rest))
+                .Add("List all english books from 1990, where the author wrote kidfriendly books", () => EnglishBooksByEnglishAuthorsForKids(rest))
+                .Add("List all items that hase less than 10 supply, and can be resupplied within 10 days.", () => ListBooksWithLessThan10PcsWith10DayDelivery(rest))
+                .Add("List all authors and how many publications they have in our system.", () => ListAllAuthorsNumberOfEditions(rest))
+                .Add("List all books, which has both old and new editions avaiable.", () => ListNewBooksWithOldEditions(rest))
                 //.Add("Listázza ki azokat a könyveket, amelyek új és antikvár kiadásban is elérhetőek -- Async", () => ListNewBooksWithOldEditionsAsync(rest))
                 //.Add("Listázza az összes angol nyelvű könyvet angol szerzőktől ami 1990 után íródott és gyerekeknek való -- Async", () => ListEnglishBookForKidsAsync(rest))
                 //.Add("Listázza ki azokat a tételeket, amelyekből kevesebb mint 10 db áll rendelkezésre, és beszerezheőek 10 nap alatt -- Async", () => ListBooksWithLessThan10PcsWith10DayDeliveryAsync(rest))
                 //.Add("Listázza, hogy az egyes íróknak hány kiadása érhető el -- Async", () => ListAllAuthorsHowManyEditionsAsync(rest))
-                .Add("Összes kiadó listázása", () => ListAllPublishers(rest))
-                .Add("Összes Író listárása", () => ListAllAuthors(rest))
-                .Add("Összes Könyv listázása", () => ListAllBooks(rest))
-                .Add("Admin funkciók", () => adminmenu.Show())
-                .Add("Supply manager funkciók", () => supplymanagermenu.Show())
-                .Add("Kilépés", ConsoleMenu.Close);
+                .Add("List all Publishers", () => ListAllPublishers(rest))
+                .Add("List all Authors", () => ListAllAuthors(rest))
+                .Add("List all  Books", () => ListAllBooks(rest))
+                .Add("Admin functionalities", () => adminmenu.Show())
+                .Add("Supply manager functionalioties", () => supplymanagermenu.Show())
+                .Add("Exit", ConsoleMenu.Close);
             menu.Show();
         }
 
@@ -64,44 +57,6 @@ namespace A9HNYJ_HFT_2021221.Client
         /// <param name="user"> UserLogic object. </param>
         public static void ListNewBooksWithOldEditions(RestService rest)
         {
-            //var q = user.ListNewBooksWithOldEditions();
-            //int aut;
-            //int pub;
-            //string[] book;
-            //string resoult = string.Empty;
-            //foreach (var a in q)
-            //{
-            //    aut = 0;
-            //    pub = 0;
-            //    book = a.ToStringArray();
-            //    if (int.TryParse(book[1], out aut))
-            //    {
-            //        if (user.OneAuthor(aut) != null)
-            //        {
-            //            book[1] = user.OneAuthor(aut).AuthorName;
-            //        }
-            //    }
-
-            //    if (int.TryParse(book[2], out pub))
-            //    {
-            //        if (user.OnePublisher(pub) != null)
-            //        {
-            //            book[2] = user.OnePublisher(pub).PublisherName;
-            //        }
-            //    }
-
-            //    foreach (var item in book)
-            //    {
-            //        resoult += item + " || ";
-            //    }
-
-            //    Console.WriteLine(resoult);
-            //    resoult = string.Empty;
-            //}
-
-            //Console.ReadLine();
-
-            
             var q = rest.Get<Book>("user/book/withneweditions");
             foreach (var item in q)
             {
@@ -164,9 +119,9 @@ namespace A9HNYJ_HFT_2021221.Client
         public static void ChangePrice(RestService rest)
         {
             ListAllBooks(rest);
-            Console.WriteLine("Kérem válasszon melyik termék árát szeretné módosítani");
+            Console.WriteLine("Please chose which item's price you want to modify");
             int index = int.Parse(Console.ReadLine());
-            Console.WriteLine("Kérem adja meg az új árat");
+            Console.WriteLine("Please give new price");
             int price = int.Parse(Console.ReadLine());
             Book q = rest.GetOne<Book>($"user/book/{index}");
             q.Price = price;
@@ -180,9 +135,9 @@ namespace A9HNYJ_HFT_2021221.Client
         public static void AddSupply(RestService rest)
         {
             ListAllBooks(rest);
-            Console.WriteLine("Kérem válasszon melyik termék raktári darabszámát szeretné módosítani");
+            Console.WriteLine("Please chose which item's supply count you want to modify");
             int index = int.Parse(Console.ReadLine());
-            Console.WriteLine("Kérem adja meg mennyi darabbal szerené módosítani");
+            Console.WriteLine("Please add how many new pices you want to add to the supply");
             int pcs = int.Parse(Console.ReadLine());
             Book q = rest.GetOne<Book>($"user/book/{index}");
             q.Supply = q.Supply+pcs;
@@ -196,9 +151,9 @@ namespace A9HNYJ_HFT_2021221.Client
         public static void ChangeSupply(RestService rest)
         {
             ListAllBooks(rest);
-            Console.WriteLine("Kérem válasszon melyik termék raktári darabszámát szeretné módosítani");
+            Console.WriteLine("Please chose which item's supply count you want to modify");
             int index = int.Parse(Console.ReadLine());
-            Console.WriteLine("Kérem adja meg milyen értékre szeretné módosítani");
+            Console.WriteLine("Please add new supply count");
             int pcs = int.Parse(Console.ReadLine());
             Book q = rest.GetOne<Book>($"user/book/{index}");
             q.Supply = pcs;
@@ -212,25 +167,25 @@ namespace A9HNYJ_HFT_2021221.Client
         public static void AddBookSupplyManager(RestService rest)
         {
             ListAllAuthors(rest);
-            Console.WriteLine("Kérem adja meg az író nevét!");
+            Console.WriteLine("Please give the index of the author");
             int author = int.Parse(Console.ReadLine());
-            author = rest.Get<Author>("user/author/{author}").FirstOrDefault().AuthorKey;
+            author = rest.GetOne<Author>($"user/author/{author}").AuthorKey;
             Console.Clear();
             ListAllPublishers(rest);
-            Console.WriteLine("Kérem adja meg a kiadó nevét");
+            Console.WriteLine("Please give the index of the publisher");
             int publisher = int.Parse(Console.ReadLine());
-            publisher = rest.Get<Publisher>("user/publisher/{publisher}").FirstOrDefault().PublisherID;
+            publisher = rest.GetOne<Publisher>($"user/publisher/{publisher}").PublisherID;
             Console.Clear();
-            Console.WriteLine("Kérem adja meg a könyv nevét");
+            Console.WriteLine("Please give the name of the book");
             string bookname = Console.ReadLine();
             Console.Clear();
-            Console.WriteLine("Kérem adja meg a könyv árát");
+            Console.WriteLine("Please give the price of the book");
             int price = int.Parse(Console.ReadLine());
             Console.Clear();
-            Console.WriteLine("Kérem adja meg a raktáron lévő darabszámot");
+            Console.WriteLine("PLease give how many pieces there are in supply");
             int supply = int.Parse(Console.ReadLine());
             Console.Clear();
-            Console.WriteLine("Kérem adja meg a kiadás évét");
+            Console.WriteLine("PLease give year of release");
             int year = int.Parse(Console.ReadLine());
             rest.Post<Book>(new Book {
                 AuthorID = author, 
@@ -249,7 +204,7 @@ namespace A9HNYJ_HFT_2021221.Client
         /// <param name="admin"> AdminLogic object. </param>
         public static void UpdateItem(RestService rest)
         {
-            Console.WriteLine("Kérem adja meg melyik táblán szeretne módosítást végezni");
+            Console.WriteLine("Please add which table you want to modify");
             Console.WriteLine("1: Books  ||  2: Authors  ||  3: Publishers");
             int input = int.Parse(Console.ReadLine());
             switch (input)
@@ -368,7 +323,7 @@ namespace A9HNYJ_HFT_2021221.Client
                         }
                         else
                         {
-                            Console.WriteLine("wring input");
+                            Console.WriteLine("wrong input");
                         }
                         rest.Put<Publisher>(q, "admin/publisher");
                         break;
