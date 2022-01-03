@@ -56,5 +56,16 @@ namespace A9HNYJ_HFT_2021221.Models
         {
             return "ID: "+this.PublisherID.ToString() + " || Name: " + this.PublisherName + " || Language: " + this.Language + " || WebPage: " + this.Webpage + " || Days of delivery " + this.DelivareDays.ToString() + " || IsActive: " + this.IsActive.ToString();
         }
+
+        public override bool Equals(object obj)
+        {
+            if(obj is Publisher)
+            {
+                Publisher c = obj as Publisher;
+                return this.PublisherID == c.PublisherID && this.PublisherName == c.PublisherName && this.Language == c.Language && this.IsActive == c.IsActive && this.DelivareDays == c.DelivareDays && this.Webpage == c.Webpage;
+            }
+            return false;
+
+        }
     }
 }

@@ -56,5 +56,15 @@ namespace A9HNYJ_HFT_2021221.Models
         {
             return "Id: "+this.AuthorKey.ToString() + " || Name: " + this.AuthorName + " || Year of birth: " + this.YearBorn.ToString() + " || IsActive: " + this.IsActive.ToString() + " || Language: " + this.OriginalLanguage + " || ForKids: " + this.ForKids.ToString();
         }
+
+        public override bool Equals(object o)
+        {
+            if(o is Author)
+            {
+                Author c = o as Author;
+                return this.AuthorKey == c.AuthorKey && this.AuthorName == c.AuthorName && this.ForKids == c.ForKids && this.IsActive == c.IsActive && this.OriginalLanguage == c.OriginalLanguage && this.YearBorn == c.YearBorn;
+            }
+            return false;
+        }
     }
 }

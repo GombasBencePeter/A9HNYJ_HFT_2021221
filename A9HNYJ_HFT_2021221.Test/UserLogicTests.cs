@@ -22,6 +22,7 @@ namespace A9HNYJ_HFT_2021221.Test
         private Mock<IPublisherRepository> pubrep;
         private List<ListBooksWithLessThan10PcsReturnValue> listBooksWithLessThan10PcsExpected;
         private List<ListAllAuthorsEditionsReturnValue> listAllAuthorsEditionsExpected;
+        private List<ListAuthorWithNumberOfCopiesPerBookReturnValue> listAuthorWithNumberOfCopiesPerBook;
         private List<Book> listEnglishBooksForKidsExpected;
         private List<Book> listNewBooksWithOldEditionsExpected;
 
@@ -42,6 +43,23 @@ namespace A9HNYJ_HFT_2021221.Test
             var actualListAuthorsHowManyEditions = logic.ListAllAuthorsHowManyEditions();
 
             Assert.That(actualListAuthorsHowManyEditions, Is.EquivalentTo(this.listAllAuthorsEditionsExpected));
+        }
+
+        [Test]
+        public void ListAuthorWithNumberOfCopiesPerBookTest()
+        {
+            var logic = this.LogicMockCreator();
+            this.listAuthorWithNumberOfCopiesPerBook = new List<ListAuthorWithNumberOfCopiesPerBookReturnValue>()
+            {
+                new ListAuthorWithNumberOfCopiesPerBookReturnValue { Name = "Neil Gaiman", AVGNumber = 3.5 },
+                new ListAuthorWithNumberOfCopiesPerBookReturnValue { Name = "Illyés Gyula", AVGNumber = 17 },
+                new ListAuthorWithNumberOfCopiesPerBookReturnValue { Name = "Fjodor Mihajlovics Dosztojevszkij", AVGNumber = 17.333333333333332 },
+            };
+
+            var actuallisthowmanycopies = logic.ListAuthorWithNumberOfCopiesPerBook().ToList();
+
+
+            Assert.That(actuallisthowmanycopies, Is.EquivalentTo(this.listAuthorWithNumberOfCopiesPerBook));
         }
 
         /// <summary>
