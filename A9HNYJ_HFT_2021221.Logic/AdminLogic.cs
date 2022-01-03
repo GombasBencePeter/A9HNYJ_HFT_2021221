@@ -32,33 +32,34 @@ namespace A9HNYJ_HFT_2021221.Logic
             this.autRepo = ar;
         }
 
-        public Author AddAuthor(Author aut)
+        public void AddAuthor(Author aut)
         {
             if (aut.AuthorName == null || aut.IsActive == null || aut.ForKids == null)
             {
                 throw new ArgumentException();
             }
 
-            return autRepo.AddItem(aut);
+            autRepo.AddItem(aut);
         }
 
-        public Book AddBook(Book item)
+        public void AddBook(Book item)
         {
             if(item.Bookname == null || item.PublisherID == null || item.AuthorID== null)
             {
                 throw new ArgumentException();
             }
 
-            return bookRepo.AddItem(item);
+            bookRepo.AddItem(item);
         }
 
-        public Publisher AddPublisher(Publisher pub)
+        public void AddPublisher(Publisher pub)
         {
             if(pub.PublisherName == null || pub.Language == null)
             {
                 throw new ArgumentException();
             }
-            return pubRepo.AddItem(pub);
+            pubRepo.AddItem(pub);
+            
         }
 
         public void UpdateBook(Book book)

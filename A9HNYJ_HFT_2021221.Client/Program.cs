@@ -35,9 +35,9 @@ namespace A9HNYJ_HFT_2021221.Client
                 .Add("List all authors and how many publications they have in our system.", () => ListAllAuthorsNumberOfEditions(rest))
                 .Add("List all books, which has both old and new editions avaiable.", () => ListNewBooksWithOldEditions(rest))
                 .Add("List all authors with avg number copies of their books on stock.", () => ListAuthorWithNumberOfCopiesPerBook(rest))
-                .Add("List all Publishers", () => ListAllPublishers(rest))
-                .Add("List all Authors", () => ListAllAuthors(rest))
-                .Add("List all  Books", () => ListAllBooks(rest))
+                .Add("List all Publishers", () => ListAllPublishersForMenu(rest))
+                .Add("List all Authors", () => ListAllAuthorsForMenu(rest))
+                .Add("List all  Books", () => ListAllBooksForMenu(rest))
                 .Add("Admin functionalities", () => adminmenu.Show())
                 .Add("Supply manager functionalities", () => supplymanagermenu.Show())
                 .Add("Exit", ConsoleMenu.Close);
@@ -386,7 +386,7 @@ namespace A9HNYJ_HFT_2021221.Client
                         }
                         else
                         {
-                            Console.WriteLine("Wring input format. Please give number.");
+                            Console.WriteLine("Wrong input format. Please give number.");
                         }
 
                         break;
@@ -419,7 +419,7 @@ namespace A9HNYJ_HFT_2021221.Client
             int year = int.Parse(Console.ReadLine());
             Console.WriteLine("Please give authors language");
             string language = Console.ReadLine();
-            Console.WriteLine("PLease give authors active status [true-false]");
+            Console.WriteLine("Please give authors active status [true-false]");
             string input = Console.ReadLine();
             bool isActive = false;
             if (input == "true" || input == "false")
@@ -501,7 +501,7 @@ namespace A9HNYJ_HFT_2021221.Client
         public static void DeleteAuthor(RestService rest)
         {
             ListAllAuthors(rest);
-            Console.WriteLine("PLease input index of item to delete");
+            Console.WriteLine("Please input index of item to delete");
             int index = int.Parse(Console.ReadLine());
             var p = rest.GetOne<Author>($"user/author/{index}");
             if (p != null)
@@ -563,7 +563,7 @@ namespace A9HNYJ_HFT_2021221.Client
             Console.WriteLine("Please give amount on stock");
             int supply = int.Parse(Console.ReadLine());
             Console.Clear();
-            Console.WriteLine("PLease give release year");
+            Console.WriteLine("Please give release year");
             int year = int.Parse(Console.ReadLine());
             rest.Post<Book>(
                 new Book
@@ -591,9 +591,9 @@ namespace A9HNYJ_HFT_2021221.Client
             string language = Console.ReadLine();
             Console.WriteLine("Please give webaddress of publisher");
             string web = Console.ReadLine();
-            Console.WriteLine("PLease give number of delivery days");
+            Console.WriteLine("Please give number of delivery days");
             int days = int.Parse(Console.ReadLine());
-            Console.WriteLine("PLease give publisher active status [true-false]");
+            Console.WriteLine("Please give publisher active status [true-false]");
             string input = Console.ReadLine();
             bool isActive = false;
             if (input == "true" || input == "false")
@@ -625,11 +625,35 @@ namespace A9HNYJ_HFT_2021221.Client
             Console.ReadLine();
         }
 
-        /// <summary>
-        /// Writes all publisher items to console. Calls user.GetAllPublishers.
-        /// </summary>
-        /// <param name="user"> Userlogic object. </param>
         public static void ListAllPublishers(RestService rest)
+        {
+            var p = rest.Get<Publisher>("user/publisher/all");
+            foreach (var item in p)
+            {
+                Console.WriteLine(item.ToString());
+            }
+        }
+
+        public static void ListAllAuthors(RestService rest)
+        {
+            var a = rest.Get<Author>("user/author/all");
+            foreach (var item in a)
+            {
+                Console.WriteLine(item.ToString());
+            }
+        }
+
+        public static void ListAllBooks(RestService rest)
+        {
+            var q = rest.Get<Book>("user/book/all");
+            foreach (var a in q)
+            {
+                Console.WriteLine(a.ToString());
+            }
+        }
+
+
+        public static void ListAllPublishersForMenu(RestService rest)
         {
             var p = rest.Get<Publisher>("user/publisher/all");
             foreach (var item in p)
@@ -640,11 +664,7 @@ namespace A9HNYJ_HFT_2021221.Client
             Console.ReadLine();
         }
 
-        /// <summary>
-        /// Writes all author items to console. Calls user.GetAllAuthors.
-        /// </summary>
-        /// <param name="user"> Userlogic object. </param>
-        public static void ListAllAuthors(RestService rest)
+        public static void ListAllAuthorsForMenu(RestService rest)
         {
             var a = rest.Get<Author>("user/author/all");
             foreach (var item in a)
@@ -655,16 +675,16 @@ namespace A9HNYJ_HFT_2021221.Client
             Console.ReadLine();
         }
 
-        /// <summary>
-        /// Writes all book items to console. Calls user.GetAllBooks.
-        /// </summary>
-        /// <param name="user"> Userlogic object. </param>
-        public static void ListAllBooks(RestService rest)
+        public static void ListAllBooksForMenu(RestService rest)
         {
+            var authors = rest.Get<Author>("user/author/all");
+            var publishers = rest.Get<Publisher>("user/publisher/all");
             var q = rest.Get<Book>("user/book/all");
             foreach (var a in q)
             {
-                Console.WriteLine(a.ToString());
+                string author = authors.Where(x => x.AuthorKey == a.AuthorID).FirstOrDefault().AuthorName ??= a.AuthorID.ToString();
+                string publisher = publishers.Where(x => x.PublisherID == a.PublisherID).FirstOrDefault().PublisherName ??= a.PublisherID.ToString();
+                Console.WriteLine("ID: " + a.BookID+" || Publisher: " + publisher + " || Author: " + author+ " || Title: " + a.Bookname+ " || Price: " + a.Price+ " || Supply " + a.Supply+ " || Year of release " + a.Year+" ");
             }
 
             Console.ReadLine();

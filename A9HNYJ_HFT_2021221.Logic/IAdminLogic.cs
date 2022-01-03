@@ -15,11 +15,11 @@ namespace A9HNYJ_HFT_2021221.Logic
     /// </summary>
     public interface IAdminLogic : IUserLogic
     {
-        Book AddBook(Book book);
+        void AddBook(Book book);
 
-        Author AddAuthor(Author aut);
+        void AddAuthor(Author aut);
 
-        Publisher AddPublisher(Publisher pub);
+        void AddPublisher(Publisher pub);
 
         void UpdateBook(Book book);
         void UpdateAuthor(Author au);
