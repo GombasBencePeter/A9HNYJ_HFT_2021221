@@ -26,6 +26,14 @@ namespace A9HNYJ_HFT_2021221.Test
             this.bookrep.Verify(x => x.AddItem(new Book { BookID = 16, AuthorID = 3, PublisherID = 5, Bookname = "Test", Price = 3000, Supply = 4, Year = 2041 }), Times.Once);
         }
 
+        [Test]
+        public void AddPublisherWithObjectTest()
+        {
+            var logic = this.LogicMockGenerator();
+            logic.AddPublisher(new Publisher() { PublisherID =6, PublisherName = "test", DelivareDays =5, IsActive = true, Language = "english", Webpage = "test.com"});
+            this.pubrep.Verify(x => x.AddItem(new Publisher { PublisherID = 6, PublisherName = "test", DelivareDays = 5, IsActive = true, Language = "english", Webpage = "test.com" }), Times.Once);
+        }
+
 
         /// <summary>
         /// Tests DeleteOneBook function. Uses verify only.
