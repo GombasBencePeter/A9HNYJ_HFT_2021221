@@ -34,12 +34,31 @@ namespace A9HNYJ_HFT_2021221.Logic
 
         public Author AddAuthor(Author aut)
         {
+            if (aut.AuthorName == null || aut.IsActive == null || aut.ForKids == null)
+            {
+                throw new ArgumentException();
+            }
+
             return autRepo.AddItem(aut);
         }
 
         public Book AddBook(Book item)
         {
+            if(item.Bookname == null || item.PublisherID == null || item.AuthorID== null)
+            {
+                throw new ArgumentException();
+            }
+
             return bookRepo.AddItem(item);
+        }
+
+        public Publisher AddPublisher(Publisher pub)
+        {
+            if(pub.PublisherName == null || pub.Language == null)
+            {
+                throw new ArgumentException();
+            }
+            return pubRepo.AddItem(pub);
         }
 
         public void UpdateBook(Book book)
@@ -53,101 +72,6 @@ namespace A9HNYJ_HFT_2021221.Logic
         public void UpdateAuthor(Author au)
         {
             this.autRepo.Update(au);
-        }
-
-        public Publisher AddPublisher(Publisher pub)
-        {
-            return pubRepo.AddItem(pub);
-        }
-
-        /// <summary>
-        /// Forwards call to repository to change author name.
-        /// </summary>
-        /// <param name="index"> Index of the item to modify.</param>
-        /// <param name="newName"> Name to change item name into.</param>
-        public void ChangeAuthorName(int index, string newName)
-        {
-            this.autRepo.ChangeAuthorName(index, newName);
-        }
-
-        /// <summary>
-        /// Forwards call to repository to change book name.
-        /// </summary>
-        /// <param name="index"> Index of the item to modify.</param>
-        /// <param name="newName">Name to change item name into.</param>
-        public void ChangeBookName(int index, string newName)
-        {
-            this.bookRepo.ChangeBookName(index, newName);
-        }
-
-        /// <summary>
-        /// Forwards call to repository to change delivery days for publisher.
-        /// </summary>
-        /// <param name="index"> Index of the item to modify.</param>
-        /// <param name="days"> Number of days to change deliverydays into.</param>
-        public void ChangeDeliveryDays(int index, int days)
-        {
-            this.pubRepo.ChangeDeliveryDays(index, days);
-        }
-
-        /// <summary>
-        /// Forwards call to repository to change if author is forkids.
-        /// </summary>
-        /// <param name="index"> Index of the item to modify.</param>
-        /// <param name="forKids"> Bool value to change author forKids value into.</param>
-        public void ChangeForKidsAuthor(int index, bool forKids)
-        {
-            this.autRepo.ChangeForKids(index, forKids);
-        }
-
-        /// <summary>
-        /// Forwards call to repository to change if author is stil active.
-        /// </summary>
-        /// <param name="index"> Index of the item to modify.</param>
-        /// <param name="isActive"> Bool value to change author isActive into.</param>
-        public void ChangeIsActiveAuthor(int index, bool isActive)
-        {
-            this.autRepo.ChangeIsActive(index, isActive);
-        }
-
-        /// <summary>
-        /// Forwards call to repository to change if publisher is still active.
-        /// </summary>
-        /// <param name="index"> Index of the item to modify.</param>
-        /// <param name="isactive"> Bool value to change publisher isActive into.</param>
-        public void ChangePublisherIsActive(int index, bool isactive)
-        {
-            this.pubRepo.ChangeIsActive(index, isactive);
-        }
-
-        /// <summary>
-        /// Forwards call to repository to change language for publisher.
-        /// </summary>
-        /// <param name="index">Index of the item to modify.</param>
-        /// <param name="language"> New language value.</param>
-        public void ChangePublisherLanguage(int index, string language)
-        {
-            this.pubRepo.ChangeLanguage(index, language);
-        }
-
-        /// <summary>
-        /// Forwards call to repository to change name for publisher.
-        /// </summary>
-        /// <param name="index">Index of the item to modify.</param>
-        /// <param name="name"> New name value.</param>
-        public void ChangePublisherName(int index, string name)
-        {
-            this.pubRepo.ChangePublisherName(index, name);
-        }
-
-        /// <summary>
-        /// Forwards call to repository to change website for publisher.
-        /// </summary>
-        /// <param name="index"> Index of the item to modify.</param>
-        /// <param name="website"> New website value.</param>
-        public void ChangeWebsite(int index, string website)
-        {
-            this.pubRepo.ChangeWebpage(index, website);
         }
 
         /// <summary>

@@ -5,6 +5,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using A9HNYJ_HFT_2021221.Models;
 using System.Linq;
+using System;
 
 namespace A9HNYJ_HFT_2021221.Test
 {
@@ -24,6 +25,13 @@ namespace A9HNYJ_HFT_2021221.Test
             var logic = this.LogicMockGenerator();
             logic.AddBook(new Book() { BookID = 16, AuthorID = 3, PublisherID = 5, Bookname = "Test", Price = 3000, Supply = 4, Year = 2041 });
             this.bookrep.Verify(x => x.AddItem(new Book { BookID = 16, AuthorID = 3, PublisherID = 5, Bookname = "Test", Price = 3000, Supply = 4, Year = 2041 }), Times.Once);
+        }
+
+        [Test]
+        public void AddBookWithObjectWithNullasNameTest()
+        {
+            var logic = this.LogicMockGenerator();
+            Assert.Throws<ArgumentException>(() => logic.AddBook(new Book() { BookID = 16, AuthorID = 3, PublisherID = 5, Bookname = null, Price = 3000, Supply = 4, Year = 2041 }));
         }
 
         [Test]
@@ -64,8 +72,9 @@ namespace A9HNYJ_HFT_2021221.Test
         public void ModifyAuthorNameTest()
         {
             var logic = this.LogicMockGenerator();
-            logic.ChangeAuthorName(1, "ModName");
-            this.autrep.Verify(x => x.ChangeAuthorName(1, "ModName"), Times.Once);
+            
+            logic.UpdateAuthor(new Author() { AuthorKey = 1, AuthorName = "test", YearBorn = 1821, IsActive = false, OriginalLanguage = "Russian", ForKids = false });
+            this.autrep.Verify(x => x.Update(new Author() { AuthorKey = 1, AuthorName = "test", YearBorn = 1821, IsActive = false, OriginalLanguage = "Russian", ForKids = false }), Times.Once);
         }
 
         /// <summary>

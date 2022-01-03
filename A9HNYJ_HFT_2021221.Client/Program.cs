@@ -7,14 +7,10 @@ using System.Linq;
 
 namespace A9HNYJ_HFT_2021221.Client
 {
-    /// <summary>
-    /// Main program class, handles user interface, initialization.
-    /// </summary>
+    
     internal static class Program
     {
-        /// <summary>
-        /// User interface and initialization.
-        /// </summary>
+        
         public static void Main()
         {
             RestService rest = new RestService("http://localhost:37921");
@@ -43,7 +39,7 @@ namespace A9HNYJ_HFT_2021221.Client
                 .Add("List all Authors", () => ListAllAuthors(rest))
                 .Add("List all  Books", () => ListAllBooks(rest))
                 .Add("Admin functionalities", () => adminmenu.Show())
-                .Add("Supply manager functionalioties", () => supplymanagermenu.Show())
+                .Add("Supply manager functionalities", () => supplymanagermenu.Show())
                 .Add("Exit", ConsoleMenu.Close);
             menu.Show();
         }
@@ -58,10 +54,7 @@ namespace A9HNYJ_HFT_2021221.Client
             Console.ReadLine();
         }
 
-        /// <summary>
-        /// Calls query "ListNewBooksWithOldEditions" and outputs results to console.
-        /// </summary>
-        /// <param name="user"> UserLogic object. </param>
+        
         public static void ListNewBooksWithOldEditions(RestService rest)
         {
             var q = rest.Get<Book>("user/book/withneweditions");
@@ -73,10 +66,7 @@ namespace A9HNYJ_HFT_2021221.Client
             Console.ReadLine();
         }
 
-        /// <summary>
-        /// Calls query "ListAllAuthorsHowManyEditions" and outputs results to console.
-        /// </summary>
-        /// <param name="user"> UserLogic object. </param>
+        
         public static void ListAllAuthorsNumberOfEditions(RestService rest)
         {
             var q = rest.Get<ListAllAuthorsEditionsReturnValue>("user/listauthorseditions");
@@ -88,10 +78,7 @@ namespace A9HNYJ_HFT_2021221.Client
             Console.ReadLine();
         }
 
-        /// <summary>
-        /// Calls query "ListBooksWithLessThan10PcsWith10DayDelivery" and outputs results to console.
-        /// </summary>
-        /// <param name="user"> UserLogic object. </param>
+        
         public static void ListBooksWithLessThan10PcsWith10DayDelivery(RestService rest)
         {
             var q = rest.Get<ListBooksWithLessThan10PcsReturnValue>("admin/book/booksWithLessThanTen");
@@ -103,14 +90,9 @@ namespace A9HNYJ_HFT_2021221.Client
             Console.ReadLine();
         }
 
-        /// <summary>
-        /// Calls query "ListEnglishBookForKids" and outputs results to console.
-        /// </summary>
-        /// <param name="user"> UserLogic object. </param>
         public static void EnglishBooksByEnglishAuthorsForKids(RestService rest)
         {
             var q = rest.Get<Book>("user/book/forkids");
-            
             foreach (var a in q)
             {
                 Console.WriteLine(a.ToString());
@@ -119,10 +101,6 @@ namespace A9HNYJ_HFT_2021221.Client
             Console.ReadLine();
         }
 
-        /// <summary>
-        /// Writes all books to console, and asks user to chose which item's price they whish to modify. Calls ChangePrice function whith chosen index and new price.
-        /// </summary>
-        /// <param name="smen"> SupplyManager object. </param>
         public static void ChangePrice(RestService rest)
         {
             ListAllBooks(rest);
@@ -135,10 +113,7 @@ namespace A9HNYJ_HFT_2021221.Client
             rest.Put<Book>(q, "admin/book");
         }
 
-        /// <summary>
-        /// Writes all books to console, and asks user to chose which item's supply to add to. Calls AddSupply function to add value to current supply.
-        /// </summary>
-        /// <param name="smen"> SupplyManager object. </param>
+        
         public static void AddSupply(RestService rest)
         {
             ListAllBooks(rest);
@@ -151,10 +126,7 @@ namespace A9HNYJ_HFT_2021221.Client
             rest.Put<Book>(q, "admin/book");
         }
 
-        /// <summary>
-        /// Writes all books to console, and asks user to chose which item's supply change. Calls AddSupply function to change value of current supply.
-        /// </summary>
-        /// <param name="smen"> SupplyManager object. </param>
+        
         public static void ChangeSupply(RestService rest)
         {
             ListAllBooks(rest);
@@ -167,10 +139,7 @@ namespace A9HNYJ_HFT_2021221.Client
             rest.Put<Book>(q, "admin/book");
         }
 
-        /// <summary>
-        /// Writes all authors and publishers and asks user values for a new book item. Calls AddBook function with the input values, and writes new item to console.
-        /// </summary>
-        /// <param name="smen"> SupplyManager object. </param>
+        
         public static void AddBookSupplyManager(RestService rest)
         {
             ListAllAuthors(rest);
@@ -213,6 +182,7 @@ namespace A9HNYJ_HFT_2021221.Client
         {
             Console.WriteLine("Please add which table you want to modify");
             Console.WriteLine("1: Books  ||  2: Authors  ||  3: Publishers");
+            Console.WriteLine("Please input number now.");
             int input = int.Parse(Console.ReadLine());
             switch (input)
             {
@@ -353,11 +323,12 @@ namespace A9HNYJ_HFT_2021221.Client
             ListAllAuthors(rest);
             Console.WriteLine("Chose which item you want to modify!");
             int index = int.Parse(Console.ReadLine());
+            string input;
             var q = rest.GetOne<Author>($"user/author/{index}");
             if (q != null)
             {
                 Console.WriteLine("Chose wich value you want to modify?");
-                Console.WriteLine("1: Name  ||  2: KidFriendly  ||  3: Aktive status");
+                Console.WriteLine("1: Name  ||  2: KidFriendly  ||  3: Aktive status  || 4: Year of birth  || 5: Original language");
                 int choice = int.Parse(Console.ReadLine());
                 switch (choice)
                 {
@@ -368,7 +339,7 @@ namespace A9HNYJ_HFT_2021221.Client
                         break;
                     case 2:
                         Console.WriteLine("Please give new value [true-false]");
-                        string input = Console.ReadLine();
+                        input = Console.ReadLine();
                         if (input == "true")
                         {
                             q.ForKids = true;
@@ -387,13 +358,13 @@ namespace A9HNYJ_HFT_2021221.Client
                         break;
                     case 3:
                         Console.WriteLine("Please give new value [true-false]");
-                        string input2 = Console.ReadLine();
-                        if (input2 == "false")
+                        input = Console.ReadLine();
+                        if (input == "false")
                         {
                             q.IsActive = true;
                             rest.Put<Author>(q, "admin/author");
                         }
-                        else if (input2 == "true")
+                        else if (input == "true")
                         {
                             q.IsActive = false;
                             rest.Put<Author>(q, "admin/author");
@@ -404,7 +375,29 @@ namespace A9HNYJ_HFT_2021221.Client
                         }
 
                         break;
+                    case 4:
+                        Console.WriteLine("Please give new year of birth");
+                        input = Console.ReadLine();
+                        int year;
+                        if (int.TryParse(input, out year))
+                        {
+                            q.YearBorn = year;
+                            rest.Put<Author>(q, "admin/author");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Wring input format. Please give number.");
+                        }
+
+                        break;
+                    case 5:
+                        Console.WriteLine("Please give new original language");
+                        input = Console.ReadLine();
+                        q.OriginalLanguage = input;
+                        rest.Put<Author>(q, "admin/author");
+                        break;
                 }
+
                 Console.ReadLine();
             }
             else

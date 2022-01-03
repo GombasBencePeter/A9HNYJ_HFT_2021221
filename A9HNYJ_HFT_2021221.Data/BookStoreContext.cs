@@ -21,15 +21,6 @@ namespace A9HNYJ_HFT_2021221.Data
             this.Database.EnsureCreated();
         }
 
-        ///// <summary>
-        ///// Initializes a new instance of the <see cref="BookStoreContext"/> class.
-        ///// </summary>
-        ///// <param name="options"> Custom otions for the constructor.</param>
-        //public BookStoreContext(DbContextOptions<BookStoreContext> options)
-        //    : base(options)
-        //{
-        //}
-
         /// <summary>
         /// Gets or sets db Set with Book entites.
         /// </summary>
