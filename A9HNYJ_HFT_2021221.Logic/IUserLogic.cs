@@ -54,6 +54,7 @@ namespace A9HNYJ_HFT_2021221.Logic
         /// <returns> One Author instance with the corresponding index. </returns>
         Author OneAuthor(int index);
 
+        public IEnumerable<ListAuthorWithNumberOfCopiesPerBookReturnValue> ListAuthorWithNumberOfCopiesPerBook();
 
         public IEnumerable<ListBooksWithLessThan10PcsReturnValue> ListBooksWithLessThan10PcsWith10DayDelivery();
        

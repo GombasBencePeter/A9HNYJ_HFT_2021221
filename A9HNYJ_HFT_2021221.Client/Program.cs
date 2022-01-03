@@ -38,6 +38,7 @@ namespace A9HNYJ_HFT_2021221.Client
                 .Add("List all items that hase less than 10 supply, and can be resupplied within 10 days.", () => ListBooksWithLessThan10PcsWith10DayDelivery(rest))
                 .Add("List all authors and how many publications they have in our system.", () => ListAllAuthorsNumberOfEditions(rest))
                 .Add("List all books, which has both old and new editions avaiable.", () => ListNewBooksWithOldEditions(rest))
+                .Add("List all authors with avg number copies of their books on stock.", () => ListAuthorWithNumberOfCopiesPerBook(rest))
                 .Add("List all Publishers", () => ListAllPublishers(rest))
                 .Add("List all Authors", () => ListAllAuthors(rest))
                 .Add("List all  Books", () => ListAllBooks(rest))
@@ -45,6 +46,16 @@ namespace A9HNYJ_HFT_2021221.Client
                 .Add("Supply manager functionalioties", () => supplymanagermenu.Show())
                 .Add("Exit", ConsoleMenu.Close);
             menu.Show();
+        }
+
+        public static void ListAuthorWithNumberOfCopiesPerBook(RestService rest)
+        {
+            var q = rest.Get<ListAuthorWithNumberOfCopiesPerBookReturnValue>("user/book/authorsavgnumberofcopies");
+            foreach(var item in q)
+            {
+                Console.WriteLine("Author: "+item.Name+" || AVGNumber: "+item.AVGNumber);
+            }
+            Console.ReadLine();
         }
 
         /// <summary>

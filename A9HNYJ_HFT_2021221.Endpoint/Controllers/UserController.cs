@@ -40,6 +40,13 @@ namespace A9HNYJ_HFT_2021221.Endpoint.Controllers
             return ul.ListNewBooksWithOldEditions();
         }
 
+        // GET: /book/authorsavgnumberofcopies
+        [HttpGet("book/authorsavgnumberofcopies")]
+        public IEnumerable<ListAuthorWithNumberOfCopiesPerBookReturnValue> GetListAuthorWithNumberOfCopiesPerBooks()
+        {
+            return ul.ListAuthorWithNumberOfCopiesPerBook();
+        }
+
         /// ////////////////
 
         // GET: /book/all

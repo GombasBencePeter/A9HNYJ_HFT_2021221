@@ -135,6 +135,22 @@ namespace A9HNYJ_HFT_2021221.Logic
             return query;
         }
 
+        public IEnumerable<ListAuthorWithNumberOfCopiesPerBookReturnValue> ListAuthorWithNumberOfCopiesPerBook()
+        {
+            var q =
+                from i in this.bookRepo.GetAll()
+                join t in this.autRepo.GetAll() on i.AuthorID equals t.AuthorKey
+                select new { Name = t.AuthorName, Supply = i.Supply };
+
+            var q2 =
+                from i in q
+                group i by i.Name into g
+                select new ListAuthorWithNumberOfCopiesPerBookReturnValue
+                    { Name = g.Key, AVGNumber = g.Average(x => x.Supply) };
+
+            return q2;
+        }
+
         /// <summary>
         /// Query to get all new edition books wich has an old edition published. The new editions publisher is active, while the old editions publisher is not active.
         /// </summary>
