@@ -144,34 +144,49 @@ namespace A9HNYJ_HFT_2021221.Client
         {
             ListAllAuthors(rest);
             Console.WriteLine("Please give the index of the author");
-            int author = int.Parse(Console.ReadLine());
-            author = rest.GetOne<Author>($"user/author/{author}").AuthorKey;
-            Console.Clear();
-            ListAllPublishers(rest);
-            Console.WriteLine("Please give the index of the publisher");
-            int publisher = int.Parse(Console.ReadLine());
-            publisher = rest.GetOne<Publisher>($"user/publisher/{publisher}").PublisherID;
-            Console.Clear();
-            Console.WriteLine("Please give the name of the book");
-            string bookname = Console.ReadLine();
-            Console.Clear();
-            Console.WriteLine("Please give the price of the book");
-            int price = int.Parse(Console.ReadLine());
-            Console.Clear();
-            Console.WriteLine("PLease give how many pieces there are in supply");
-            int supply = int.Parse(Console.ReadLine());
-            Console.Clear();
-            Console.WriteLine("PLease give year of release");
-            int year = int.Parse(Console.ReadLine());
-            rest.Post<Book>(new Book {
-                AuthorID = author, 
-                PublisherID = publisher, 
-                Bookname = bookname, 
-                Price = price, 
-                Supply = supply, 
-                Year = year 
-            },"admin/book");
-            Console.ReadLine();
+            int author;
+            if (int.TryParse(Console.ReadLine(), out author))
+            {
+                author = rest.GetOne<Author>($"user/author/{author}").AuthorKey;
+                Console.Clear();
+                ListAllPublishers(rest);
+                Console.WriteLine("Please give the index of the publisher");
+                int publisher;
+                if (int.TryParse(Console.ReadLine(), out publisher))
+                {
+                    publisher = rest.GetOne<Publisher>($"user/publisher/{publisher}").PublisherID;
+                    Console.Clear();
+                    Console.WriteLine("Please give the name of the book");
+                    string bookname = Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine("Please give the price of the book");
+                    int price = int.Parse(Console.ReadLine());
+                    Console.Clear();
+                    Console.WriteLine("PLease give how many pieces there are in supply");
+                    int supply = int.Parse(Console.ReadLine());
+                    Console.Clear();
+                    Console.WriteLine("PLease give year of release");
+                    int year = int.Parse(Console.ReadLine());
+                    rest.Post<Book>(new Book
+                    {
+                        AuthorID = author,
+                        PublisherID = publisher,
+                        Bookname = bookname,
+                        Price = price,
+                        Supply = supply,
+                        Year = year
+                    }, "admin/book");
+                    Console.ReadLine();
+                }
+                else
+                {
+                    Console.WriteLine("Wrong input");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Wrong input");
+            }
         }
 
         /// <summary>
@@ -183,18 +198,25 @@ namespace A9HNYJ_HFT_2021221.Client
             Console.WriteLine("Please add which table you want to modify");
             Console.WriteLine("1: Books  ||  2: Authors  ||  3: Publishers");
             Console.WriteLine("Please input number now.");
-            int input = int.Parse(Console.ReadLine());
-            switch (input)
+            int input;
+            if (int.TryParse(Console.ReadLine(), out input))
             {
-                case 1:
-                    UpdateBook(rest);
-                    break;
-                case 2:
-                    UpdateAuthor(rest);
-                    break;
-                case 3:
-                    UpdatePublisher(rest);
-                    break;
+                switch (input)
+                {
+                    case 1:
+                        UpdateBook(rest);
+                        break;
+                    case 2:
+                        UpdateAuthor(rest);
+                        break;
+                    case 3:
+                        UpdatePublisher(rest);
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Wrong input");
             }
         }
 
@@ -206,49 +228,64 @@ namespace A9HNYJ_HFT_2021221.Client
         {
             ListAllBooks(rest);
             Console.WriteLine("Please chose which book you want to modify");
-            int index = int.Parse(Console.ReadLine());
-            var q = rest.GetOne<Book>($"user/book/{index}");
-            if (q != null)
+            int index;
+            if (int.TryParse(Console.ReadLine(), out index))
             {
-                Console.WriteLine("Please chose which value to change");
-                Console.WriteLine("1: Author || 2: Publisher || 3: Title || 4: Year");
-                int inp = int.Parse(Console.ReadLine());
-                switch (inp)
+                var q = rest.GetOne<Book>($"user/book/{index}");
+                if (q != null)
                 {
-                    case 1: 
-                        ListAllAuthors(rest);
-                        Console.WriteLine("Input number for new author");
-                        int na = int.Parse(Console.ReadLine());
-                        q.AuthorID = na;
-                        rest.Put<Book>(q, "admin/book");
-                        break;
-                    case 2:
-                        ListAllPublishers(rest);
-                        Console.WriteLine("Input number for new publisher");
-                        int np = int.Parse(Console.ReadLine());
-                        q.PublisherID = np;
-                        rest.Put<Book>(q, "admin/book");
-                        break;
-                    case 3:
-                        Console.WriteLine("Input ne title");
-                        string nt = Console.ReadLine();
-                        q.Bookname = nt;
-                        rest.Put<Book>(q, "admin/book");
-                        break;
-                    case 4:
-                        Console.WriteLine("Input new release year");
-                        int ny = int.Parse(Console.ReadLine());
-                        q.Year = ny;
-                        rest.Put<Book>(q, "admin/book");
-                        break;
-                    default:
+                    Console.WriteLine("Please chose which value to change");
+                    Console.WriteLine("1: Author || 2: Publisher || 3: Title || 4: Year");
+                    int inp;
+                    if (int.TryParse(Console.ReadLine(), out inp))
+                    {
+                        switch (inp)
+                        {
+                            case 1:
+                                ListAllAuthors(rest);
+                                Console.WriteLine("Input number for new author");
+                                int na = int.Parse(Console.ReadLine());
+                                q.AuthorID = na;
+                                rest.Put<Book>(q, "admin/book");
+                                break;
+                            case 2:
+                                ListAllPublishers(rest);
+                                Console.WriteLine("Input number for new publisher");
+                                int np = int.Parse(Console.ReadLine());
+                                q.PublisherID = np;
+                                rest.Put<Book>(q, "admin/book");
+                                break;
+                            case 3:
+                                Console.WriteLine("Input ne title");
+                                string nt = Console.ReadLine();
+                                q.Bookname = nt;
+                                rest.Put<Book>(q, "admin/book");
+                                break;
+                            case 4:
+                                Console.WriteLine("Input new release year");
+                                int ny = int.Parse(Console.ReadLine());
+                                q.Year = ny;
+                                rest.Put<Book>(q, "admin/book");
+                                break;
+                            default:
+                                Console.WriteLine("Wrong input.");
+                                break;
+                        }
+                    }
+                    else
+                    {
                         Console.WriteLine("Wrong input.");
-                        break;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No book with such id");
+                    Console.ReadLine();
                 }
             }
             else
             {
-                Console.WriteLine("No book with such id");
+                Console.WriteLine("Wrong input.");
                 Console.ReadLine();
             }
         }
@@ -261,62 +298,77 @@ namespace A9HNYJ_HFT_2021221.Client
         {
             ListAllPublishers(rest);
             Console.WriteLine("Chose which item you want to modify!");
-            int index = int.Parse(Console.ReadLine());
-            var q = rest.Get<Publisher>($"user/publisher/{index}").FirstOrDefault();
-            if (q!= null)
+            int index;
+            if (int.TryParse(Console.ReadLine(), out index))
             {
-                Console.WriteLine("CHose wich value you want to modify");
-                Console.WriteLine("1: Name  ||  2: Language  ||  3: Webpage  ||  4: Delivery days  ||  5: Aktive status");
-                int choice = int.Parse(Console.ReadLine());
-                switch (choice)
+                var q = rest.Get<Publisher>($"user/publisher/{index}").FirstOrDefault();
+                if (q != null)
                 {
-                    case 1:
-                        Console.WriteLine("Please give new name");
-                        q.PublisherName = Console.ReadLine();
-                        rest.Put<Publisher>(q, "admin/publisher");
-                        break;
-                    case 2:
-                        Console.WriteLine("Please give new language");
-                        q.Language = Console.ReadLine();
-                        rest.Put<Publisher>(q, "admin/publisher");
-                        break;
-                    case 3:
-                        Console.WriteLine("Please give new Web address");
-                        q.Webpage = Console.ReadLine();
-                        rest.Put<Publisher>(q, "admin/publisher");
-                        break;
-                    case 4:
-                        Console.WriteLine("Please give new delivery days value");
-                        q.DelivareDays = int.Parse(Console.ReadLine());
-                        rest.Put<Publisher>(q, "admin/publisher");
-                        break;
-                    case 5:
-                        Console.WriteLine("PLease give new active status [true-false]");
-                        string input2 = Console.ReadLine();
-                        if (input2 == "true")
+                    Console.WriteLine("CHose wich value you want to modify");
+                    Console.WriteLine("1: Name  ||  2: Language  ||  3: Webpage  ||  4: Delivery days  ||  5: Aktive status");
+                    int choice;
+                    if (int.TryParse(Console.ReadLine(), out choice))
+                    {
+                        switch (choice)
                         {
-                            q.IsActive = true;
+                            case 1:
+                                Console.WriteLine("Please give new name");
+                                q.PublisherName = Console.ReadLine();
+                                rest.Put<Publisher>(q, "admin/publisher");
+                                break;
+                            case 2:
+                                Console.WriteLine("Please give new language");
+                                q.Language = Console.ReadLine();
+                                rest.Put<Publisher>(q, "admin/publisher");
+                                break;
+                            case 3:
+                                Console.WriteLine("Please give new Web address");
+                                q.Webpage = Console.ReadLine();
+                                rest.Put<Publisher>(q, "admin/publisher");
+                                break;
+                            case 4:
+                                Console.WriteLine("Please give new delivery days value");
+                                q.DelivareDays = int.Parse(Console.ReadLine());
+                                rest.Put<Publisher>(q, "admin/publisher");
+                                break;
+                            case 5:
+                                Console.WriteLine("PLease give new active status [true-false]");
+                                string input2 = Console.ReadLine();
+                                if (input2 == "true")
+                                {
+                                    q.IsActive = true;
+                                }
+                                else if (input2 == "false")
+                                {
+                                    q.IsActive = false;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("wrong input");
+                                }
+                                rest.Put<Publisher>(q, "admin/publisher");
+                                break;
+                            default:
+                                Console.WriteLine("Wrong input.");
+                                break;
                         }
-                        else if (input2 == "false")
-                        {
-                            q.IsActive = false;
-                        }
-                        else
-                        {
-                            Console.WriteLine("wrong input");
-                        }
-                        rest.Put<Publisher>(q, "admin/publisher");
-                        break;
-                    default:
-                        Console.WriteLine("Wrong input.");
-                        break;
+
+                        Console.ReadLine();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Wrong input");
+                    }
                 }
-                Console.ReadLine();
+                else
+                {
+                    Console.WriteLine("Chosen item doesn't exist");
+                    Console.ReadLine();
+                }
             }
             else
             {
-                Console.WriteLine("Chosen item doesn't exist");
-                Console.ReadLine();
+                Console.WriteLine("Wrong input.");
             }
         }
 
@@ -328,91 +380,97 @@ namespace A9HNYJ_HFT_2021221.Client
         {
             ListAllAuthors(rest);
             Console.WriteLine("Chose which item you want to modify!");
-            int index = int.Parse(Console.ReadLine());
-            string input;
-            var q = rest.GetOne<Author>($"user/author/{index}");
-            if (q != null)
+            int index;
+            if (int.TryParse(Console.ReadLine(), out index))
             {
-                Console.WriteLine("Chose wich value you want to modify?");
-                Console.WriteLine("1: Name  ||  2: KidFriendly  ||  3: Aktive status  || 4: Year of birth  || 5: Original language");
-                int choice = int.Parse(Console.ReadLine());
-                switch (choice)
+                string input;
+                var q = rest.GetOne<Author>($"user/author/{index}");
+                if (q != null)
                 {
-                    case 1:
-                        Console.WriteLine("Please give new name");
-                        q.AuthorName = Console.ReadLine();
-                        rest.Put<Author>(q, "admin/author");
-                        break;
-                    case 2:
-                        Console.WriteLine("Please give new value [true-false]");
-                        input = Console.ReadLine();
-                        if (input == "true")
+                    Console.WriteLine("Chose wich value you want to modify?");
+                    Console.WriteLine("1: Name  ||  2: KidFriendly  ||  3: Aktive status  || 4: Year of birth  || 5: Original language");
+                    int choice;
+                    if (int.TryParse(Console.ReadLine(), out choice))
+                    {
+                        switch (choice)
                         {
-                            q.ForKids = true;
-                            rest.Put<Author>(q, "admin/author");
-                        }
-                        else if (input == "false")
-                        {
-                            q.ForKids = false;
-                            rest.Put<Author>(q, "admin/author");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Wrong input");
+                            case 1:
+                                Console.WriteLine("Please give new name");
+                                q.AuthorName = Console.ReadLine();
+                                rest.Put<Author>(q, "admin/author");
+                                break;
+                            case 2:
+                                Console.WriteLine("Please give new value [true-false]");
+                                input = Console.ReadLine();
+                                if (input == "true")
+                                {
+                                    q.ForKids = true;
+                                    rest.Put<Author>(q, "admin/author");
+                                }
+                                else if (input == "false")
+                                {
+                                    q.ForKids = false;
+                                    rest.Put<Author>(q, "admin/author");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Wrong input");
+                                }
+
+                                break;
+                            case 3:
+                                Console.WriteLine("Please give new value [true-false]");
+                                input = Console.ReadLine();
+                                if (input == "false")
+                                {
+                                    q.IsActive = true;
+                                    rest.Put<Author>(q, "admin/author");
+                                }
+                                else if (input == "true")
+                                {
+                                    q.IsActive = false;
+                                    rest.Put<Author>(q, "admin/author");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Wrong input");
+                                }
+
+                                break;
+                            case 4:
+                                Console.WriteLine("Please give new year of birth");
+                                input = Console.ReadLine();
+                                int year;
+                                if (int.TryParse(input, out year))
+                                {
+                                    q.YearBorn = year;
+                                    rest.Put<Author>(q, "admin/author");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Wrong input format. Please give number.");
+                                }
+
+                                break;
+                            case 5:
+                                Console.WriteLine("Please give new original language");
+                                input = Console.ReadLine();
+                                q.OriginalLanguage = input;
+                                rest.Put<Author>(q, "admin/author");
+                                break;
+                            default:
+                                Console.WriteLine("Wrong input.");
+                                break;
                         }
 
-                        break;
-                    case 3:
-                        Console.WriteLine("Please give new value [true-false]");
-                        input = Console.ReadLine();
-                        if (input == "false")
-                        {
-                            q.IsActive = true;
-                            rest.Put<Author>(q, "admin/author");
-                        }
-                        else if (input == "true")
-                        {
-                            q.IsActive = false;
-                            rest.Put<Author>(q, "admin/author");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Wrong input");
-                        }
-
-                        break;
-                    case 4:
-                        Console.WriteLine("Please give new year of birth");
-                        input = Console.ReadLine();
-                        int year;
-                        if (int.TryParse(input, out year))
-                        {
-                            q.YearBorn = year;
-                            rest.Put<Author>(q, "admin/author");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Wrong input format. Please give number.");
-                        }
-
-                        break;
-                    case 5:
-                        Console.WriteLine("Please give new original language");
-                        input = Console.ReadLine();
-                        q.OriginalLanguage = input;
-                        rest.Put<Author>(q, "admin/author");
-                        break;
-                    default:
-                        Console.WriteLine("Wrong input.");
-                        break;
+                        Console.ReadLine();
+                    }
                 }
-
-                Console.ReadLine();
-            }
-            else
-            {
-                Console.WriteLine("Chosen item doesn't exist");
-                Console.ReadLine();
+                else
+                {
+                    Console.WriteLine("Chosen item doesn't exist");
+                    Console.ReadLine();
+                }
             }
         }
 
@@ -425,58 +483,61 @@ namespace A9HNYJ_HFT_2021221.Client
             Console.WriteLine("Please give name of author!");
             string name = Console.ReadLine();
             Console.WriteLine("Please give the year he/she was born");
-            int year = int.Parse(Console.ReadLine());
-            Console.WriteLine("Please give authors language");
-            string language = Console.ReadLine();
-            Console.WriteLine("Please give authors active status [true-false]");
-            string input = Console.ReadLine();
-            bool isActive = false;
-            if (input == "true" || input == "false")
+            int year;
+            if (int.TryParse(Console.ReadLine(), out year))
             {
-                if (input == "true")
-                {
-                    isActive = true;
-                }
-                else if (input == "false")
-                {
-                    isActive = false;
-                }
-
-                Console.WriteLine("Please give wether author wrote kid friendly books");
-                input = Console.ReadLine();
-                bool kidFriendly = false;
+                Console.WriteLine("Please give authors language");
+                string language = Console.ReadLine();
+                Console.WriteLine("Please give authors active status [true-false]");
+                string input = Console.ReadLine();
+                bool isActive = false;
                 if (input == "true" || input == "false")
                 {
                     if (input == "true")
                     {
-                        kidFriendly = true;
+                        isActive = true;
                     }
                     else if (input == "false")
                     {
-                        kidFriendly = false;
+                        isActive = false;
                     }
 
-                    rest.Post<Author>(
-                        new Author
+                    Console.WriteLine("Please give wether author wrote kid friendly books");
+                    input = Console.ReadLine();
+                    bool kidFriendly = false;
+                    if (input == "true" || input == "false")
+                    {
+                        if (input == "true")
                         {
-                            AuthorName = name,
-                            YearBorn = year,
-                            OriginalLanguage = language,
-                            IsActive = isActive,
-                            ForKids = kidFriendly
-                        }, "admin/author"
-                        );
-                    Console.WriteLine("Success!");
-                    Console.ReadLine();
+                            kidFriendly = true;
+                        }
+                        else if (input == "false")
+                        {
+                            kidFriendly = false;
+                        }
+
+                        rest.Post<Author>(
+                            new Author
+                            {
+                                AuthorName = name,
+                                YearBorn = year,
+                                OriginalLanguage = language,
+                                IsActive = isActive,
+                                ForKids = kidFriendly
+                            }, "admin/author"
+                            );
+                        Console.WriteLine("Success!");
+                        Console.ReadLine();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Wrong input format");
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Wrong input format");
+                    Console.WriteLine("Wring input format");
                 }
-            }
-            else
-            {
-                Console.WriteLine("Wring input format");
             }
         }
 
@@ -487,19 +548,22 @@ namespace A9HNYJ_HFT_2021221.Client
         public static void DeletePublisher(RestService rest)
         {
             ListAllPublishers(rest);
-            Console.WriteLine("PLease input index of item to delete");
-            int index = int.Parse(Console.ReadLine());
-            var p = rest.GetOne<Publisher>($"user/publisher/{index}");
-            if (p != null)
+            Console.WriteLine("Please input index of item to delete");
+            int index;
+            if (int.TryParse(Console.ReadLine(), out index))
             {
-                rest.Delete(index, "admin/publisher");
-                Console.WriteLine(p.ToString() + "  " + "<---- item deleted");
-                Console.ReadLine();
-            }
-            else
-            {
-                Console.WriteLine("Item doesn't exist");
-                Console.ReadLine();
+                var p = rest.GetOne<Publisher>($"user/publisher/{index}");
+                if (p != null)
+                {
+                    rest.Delete(index, "admin/publisher");
+                    Console.WriteLine(p.ToString() + "  " + "<---- item deleted");
+                    Console.ReadLine();
+                }
+                else
+                {
+                    Console.WriteLine("Item doesn't exist");
+                    Console.ReadLine();
+                }
             }
         }
 
@@ -511,18 +575,21 @@ namespace A9HNYJ_HFT_2021221.Client
         {
             ListAllAuthors(rest);
             Console.WriteLine("Please input index of item to delete");
-            int index = int.Parse(Console.ReadLine());
-            var p = rest.GetOne<Author>($"user/author/{index}");
-            if (p != null)
+            int index;
+            if (int.TryParse(Console.ReadLine(), out index))
             {
-                rest.Delete(index, "admin/author");
-                Console.WriteLine(p.ToString() + "  " + "<---- item deleted");
-                Console.ReadLine();
-            }
-            else
-            {
-                Console.WriteLine("Item doesn't exist");
-                Console.ReadLine();
+                var p = rest.GetOne<Author>($"user/author/{index}");
+                if (p != null)
+                {
+                    rest.Delete(index, "admin/author");
+                    Console.WriteLine(p.ToString() + "  " + "<---- item deleted");
+                    Console.ReadLine();
+                }
+                else
+                {
+                    Console.WriteLine("Item doesn't exist");
+                    Console.ReadLine();
+                }
             }
         }
 
@@ -534,18 +601,21 @@ namespace A9HNYJ_HFT_2021221.Client
         {
             ListAllBooks(rest);
             Console.WriteLine("Please input index of item to delete");
-            int index = int.Parse(Console.ReadLine());
-            var p = rest.GetOne<Book>($"user/book/{index}");
-            if (p != null)
+            int index;
+            if (int.TryParse(Console.ReadLine(), out index))
             {
-                rest.Delete(index, "admin/book");
-                Console.WriteLine(p.ToString() + "  " + "<---- item deleted");
-                Console.ReadLine();
-            }
-            else
-            {
-                Console.WriteLine("Item doesn't exist");
-                Console.ReadLine();
+                var p = rest.GetOne<Book>($"user/book/{index}");
+                if (p != null)
+                {
+                    rest.Delete(index, "admin/book");
+                    Console.WriteLine(p.ToString() + "  " + "<---- item deleted");
+                    Console.ReadLine();
+                }
+                else
+                {
+                    Console.WriteLine("Item doesn't exist");
+                    Console.ReadLine();
+                }
             }
         }
 
@@ -698,14 +768,5 @@ namespace A9HNYJ_HFT_2021221.Client
 
             Console.ReadLine();
         }
-
-        //public static string IntInputToStirng()
-        //{
-        //    int res;
-        //    string input = Console.ReadLine();
-        //    if (int.TryParse(input, out res))
-        //    {
-        //    }
-        //}
     }
 }
