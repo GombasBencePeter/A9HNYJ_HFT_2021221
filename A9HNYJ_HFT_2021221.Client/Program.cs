@@ -241,6 +241,9 @@ namespace A9HNYJ_HFT_2021221.Client
                         q.Year = ny;
                         rest.Put<Book>(q, "admin/book");
                         break;
+                    default:
+                        Console.WriteLine("Wrong input.");
+                        break;
                 }
             }
             else
@@ -303,6 +306,9 @@ namespace A9HNYJ_HFT_2021221.Client
                             Console.WriteLine("wrong input");
                         }
                         rest.Put<Publisher>(q, "admin/publisher");
+                        break;
+                    default:
+                        Console.WriteLine("Wrong input.");
                         break;
                 }
                 Console.ReadLine();
@@ -395,6 +401,9 @@ namespace A9HNYJ_HFT_2021221.Client
                         input = Console.ReadLine();
                         q.OriginalLanguage = input;
                         rest.Put<Author>(q, "admin/author");
+                        break;
+                    default:
+                        Console.WriteLine("Wrong input.");
                         break;
                 }
 
@@ -551,7 +560,7 @@ namespace A9HNYJ_HFT_2021221.Client
             int author = int.Parse(Console.ReadLine());
             Console.Clear();
             ListAllPublishers(rest);
-            Console.WriteLine("PLease give index of publisher");
+            Console.WriteLine("Please give index of publisher");
             int publisher = int.Parse(Console.ReadLine());
             Console.Clear();
             Console.WriteLine("Please give title of book");
@@ -689,5 +698,14 @@ namespace A9HNYJ_HFT_2021221.Client
 
             Console.ReadLine();
         }
+
+        //public static string IntInputToStirng()
+        //{
+        //    int res;
+        //    string input = Console.ReadLine();
+        //    if (int.TryParse(input, out res))
+        //    {
+        //    }
+        //}
     }
 }
