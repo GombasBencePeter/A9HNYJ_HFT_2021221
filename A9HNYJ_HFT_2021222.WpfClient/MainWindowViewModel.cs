@@ -66,9 +66,9 @@ namespace A9HNYJ_HFT_2021222.WpfClient
 
         public MainWindowViewModel()
         {
-            Books = new RestCollection<Book>("http://localhost:37921/admin/", "book/all");
-            Authors = new RestCollection<Author>("http://localhost:37921/admin/", "author/all");
-            Publishers = new RestCollection<Publisher>("http://localhost:37921/admin/", "publisher/all");
+            Books = new RestCollection<Book>("http://localhost:37921/admin/", "Book");
+            Authors = new RestCollection<Author>("http://localhost:37921/admin/", "Author");
+            Publishers = new RestCollection<Publisher>("http://localhost:37921/admin/", "Publisher");
 
             DeletePublisher = new RelayCommand(
                 () => Publishers.Delete(SelectedPublisher.PublisherID),

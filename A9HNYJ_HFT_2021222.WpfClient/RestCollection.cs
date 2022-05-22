@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace A9HNYJ_HFT_2021222.WpfClient
+namespace A9HNYJ_HFT_2021222.RestClient
 {
     public class RestService
     {
@@ -284,17 +284,11 @@ namespace A9HNYJ_HFT_2021222.WpfClient
         List<T> items;
         bool hasSignalR;
         Type type = typeof(T);
-        string endpoint;
-        string baseurl;
-        string collectionpoint;
 
-        public RestCollection(string baseurl, string endpoint, string collectionpoint, string hub = null)
+        public RestCollection(string baseurl, string endpoint, string hub = null)
         {
             hasSignalR = hub != null;
             this.rest = new RestService(baseurl, endpoint);
-            this.baseurl = baseurl;
-            this.endpoint = endpoint;
-            this.collectionpoint = collectionpoint;
             if (hub != null)
             {
                 this.notify = new NotifyService(baseurl + hub);
@@ -313,45 +307,24 @@ namespace A9HNYJ_HFT_2021222.WpfClient
                     }
                     else
                     {
-                        Init(baseurl+endpoint);
+                        Init();
                     }
 
                 });
                 this.notify.AddHandler<T>(type.Name + "Updated", (T item) =>
                 {
-                    Init(baseurl + endpoint);
+                    Init();
                 });
 
                 this.notify.Init();
             }
-            Init(baseurl + endpoint);
+            Init();
         }
 
         private async Task Init()
         {
-            try
-            {
-                items = await rest.GetAsync<T>(typeof(T).Name);
-                CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
-            }catch(Exception e)
-            {
-
-            };
-            
-        }
-
-        private async Task Init(string url)
-        {
-            try
-            {
-                items = await rest.GetAsync<T>(url);
-                CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
-            }
-            catch (Exception e)
-            {
-
-            };
-
+            items = await rest.GetAsync<T>(typeof(T).Name);
+            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }
 
         public IEnumerator<T> GetEnumerator()
@@ -423,7 +396,7 @@ namespace A9HNYJ_HFT_2021222.WpfClient
             }
             else
             {
-                this.rest.DeleteAsync(id, this.collectionpoint).ContinueWith((t) =>
+                this.rest.DeleteAsync(id, typeof(T).Name).ContinueWith((t) =>
                 {
                     Init().ContinueWith(z =>
                     {
