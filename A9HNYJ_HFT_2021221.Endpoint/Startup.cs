@@ -23,7 +23,7 @@ namespace A9HNYJ_HFT_2021221.Endpoint
         {
             services.AddControllers();
             services.AddTransient<DbContext,BookStoreContext>().AddSingleton<DbContext, BookStoreContext>();
-            services.AddTransient<IBookRepository, BookRepository>();
+            services.AddTransient<IBookRepository, BookRepository>().AddSingleton<IBookRepository,BookRepository>();
             services.AddTransient<IPublisherRepository, PublisherRepository>();
             services.AddTransient<IAuthorRepository, AuthorRepository>();
             services.AddTransient<IAdminLogic, AdminLogic>();

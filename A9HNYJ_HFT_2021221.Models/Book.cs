@@ -82,14 +82,5 @@ namespace A9HNYJ_HFT_2021221.Models
 
             return false;
         }
-
-        /// <summary>
-        /// Override of GetHashCOde for comparison.
-        /// </summary>
-        /// <returns> Usual GetHashCode().</returns>
-        public override int GetHashCode()
-        {
-            return this.GetHashCode();
-        }
     }
 }
