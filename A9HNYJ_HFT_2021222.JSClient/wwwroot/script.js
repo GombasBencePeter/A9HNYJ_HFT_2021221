@@ -1,5 +1,6 @@
 
 let books = [];
+let booksWithNewerEditions = [];
 let connection = null;
 refresh()
 setupSignalR();
@@ -172,4 +173,25 @@ function create() {
             console.error('Error:', error);
         });
     
+}
+
+function booksWithNewEditions() {
+
+    document.getElementById('bookneweditionsTable').innerHTML = "";
+    fetch('http://localhost:37921/User/Book/withneweditions')
+        .then(x => x.json())
+        .then(y => {
+            booksWithNewerEditions = y;
+        })
+
+    
+    booksWithNewerEditions.forEach(p => {
+        document.getElementById('bookneweditionsTable').innerHTML += "<tr><td>" + p.bookID + "</td>" +
+            "<td>" + p.authorID + "</td>" +
+            "<td>" + p.publisherID + "</td>" +
+            "<td>" + p.bookname + "</td>" +
+            "<td>" + p.price + "</td>" +
+            "<td>" + p.supply + "</td>" +
+            "<td>" + p.year + "</td>" + "</td></tr>";
+    });
 }

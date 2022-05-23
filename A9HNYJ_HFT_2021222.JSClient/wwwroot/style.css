@@ -1,6 +1,7 @@
-table{
+table {
     width: 50%;
     border-collapse: collapse;
+    margin: 40px
 }
 
 table, th, td{
@@ -15,3 +16,12 @@ th{
     background-color: beige;
 }
 
+div{
+    margin-left: 40px;
+    margin-top:5px
+}
+
+h1, h2{
+    margin: 40px;
+    margin-bottom: 10px
+}
