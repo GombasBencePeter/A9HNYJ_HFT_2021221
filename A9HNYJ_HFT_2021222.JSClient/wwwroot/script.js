@@ -2,7 +2,7 @@
 let books = [];
 let booksWithNewerEditions = [];
 let connection = null;
-refresh()
+refresh();
 setupSignalR();
 
 function setupSignalR() {
