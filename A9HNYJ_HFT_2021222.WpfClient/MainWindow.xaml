@@ -21,19 +21,16 @@
             <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Column="0" Grid.Row="0" Height="150">
-            <Button Content="Modify" Height="50"/>
+            <Button Content="Modify" Height="50" Command="{Binding ModBook}"/>
             <Button Content="Delete" Height="50" Command="{Binding DeleteBook}"/>
-            <Button  Content="Add" Height="50"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="0" Height="150">
-            <Button Content="Modify" Height="50"/>
+            <Button Content="Modify" Height="50" Command="{Binding ModAuthor}"/>
             <Button Content="Delete" Height="50" Command="{Binding DeleteAuthor}"/>
-            <Button  Content="Add" Height="50"/>
         </StackPanel>
         <StackPanel Grid.Column="2" Grid.Row="0" Height="150">
-            <Button Content="Modify" Height="50"/>
+            <Button Content="Modify" Height="50" Command="{Binding ModPublisher}"/>
             <Button Content="Delete" Height="50" Command="{Binding DeletePublisher}"/>
-            <Button  Content="Add" Height="50"/>
         </StackPanel>
 
         <ListBox ItemsSource="{Binding Books}" Grid.Column="0" Grid.Row="1" SelectedItem="{Binding SelectedBook}">
@@ -51,8 +48,6 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Grid.Column="2" Content="Modify"/>
-        <Button Grid.Column="2" Content="Delete"/>
         <ListBox ItemsSource="{Binding Publishers}" Grid.Column="2" Grid.Row="1" SelectedItem="{Binding SelectedPublisher}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -61,9 +56,9 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="3">
-            <Button Content="Add new publisher" />
-            <Button Content="Add new author"/>
-            <Button Content="Add new book"/>
+            <Button Content="Add new publisher" Height="80" Margin="3" Command="{Binding AddPublisher}"/>
+            <Button Content="Add new author" Height="80" Margin="3" Command="{Binding AddAuthor}"/>
+            <Button Content="Add new book" Height="80" Margin="3" Command="{Binding AddBook}"/>
             <Button Content="Modify Item"/>
         </StackPanel>
 

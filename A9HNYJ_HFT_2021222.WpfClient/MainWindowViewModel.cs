@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using A9HNYJ_HFT_2021221.Models;
 using A9HNYJ_HFT_2021222.RestClient;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 
 namespace A9HNYJ_HFT_2021222.WpfClient
 {
 
-    class MainWindowViewModel
+    class MainWindowViewModel :ObservableRecipient
     {
 
         public Book selectedBook;
@@ -25,7 +26,7 @@ namespace A9HNYJ_HFT_2021222.WpfClient
             get => selectedBook;
             set
             {
-                selectedBook = value;
+                SetProperty(ref selectedBook, value);
                 (DeleteBook as RelayCommand).NotifyCanExecuteChanged();
 
             }
@@ -35,8 +36,9 @@ namespace A9HNYJ_HFT_2021222.WpfClient
             get => selectedAuthor;
             set
             {
-                selectedAuthor = value;
+                SetProperty(ref selectedAuthor, value);
                 (DeleteAuthor as RelayCommand).NotifyCanExecuteChanged();
+                (ModAuthor as RelayCommand).NotifyCanExecuteChanged();
 
             }
         }
@@ -45,7 +47,7 @@ namespace A9HNYJ_HFT_2021222.WpfClient
             get => selectedPublisher;
             set
             {
-                selectedPublisher = value;
+                SetProperty(ref selectedPublisher, value);
                 (DeletePublisher as RelayCommand).NotifyCanExecuteChanged();
 
             }
@@ -53,6 +55,8 @@ namespace A9HNYJ_HFT_2021222.WpfClient
         public RestCollection<Book> Books { get; set; }
         public RestCollection<Author> Authors { get; set; }
         public RestCollection<Publisher> Publishers { get; set; }
+
+        public UILogic logic;
 
         public ICommand CreateBook { get; set; }
         public ICommand CreateAuthor { get; set; }
@@ -63,12 +67,19 @@ namespace A9HNYJ_HFT_2021222.WpfClient
         public ICommand DeletePublisher { get; set; }
         public ICommand DeleteAuthor { get; set; }
         public ICommand DeleteBook { get; set; }
+        public ICommand AddAuthor { get; set; }
+        public ICommand AddPublisher { get; set; }
+        public ICommand AddBook { get; set; }
 
         public MainWindowViewModel()
         {
+            selectedAuthor = null;
+            selectedBook = null;
+            selectedPublisher = null;
             Books = new RestCollection<Book>("http://localhost:37921/admin/", "Book");
             Authors = new RestCollection<Author>("http://localhost:37921/admin/", "Author");
             Publishers = new RestCollection<Publisher>("http://localhost:37921/admin/", "Publisher");
+            logic = new UILogic(Books, Authors, Publishers);
 
             DeletePublisher = new RelayCommand(
                 () => Publishers.Delete(SelectedPublisher.PublisherID),
@@ -84,6 +95,14 @@ namespace A9HNYJ_HFT_2021222.WpfClient
                  () => Books.Delete(SelectedBook.BookID),
                  () => SelectedBook != null
              );
+
+            AddAuthor = new RelayCommand(
+                () => logic.AddAuthor()
+                );
+            ModAuthor = new RelayCommand(
+                () => logic.ModifyAuthor(SelectedAuthor),
+                () => selectedAuthor != null
+                ); ;
         }
     }
 }

@@ -1,0 +1,32 @@
+﻿<Window x:Class="A9HNYJ_HFT_2021222.WpfClient.AddOrModifyAuthor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:A9HNYJ_HFT_2021222.WpfClient"
+        xmlns:model="clr-namespace:A9HNYJ_HFT_2021221.Models;assembly=A9HNYJ_HFT_2021221.Models"
+        mc:Ignorable="d"
+        Title="AddOrModifyAuthor" Height="900" Width="500"
+        x:Name="AddorModifyAuthorWindow"
+        >
+        
+    
+    <Grid>
+        <StackPanel>
+            <Label Content="Author ID" Height="50" VerticalContentAlignment="Center" Background="LightYellow"/>
+            <TextBox Text="{Binding AuthorKey}" Height="50" VerticalContentAlignment="Center"/>
+            <Label Content="Name" Height="50" VerticalContentAlignment="Center" Background="LightYellow"/>
+            <TextBox Text="{Binding AuthorName}" Height="50" VerticalContentAlignment="Center"/>
+            <Label Content="Year of birth" Height="50" VerticalContentAlignment="Center" Background="LightYellow"/>
+            <TextBox Text="{Binding YearBorn}" Height="50" VerticalContentAlignment="Center"/>
+            <Label Content="Is still Active?" Height="50" VerticalContentAlignment="Center" Background="LightYellow"/>
+            <CheckBox Height="40" IsChecked="{Binding IsActive}"/>
+            <Label Content="Original language" Height="50" VerticalContentAlignment="Center" Background="LightYellow"/>
+            <TextBox Text="{Binding OriginalLanguage}" Height="50" VerticalContentAlignment="Center"/>
+            <Label Content="Are their books for kids?" Height="50" VerticalContentAlignment="Center" Background="LightYellow"/>
+            <CheckBox Height="40" IsChecked="{Binding ForKids}" VerticalContentAlignment="Center"/>
+            <Button Content="Send" Click="Button_Click" Width="100" HorizontalAlignment="Left"/>
+
+        </StackPanel>
+    </Grid>
+</Window>
