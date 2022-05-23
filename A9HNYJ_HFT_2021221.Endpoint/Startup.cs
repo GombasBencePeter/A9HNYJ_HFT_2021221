@@ -12,6 +12,7 @@ using A9HNYJ_HFT_2021221.Repository;
 using A9HNYJ_HFT_2021221.Data;
 using A9HNYJ_HFT_2021221.Models;
 using Microsoft.EntityFrameworkCore;
+using A9HNYJ_HFT_2021221.Endpoint.Services;
 
 namespace A9HNYJ_HFT_2021221.Endpoint
 {
@@ -30,6 +31,8 @@ namespace A9HNYJ_HFT_2021221.Endpoint
             services.AddTransient<IUserLogic, UserLogic>();
             services.AddTransient<ISupplyManager, SupplyManager>();
 
+            services.AddSignalR();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +48,7 @@ namespace A9HNYJ_HFT_2021221.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }

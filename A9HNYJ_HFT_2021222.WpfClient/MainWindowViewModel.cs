@@ -76,9 +76,9 @@ namespace A9HNYJ_HFT_2021222.WpfClient
             selectedAuthor = null;
             selectedBook = null;
             selectedPublisher = null;
-            Books = new RestCollection<Book>("http://localhost:37921/admin/", "Book");
-            Authors = new RestCollection<Author>("http://localhost:37921/admin/", "Author");
-            Publishers = new RestCollection<Publisher>("http://localhost:37921/admin/", "Publisher");
+            Books = new RestCollection<Book>("http://localhost:37921/","admin/", "Book", "hub");
+            Authors = new RestCollection<Author>("http://localhost:37921/","admin/", "Author", "hub");
+            Publishers = new RestCollection<Publisher>("http://localhost:37921/","admin/", "Publisher", "hub");
             logic = new UILogic();
 
             DeletePublisher = new RelayCommand(

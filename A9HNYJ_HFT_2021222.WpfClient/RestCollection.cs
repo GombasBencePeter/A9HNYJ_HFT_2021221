@@ -285,10 +285,10 @@ namespace A9HNYJ_HFT_2021222.RestClient
         bool hasSignalR;
         Type type = typeof(T);
 
-        public RestCollection(string baseurl, string endpoint, string hub = null)
+        public RestCollection(string baseurl, string endpoint0, string endpoint, string hub = null)
         {
             hasSignalR = hub != null;
-            this.rest = new RestService(baseurl, endpoint);
+            this.rest = new RestService(baseurl+endpoint0, endpoint);
             if (hub != null)
             {
                 this.notify = new NotifyService(baseurl + hub);
