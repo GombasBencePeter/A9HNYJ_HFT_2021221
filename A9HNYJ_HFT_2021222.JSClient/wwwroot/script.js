@@ -36,9 +36,11 @@ async function start() {
 
 
 function refresh() {
+    
     fetch('http://localhost:37921/admin/Book')
         .then(x => x.json())
         .then(y => {
+            
             books = y;
             display();
         })
@@ -124,6 +126,7 @@ function update() {
 }
 
 function display() {
+    document.getElementById('bookTable').innerHTML = "";
     books.forEach(x => {
         document.getElementById('bookTable').innerHTML += "<tr><td>" + x.bookID + "</td>" +
             "<td>" + x.authorID + "</td>" +
