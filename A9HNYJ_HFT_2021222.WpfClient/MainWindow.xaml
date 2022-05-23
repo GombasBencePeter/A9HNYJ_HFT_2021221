@@ -21,14 +21,17 @@
             <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Column="0" Grid.Row="0" Height="150">
+            <Label Content="Books" FontSize="20" VerticalContentAlignment="Center" Height="55"/>
             <Button Content="Modify" Height="50" Command="{Binding ModBook}"/>
             <Button Content="Delete" Height="50" Command="{Binding DeleteBook}"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="0" Height="150">
+            <Label Content="Authors" FontSize="20" VerticalContentAlignment="Center" Height="55"/>
             <Button Content="Modify" Height="50" Command="{Binding ModAuthor}"/>
             <Button Content="Delete" Height="50" Command="{Binding DeleteAuthor}"/>
         </StackPanel>
         <StackPanel Grid.Column="2" Grid.Row="0" Height="150">
+            <Label Content="Publishers" FontSize="20" VerticalContentAlignment="Center" Height="55"/>
             <Button Content="Modify" Height="50" Command="{Binding ModPublisher}"/>
             <Button Content="Delete" Height="50" Command="{Binding DeletePublisher}"/>
         </StackPanel>
@@ -55,11 +58,10 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <StackPanel Grid.Column="3">
+        <StackPanel Grid.Column="3" Grid.Row="1">
             <Button Content="Add new publisher" Height="80" Margin="3" Command="{Binding AddPublisher}"/>
             <Button Content="Add new author" Height="80" Margin="3" Command="{Binding AddAuthor}"/>
             <Button Content="Add new book" Height="80" Margin="3" Command="{Binding AddBook}"/>
-            <Button Content="Modify Item"/>
         </StackPanel>
 
     </Grid>

@@ -5,8 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:A9HNYJ_HFT_2021222.WpfClient"
         mc:Ignorable="d"
-        Title="AddOrModifyPublisher" Height="450" Width="800">
+        Title="AddOrModifyPublisher" Height="900" Width="500">
     <Grid>
-        
+        <StackPanel>
+            <Label Content="Publisher ID" Height="50" VerticalContentAlignment="Center" Background="LightYellow"/>
+            <Label Content="{Binding PublisherID}" Height="50" VerticalContentAlignment="Center"/>
+            <Label Content="Publisher name" Height="50" VerticalContentAlignment="Center" Background="LightYellow"/>
+            <TextBox Text="{Binding PublisherName}" Height="50" VerticalContentAlignment="Center"/>
+            <Label Content="Language" Height="50" VerticalContentAlignment="Center" Background="LightYellow"/>
+            <TextBox Text="{Binding Language}" Height="50" VerticalContentAlignment="Center"/>
+            <Label Content="Webpage" Height="50" VerticalContentAlignment="Center" Background="LightYellow"/>
+            <TextBox Text="{Binding Webpage}" Height="50" VerticalContentAlignment="Center"/>
+            <Label Content="Number of days to deliver" Height="50" VerticalContentAlignment="Center" Background="LightYellow"/>
+            <TextBox Text="{Binding DelivareDays}" Height="50" VerticalContentAlignment="Center"/>
+            <Label Content="Is the publisher still active?" Height="50" VerticalContentAlignment="Center" Background="LightYellow"/>
+            <CheckBox Height="40" IsChecked="{Binding IsActive}" VerticalContentAlignment="Center"/>
+            <Button Content="Send" Click="Button_Click" Width="100" HorizontalAlignment="Left"/>
+
+        </StackPanel>
     </Grid>
 </Window>

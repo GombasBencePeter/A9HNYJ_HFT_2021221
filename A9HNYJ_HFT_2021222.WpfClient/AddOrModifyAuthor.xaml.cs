@@ -24,6 +24,7 @@ namespace A9HNYJ_HFT_2021222.WpfClient
         public AddOrModifyAuthor()
         {
             InitializeComponent();
+            this.DataContext = new Author();
         }
         public AddOrModifyAuthor(Author author): this()
         {

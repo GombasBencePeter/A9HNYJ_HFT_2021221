@@ -14,7 +14,7 @@
     <Grid>
         <StackPanel>
             <Label Content="Author ID" Height="50" VerticalContentAlignment="Center" Background="LightYellow"/>
-            <TextBox Text="{Binding AuthorKey}" Height="50" VerticalContentAlignment="Center"/>
+            <Label Content="{Binding AuthorKey}" Height="50" VerticalContentAlignment="Center"/>
             <Label Content="Name" Height="50" VerticalContentAlignment="Center" Background="LightYellow"/>
             <TextBox Text="{Binding AuthorName}" Height="50" VerticalContentAlignment="Center"/>
             <Label Content="Year of birth" Height="50" VerticalContentAlignment="Center" Background="LightYellow"/>

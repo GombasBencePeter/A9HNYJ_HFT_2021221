@@ -24,6 +24,7 @@ namespace A9HNYJ_HFT_2021222.WpfClient
         public AddOrModifyBook()
         {
             InitializeComponent();
+            this.DataContext = new Book();
         }
         public AddOrModifyBook(Book Book): this()
         {

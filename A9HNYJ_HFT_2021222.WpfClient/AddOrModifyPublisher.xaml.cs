@@ -24,6 +24,7 @@ namespace A9HNYJ_HFT_2021222.WpfClient
         public AddOrModifyPublisher()
         {
             InitializeComponent();
+            this.DataContext = new Publisher();
         }
         public AddOrModifyPublisher(Publisher publisher): this()
         {

@@ -28,7 +28,7 @@ namespace A9HNYJ_HFT_2021222.WpfClient
             {
                 SetProperty(ref selectedBook, value);
                 (DeleteBook as RelayCommand).NotifyCanExecuteChanged();
-
+                (ModBook as RelayCommand).NotifyCanExecuteChanged();
             }
         }
         public Author SelectedAuthor
@@ -49,7 +49,7 @@ namespace A9HNYJ_HFT_2021222.WpfClient
             {
                 SetProperty(ref selectedPublisher, value);
                 (DeletePublisher as RelayCommand).NotifyCanExecuteChanged();
-
+                (ModPublisher as RelayCommand).NotifyCanExecuteChanged();
             }
         }
         public RestCollection<Book> Books { get; set; }
@@ -79,7 +79,7 @@ namespace A9HNYJ_HFT_2021222.WpfClient
             Books = new RestCollection<Book>("http://localhost:37921/admin/", "Book");
             Authors = new RestCollection<Author>("http://localhost:37921/admin/", "Author");
             Publishers = new RestCollection<Publisher>("http://localhost:37921/admin/", "Publisher");
-            logic = new UILogic(Books, Authors, Publishers);
+            logic = new UILogic();
 
             DeletePublisher = new RelayCommand(
                 () => Publishers.Delete(SelectedPublisher.PublisherID),
@@ -97,12 +97,27 @@ namespace A9HNYJ_HFT_2021222.WpfClient
              );
 
             AddAuthor = new RelayCommand(
-                () => logic.AddAuthor()
+                () => logic.AddAuthor(Authors)
                 );
             ModAuthor = new RelayCommand(
-                () => logic.ModifyAuthor(SelectedAuthor),
+                () => logic.ModifyAuthor(SelectedAuthor, Authors),
                 () => selectedAuthor != null
                 ); ;
+            AddBook = new RelayCommand(
+                () => logic.AddBook(Books)
+                );
+            ModBook = new RelayCommand(
+                () => logic.ModifyBook(SelectedBook, Books),
+                () => SelectedBook != null
+                );
+            AddPublisher = new RelayCommand(
+                () => logic.AddPublisher(Publishers)
+                );
+            ModPublisher = new RelayCommand(
+                () => logic.ModifyPublisher(SelectedPublisher, Publishers),
+                () => SelectedPublisher != null
+                
+                );
         }
     }
 }
